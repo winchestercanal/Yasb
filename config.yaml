@@ -14,7 +14,7 @@ bars:
   status-bar:
     enabled: true
     #screens: ['DELL P2419H (1)'] # If you want to show on specific screen
-    screens: ['*'] 
+    screens: ['Display'] 
     class_name: "yasb-bar"
     alignment:
       position: "top"
@@ -46,13 +46,14 @@ bars:
         ] 
       center: [
          "clock",
+         "obs",
+         "weather",
          "apps",
-         "update_check"
+         #"update_check"
         ]
       right:
         [
           "media",
-          "obs",
           #"wifi",
           "bluetooth",
           "disk",
@@ -60,7 +61,6 @@ bars:
           #"cpu",
           #"libre_monitor_widget",
           #"memory",
-          "weather",
           "volume",
           "whkd",
           "power_menu"
@@ -75,15 +75,7 @@ widgets:
         volume_label: "F"
         update_interval: 60
         group_label:
-          enabled: true
-          volume_labels: ["C", "D", "E", "F"]
-          blur: true
-          alignment: 'center'
-          direction: 'down'
-          distance: 6
-        group_label:
-          enabled: true
-          volume_labels: ["C", "D", "E", "F"]
+          volume_labels: ["C", "D", "E", "F", "G","H"]
           blur: True
           round_corners: True
           round_corners_type: "small"
@@ -94,7 +86,7 @@ widgets:
         callbacks:
           on_left: "toggle_group"
           on_middle: "toggle_label"
-          on_right: "exec explorer F:\\" # Open disk C in file explorer
+          on_right: "exec explorer F:\\Render" # Open disk C in file explorer
 
   media:
     type: "yasb.media.MediaWidget"
@@ -267,7 +259,7 @@ widgets:
       update_interval: 600 # Update interval in seconds, Min 600 seconds
       hide_decimal: true
       units: "metric" # Can be 'metric' or 'imperial'
-      location: "USA Los Angeles 90006" # You can use "USA Los Angeles 90006" {COUNTRY CITY ZIP_CODE}, or just city.
+      location: "Campinas 13060450" # You can use "USA Los Angeles 90006" {COUNTRY CITY ZIP_CODE}, or just city.
       callbacks:
         on_left: "toggle_card"
         on_middle: "do_nothing"
@@ -288,9 +280,9 @@ widgets:
         round_corners: True
         round_corners_type: "normal"
         border_color: "System"
-        alignment: "right"
+        alignment: "center"
         direction: "down"
-        distance: 6
+        distance: 5
         icon_size: 64
 
   volume:
@@ -461,7 +453,11 @@ widgets:
       label: "<span>\udb81\udf17</span>"
       menu_list:
       - { title: "Usuário", path: "~" }
-      - { title: "Download", path: "C:\\Users\\Nome\\Downloads" }
+      - { title: "Download", path: "G:\\Downloads" }
+      - { title: "Backups", path: "C:\\Users\\rafae\\OneDrive\\Documentos\\BACKUPS"}
+      - { title: "Diolinux", path: "D:\\Videos\\Diolinux"}
+      - { title: "OBS", path: "D:\\Videos\\OBS"}
+      - { title: "StockFootage", path: "D:\\Videos\\Stockfootages"}
       system_menu: true
       power_menu: true
       blur: true
@@ -476,8 +472,8 @@ widgets:
         restart: "Reiniciar"
         logout: "Sair"
         system: "Configurações"
-        about: "Sobre este PC"
-        task_manager: "Gerenciardor de Tarefas"
+        about: "Sobre"
+        task_manager: "Gerenciardor"
 
   update_check:
     type: "yasb.update_check.UpdateCheckWidget"
@@ -497,9 +493,9 @@ widgets:
     type: "yasb.obs.ObsWidget"
     options:  
       connection:
-        host: "172.23.16.1"
+        host: "192.168.68.51"
         port: 4455
-        password: "%3CreOSZWjw%2F%3Dag%25ltDXzx"
+        password: "4FhJt7GQw3qoCQuC"
       icons:
         recording: "\ueba7"
         stopped: "\ueba5"
@@ -527,9 +523,9 @@ widgets:
   clock:
     type: "yasb.clock.ClockWidget"
     options:
-      label: "{%d/%m/%y %H:%M:%S}"
-      label_alt: "\uf017 {%H:%M:%S}"
-      locale: ""
+      label: "{%a, %d de %B %H:%M:%S}"
+      label_alt: "Inscreva-se e deixa o like! \uf164"
+      locale: "pt-BR"
       update_interval: 1000
       timezones: []
       calendar: 
@@ -541,6 +537,6 @@ widgets:
         direction: 'down'
         distance: 6
       callbacks:
-        #on_left: "toggle_label"
-        on_middle: "next_timezone"
-        on_right: "toggle_label"
+        on_left: "toggle_label"
+        on_middle: "do_nothing"
+        on_right: "next_timezone"
