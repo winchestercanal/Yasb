@@ -351,3 +351,25 @@
     color: rgb(255, 255, 255);
     margin-top: -20px;
 }
+
+.pomodoro-widget {} /*Style for widget.*/
+.pomodoro-widget .widget-container {} /*Style for widget container.*/
+.pomodoro-widget .label {} /*Style for label.*/
+.pomodoro-widget .icon {} /*Style for icon.*/
+.pomodoro-widget .label.paused {} /*Style for label when timer is paused.*/
+.pomodoro-widget .label.work {} /*Style for label during work sessions.*/
+.pomodoro-widget .label.break {} /*Style for label during breaks.*/
+.pomodoro-widget .icon.paused {} /*Style for icon when timer is paused.*/
+.pomodoro-widget .icon.work {} /*Style for icon during work sessions.*/
+.pomodoro-widget .icon.break {} /*Style for icon during breaks.*/
+/* Pomodoro menu */
+.pomodoro-menu {} /*Style for menu background.*/
+.pomodoro-menu .header {} /*Style for menu header.*/
+.pomodoro-menu .status {} /*Style for status text.*/
+.pomodoro-menu .session {} /*Style for session counter.*/
+.pomodoro-menu .button {} /*Style for buttons.*/
+.pomodoro-menu .button.start {} /*Style for start button.*/
+.pomodoro-menu .button.reset {} /*Style for reset button.*/
+.pomodoro-menu .button.pause {} /*Style for pause button.*/
+.pomodoro-menu .button:hover {} /*Style for button hover effect.*/
+.pomodoro-menu .button:pressed {} /*Style for button pressed effect.*/
