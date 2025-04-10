@@ -14,7 +14,7 @@ bars:
   status-bar:
     enabled: true
     #screens: ['DELL P2419H (1)'] # If you want to show on specific screen
-    screens: ['*'] 
+    screens: [] 
     class_name: "yasb-bar"
     alignment:
       position: "top"
@@ -46,10 +46,10 @@ bars:
         ] 
       center: [
          "clock",
-         "obs",
+         #"obs",
          "weather",
          "apps",
-         #"update_check"
+         "pomodoro"
         ]
       right:
         [
@@ -58,9 +58,9 @@ bars:
           "bluetooth",
           "disk",
           #"nvidia_temp",
-          #"cpu",
+          "cpu",
           #"libre_monitor_widget",
-          #"memory",
+          "memory",
           "volume",
           "whkd",
           "power_menu"
@@ -72,10 +72,10 @@ widgets:
     options:
         label: "{volume_label}: {space[free][gb]}"
         label_alt: "<span>\uf473</span>"
-        volume_label: "F"
+        volume_label: "C"
         update_interval: 60
         group_label:
-          volume_labels: ["C", "D", "E", "F", "G","H"]
+          volume_labels: ["C", "D"]
           blur: True
           round_corners: True
           round_corners_type: "small"
@@ -259,7 +259,7 @@ widgets:
       update_interval: 600 # Update interval in seconds, Min 600 seconds
       hide_decimal: true
       units: "metric" # Can be 'metric' or 'imperial'
-      location: "Campinas 13060450" # You can use "USA Los Angeles 90006" {COUNTRY CITY ZIP_CODE}, or just city.
+      location: "USA Los Angeles 90006" # You can use "USA Los Angeles 90006" {COUNTRY CITY ZIP_CODE}, or just city.
       callbacks:
         on_left: "toggle_card"
         on_middle: "do_nothing"
@@ -310,13 +310,13 @@ widgets:
       animation_duration: 300 # Milisecond 
       button_row: 3 # Number of buttons in row, min 1 max 5
       buttons:
-        lock: ["\uea75","Lock"]
-        signout: ["\udb80\udf43","Sign out"]
+        lock: ["\uea75","Bloquear"]
+        signout: ["\udb80\udf43","Sair"]
         #sleep: ["\u23fe","Sleep"]
-        shutdown: ["\uf011","Shut Down"]
-        restart: ["\uead2","Restart"]
-        hibernate: ["\uf28e","Hibernate"]
-        cancel: ["\udb81\udf3a","Cancel"]
+        shutdown: ["\uf011","Desligar"]
+        restart: ["\uead2","Reiniciar"]
+        hibernate: ["\uf28e","Hibernar"]
+        cancel: ["\udb81\udf3a","Cancelar"]
         #force_shutdown: ["\uf011","Force Shut Down"]
         #force_restart: ["\uead2","Force Restart"]
  
@@ -453,11 +453,7 @@ widgets:
       label: "<span>\udb81\udf17</span>"
       menu_list:
       - { title: "Usuário", path: "~" }
-      - { title: "Download", path: "G:\\Downloads" }
-      - { title: "Backups", path: "C:\\Users\\rafae\\OneDrive\\Documentos\\BACKUPS"}
-      - { title: "Diolinux", path: "D:\\Videos\\Diolinux"}
-      - { title: "OBS", path: "D:\\Videos\\OBS"}
-      - { title: "StockFootage", path: "D:\\Videos\\Stockfootages"}
+      - { title: "Download", path: "C:\\Users\\rafae\\Downloads" }
       system_menu: true
       power_menu: true
       blur: true
@@ -493,9 +489,9 @@ widgets:
     type: "yasb.obs.ObsWidget"
     options:  
       connection:
-        host: "192.168.68.51"
+        host: "ip"
         port: 4455
-        password: "4FhJt7GQw3qoCQuC"
+        password: "*********"
       icons:
         recording: "\ueba7"
         stopped: "\ueba5"
@@ -525,7 +521,7 @@ widgets:
     options:
       label: "{%a, %d de %B %H:%M:%S}"
       label_alt: "Inscreva-se e deixa o like! \uf164"
-      locale: "pt-BR"
+      locale: "pt_BR" # Set to your locale, e.g. "pt_BR" for Brazilian Portuguese
       update_interval: 1000
       timezones: []
       calendar: 
@@ -537,6 +533,49 @@ widgets:
         direction: 'down'
         distance: 6
       callbacks:
-        on_left: "toggle_label"
-        on_middle: "do_nothing"
-        on_right: "next_timezone"
+        on_left: "toggle_calendar"
+        on_middle: "next_timezone"
+        on_right: "toggle_label"
+
+  pomodoro:
+    type: "yasb.pomodoro.PomodoroWidget"
+    options:
+      label: "<span>\uf252</span> {remaining}"
+      label_alt: "<span>{icon}</span> {session}/{total_sessions} - {status}"
+      work_duration: 25
+      break_duration: 5
+      long_break_duration: 15
+      long_break_interval: 4
+      auto_start_breaks: true
+      auto_start_work: true
+      sound_notification: true
+      show_notification: true
+      hide_on_break: false
+      session_target: 8
+      icons:
+        work: "\uf252"
+        break: "\uf253"
+        paused: "\uf254"
+      container_padding:
+        top: 0
+        left: 12
+        bottom: 0
+        right: 12
+      menu:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        circle_background_color: "#09ffffff"
+        circle_work_progress_color: "#88c0d0"
+        circle_break_progress_color: "#a3be8c"
+        circle_thickness: 8
+        circle_size: 160
+      callbacks:
+        on_left: "toggle_menu"
+        on_middle: "reset_timer"
+        on_right: "toggle_timer"
