@@ -45,8 +45,9 @@ bars:
           "active_window"
         ] 
       center: [
+         "notes",
          "clock",
-         #"obs",
+         "obs",
          "weather",
          "apps",
          "pomodoro"
@@ -72,10 +73,10 @@ widgets:
     options:
         label: "{volume_label}: {space[free][gb]}"
         label_alt: "<span>\uf473</span>"
-        volume_label: "C"
+        volume_label: "F"
         update_interval: 60
         group_label:
-          volume_labels: ["C", "D"]
+          volume_labels: ["C", "D", "E", "F", "G","H"]
           blur: True
           round_corners: True
           round_corners_type: "small"
@@ -91,23 +92,52 @@ widgets:
   media:
     type: "yasb.media.MediaWidget"
     options:
-      label: "{title} - {artist}"
-      label_alt: "{title}"
+      label: "{title}"
+      label_alt: "{title} - {artist}"
+      hide_empty: true
+      callbacks:
+        on_left: "toggle_media_menu"
+        on_middle: "do_nothing"
+        on_right: "toggle_label"
       max_field_size:
-        label: 20
+        label: 10
         label_alt: 30
       show_thumbnail: true
-      controls_only: true
+      controls_only: false
       controls_left: true
-      hide_empty: true
+      controls_hide: false
       thumbnail_alpha: 80
       thumbnail_padding: 8
-      thumbnail_corner_radius: 16 # Set to 0 for square corners
+      thumbnail_corner_radius: 16
       icons:
         prev_track: "\udb81\udcae"
         next_track: "\udb81\udcad"
         play: "\udb81\udc0d"
         pause: "\udb80\udfe6"
+      media_menu:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "system"
+        alignment: "center"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        thumbnail_corner_radius: 8
+        thumbnail_size: 120
+        max_title_size: 80
+        max_artist_size: 20
+        show_source: true
+      media_menu_icons:
+        play: "\ue768"
+        pause: "\ue769"
+        prev_track: "\ue892"
+        next_track: "\ue893"
+      label_shadow:
+        enabled: true
+        color: "black"
+        radius: 3
+        offset: [ 1, 1 ]
 
   active_window:
     type: "yasb.active_window.ActiveWindowWidget"
@@ -259,7 +289,7 @@ widgets:
       update_interval: 600 # Update interval in seconds, Min 600 seconds
       hide_decimal: true
       units: "metric" # Can be 'metric' or 'imperial'
-      location: "USA Los Angeles 90006" # You can use "USA Los Angeles 90006" {COUNTRY CITY ZIP_CODE}, or just city.
+      location: "Campinas SP" # You can use "USA Los Angeles 90006" {COUNTRY CITY ZIP_CODE}, or just city.
       callbacks:
         on_left: "toggle_card"
         on_middle: "do_nothing"
@@ -453,7 +483,11 @@ widgets:
       label: "<span>\udb81\udf17</span>"
       menu_list:
       - { title: "Usuário", path: "~" }
-      - { title: "Download", path: "C:\\Users\\rafae\\Downloads" }
+      - { title: "Download", path: "G:\\Downloads" }
+      - { title: "Backups", path: "C:\\Users\\rafae\\OneDrive\\Documentos\\BACKUPS"}
+      - { title: "Diolinux", path: "D:\\Videos\\Diolinux"}
+      - { title: "OBS", path: "D:\\Videos\\OBS"}
+      - { title: "StockFootage", path: "D:\\Videos\\Stockfootages"}
       system_menu: true
       power_menu: true
       blur: true
@@ -489,9 +523,9 @@ widgets:
     type: "yasb.obs.ObsWidget"
     options:  
       connection:
-        host: "ip"
+        host: "192.168.68.99"
         port: 4455
-        password: "*********"
+        password: "4FhJt7GQw3qoCQuC"
       icons:
         recording: "\ueba7"
         stopped: "\ueba5"
@@ -579,3 +613,37 @@ widgets:
         on_left: "toggle_menu"
         on_middle: "reset_timer"
         on_right: "toggle_timer"
+
+  notes:
+    type: "yasb.notes.NotesWidget"
+    options:
+      label: "<span>\udb82\udd0c</span> {count}"
+      label_alt: "{count} notes"
+      container_padding:
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
+      menu:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "center"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        max_title_size: 750
+        show_date_time: true
+      icons:
+        note: "\udb82\udd0c"
+        delete: "\ue20d"
+      callbacks:
+        on_left: "toggle_menu"
+        on_middle: "do_nothing"
+        on_right: "toggle_label"
+      label_shadow:
+        enabled: true
+        color: "black"
+        radius: 3
+        offset: [ 1, 1 ]
