@@ -9,3 +9,11 @@ Além disso, é recomendável usar o comando "yasbc update" no terminal, para ga
 Visite o tutorial abaixo para entender como ele funciona!
 
 https://youtu.be/rddIT4NQvso
+
+--------
+Conheça tambem meus outros repositórios:
+
+[Configuraçoes do Komorebi
+](https://github.com/winchestercanal/komorebi-configs)
+
+[Script de Backup e Restauraçao de drivers ](https://github.com/winchestercanal/driverbackup)
