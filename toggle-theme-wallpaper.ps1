@@ -1,6 +1,6 @@
 # === CONFIGURATION ===
-$darkWallpaperPath  = "C:\Users\rafae\OneDrive\Imagens\Wallpapers\Windows 11\windows 11 (3).png"
-$lightWallpaperPath = "C:\Users\rafae\OneDrive\Imagens\Wallpapers\Windows 11\Windows 11 (2).png"
+$darkWallpaperPath  = "C:\Windows\Web\Wallpaper\Windows\img19.jpg"
+$lightWallpaperPath = "C:\Windows\Web\Wallpaper\Windows\img0.jpg"
 
 # === THEME TOGGLE + WALLPAPER ===
 
