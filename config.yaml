@@ -69,6 +69,7 @@ bars:
       left:   # Widgets alinhados à esquerda
         [
           "home",                      # Menu de início com atalhos, algumas pastas vao exigir que voce configure o endereço manualmente para funcionar.
+          "toggle_theme",              # Alterna entre tema claro e escuro através de um script (precisa ajustar o endereço do script no código)
           "wallpapers",                # Gerenciador de papéis de parede
           "komorebi_control",          # Controles do Komorebi
           "komorebi_workspaces",       # Espaços de trabalho do Komorebi
@@ -82,6 +83,7 @@ bars:
          "clock",          # Relógio e calendário
          "obs",            # Status do OBS Studio
          "weather",        # Previsão do tempo
+         "update_check",   # Exibe atualizaçoes pendentes de apps e do Windows
          "apps",           # Atalhos de aplicativos
          "pomodoro",       # Timer Pomodoro
          "launchpad",      # Launcher de aplicativos
@@ -1595,6 +1597,17 @@ widgets:
         on_middle: "do_nothing"
         on_right: "toggle_label"
 
+  # --- TOGGLE THEME ---
+  # Permite alternar entre tema claro e escuro atraves de um script (necessario inserir o endereço do script no código)
+  toggle_theme:
+    type: "yasb.custom.CustomWidget"
+    options:
+      label: "<span>\ueac6</span>"
+      label_alt: "<span>\ueac6</span>"
+      class_name: "toggle-theme"
+      callbacks:
+        on_left: "exec powershell -WindowStyle Hidden -File G:\\Downloads\\scripts\\toggle-theme-wallpaper.ps1" # Substitua esse endereço pelo caminho correto do script em seu sistema!
+
   # --- TRAFFIC WIDGET ---
   # Monitor de tráfego de rede (download/upload)
   traffic:
@@ -1964,3 +1977,4 @@ widgets:
 # 5. Use class_name customizado para estilos CSS específicos
 #
 # =====================================================
+
