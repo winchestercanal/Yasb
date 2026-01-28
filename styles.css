@@ -2396,12 +2396,58 @@ Exemplo: "Windows Media" se torna "windows-media" */
     margin: 0
 }
 
-
 /*-------------------------------------------- Language Widget */
+.language-widget {}
+
+.language-widget .widget-container {
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+/* Estilo quando Caps Lock está ATIVADO */
+.language-widget .widget-container.caps-lock-on {
+    background-color: rgba(243, 139, 168, 0.2);
+    border: 1px solid rgba(243, 139, 168, 0.4);
+}
+
+.language-widget .label {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.language-widget .label.alt {
+    padding: 0 4px;
+}
+
+.language-widget .icon {
+    margin-right: 4px;
+}
+
+/* Estilo do label quando Caps Lock está ATIVADO */
+.language-widget .widget-container.caps-lock-on .label {
+    color: #f38ba8;
+    font-weight: 700;
+}
+
+/* Estilo do ícone quando Caps Lock está ATIVADO */
+.language-widget .widget-container.caps-lock-on .icon {
+    color: #f38ba8;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Icon with a pulsating animation to attract attention. */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+/* Language Menu */
 .language-menu {
-    background-color: rgba(17, 17, 27, 0.4);
+    background-color: rgba(4, 4, 34, 0.233);
     min-width: 300px;
 }
+
 .language-menu .header {
     font-family: 'Segoe UI';
     font-size: 14px;
@@ -2411,6 +2457,7 @@ Exemplo: "Windows Media" se torna "windows-media" */
     background-color: rgba(17, 17, 27, 0.6);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 .language-menu .footer {
     font-family: 'Segoe UI';
     font-size: 12px;
@@ -2421,47 +2468,55 @@ Exemplo: "Windows Media" se torna "windows-media" */
     background-color: rgba(17, 17, 27, 0.6);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 .language-menu .footer:hover {
     background-color: rgba(36, 36, 51, 0.6);
     color: #fff;
 }
+
 .language-menu .language-item {
     padding: 6px 12px;
     margin: 2px 4px;
 }
+
 .language-menu .language-item.active {
-    background-color:rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 4px;
 }
+
 .language-menu .language-item:hover {
     background-color: rgba(255, 255, 255, 0.05);
 }
+
 .language-menu .language-item.active:hover {
-    background-color:rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 4px;
 }
+
 .language-menu .language-item .code {
     font-weight: 900;
     font-size: 14px;
     min-width: 40px;
     text-transform: uppercase;
 }
+
 .language-menu .language-item .icon {
     font-size: 16px;
     margin-right: 8px;
     color: #fff;
 }
+
 .language-menu .language-item .name {
     font-weight: 600;
     font-family: 'Segoe UI';
     font-size: 14px;
 }
+
 .language-menu .language-item .layout {
     font-weight: 600;
     font-family: 'Segoe UI';
     font-size: 12px;
 }
-
 /*-------------------------------------------- System Info Widget */
 .systeminfo-grouper .container { /* The name of the css class is the name given in the config */
     background-color: rgba(46, 52, 64, 0.8);
