@@ -1598,7 +1598,8 @@ widgets:
       label_alt: "<span>\ueac6</span>"
       class_name: "toggle-theme"
       callbacks:
-        on_left: "exec powershell -WindowStyle Hidden -File G:\\Downloads\\scripts\\toggle-theme-wallpaper.ps1" # Substitua esse endereço pelo caminho correto do script em seu sistema! armazenado em seu sistema! Recomenda-se deixa-lo na mesma pasta do .config do Yasb.
+        on_left: "exec powershell -WindowStyle Hidden -File C:\\Users\\rafae\\.config\\yasb\\toggle-theme-wallpaper.ps1"
+        # Substitua esse endereço pelo caminho correto do script armazenado em seu sistema! Recomenda-se deixa-lo na mesma pasta do .config do Yasb.
 
   # --- TRAFFIC WIDGET ---
   # Monitor de tráfego de rede (download/upload)
@@ -1963,4 +1964,5 @@ widgets:
 # 3. Use class_name customizado para estilos CSS específicos
 #
 # =====================================================
+
 
