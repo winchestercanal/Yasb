@@ -1589,7 +1589,8 @@ widgets:
         on_right: "toggle_label"
 
   # --- TOGGLE THEME ---
-  # Permite alternar entre tema claro e escuro atraves de um script (necessario inserir o endereço do script no código)
+  # Permite alternar entre tema claro e escuro atraves de um script (necessario baixar o script no repositorio e inserir o endereço dele no código)
+  # Endereço de download do script: https://github.com/winchestercanal/Yasb/blob/main/toggle-theme-wallpaper.ps1
   toggle_theme:
     type: "yasb.custom.CustomWidget"
     options:
@@ -1597,7 +1598,7 @@ widgets:
       label_alt: "<span>\ueac6</span>"
       class_name: "toggle-theme"
       callbacks:
-        on_left: "exec powershell -WindowStyle Hidden -File G:\\Downloads\\scripts\\toggle-theme-wallpaper.ps1" # Substitua esse endereço pelo caminho correto do script em seu sistema!
+        on_left: "exec powershell -WindowStyle Hidden -File G:\\Downloads\\scripts\\toggle-theme-wallpaper.ps1" # Substitua esse endereço pelo caminho correto do script em seu sistema! armazenado em seu sistema! Recomenda-se deixa-lo na mesma pasta do .config do Yasb.
 
   # --- TRAFFIC WIDGET ---
   # Monitor de tráfego de rede (download/upload)
@@ -1962,3 +1963,4 @@ widgets:
 # 3. Use class_name customizado para estilos CSS específicos
 #
 # =====================================================
+
