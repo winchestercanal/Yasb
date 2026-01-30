@@ -116,7 +116,6 @@ bars:
 # task_switcher - Alternador de tarefas integrado
 # taskbar - Barra de tarefas com aplicativos fixados e abertos
 # terminal - Terminal embutido na barra
-# theme_toggle - Alterna entre tema claro e escuro
 # todo - Lista de tarefas (to-do list) integrada
 # toggle_theme - Alterna temas através de script personalizado
 # traffic - Monitor de tráfego de rede (download/upload)
@@ -1598,7 +1597,7 @@ widgets:
       label_alt: "<span>\ueac6</span>"
       class_name: "toggle-theme"
       callbacks:
-        on_left: "exec powershell -WindowStyle Hidden -File C:\\Users\\rafae\\.config\\yasb\\toggle-theme-wallpaper.ps1"
+        on_left: "exec powershell -WindowStyle Hidden -File $env:USERPROFILE/.config/yasb/toggle-theme-wallpaper.ps1"
         # Substitua esse endereço pelo caminho correto do script armazenado em seu sistema! Recomenda-se deixa-lo na mesma pasta do .config do Yasb.
 
   # --- TRAFFIC WIDGET ---
@@ -1964,5 +1963,6 @@ widgets:
 # 3. Use class_name customizado para estilos CSS específicos
 #
 # =====================================================
+
 
 
