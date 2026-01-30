@@ -8,15 +8,25 @@ O objetivo é facilitar a replicação do meu ambiente e servir como referência
 
 ## 📁 Arquivos necessários
 
-Para que o YASB funcione corretamente com este setup, é obrigatório utilizar os dois arquivos abaixo:
+Para que o YASB funcione corretamente com este setup, é obrigatório utilizar os três arquivos abaixo:
 
-- `config.yaml`
-- `styles.css`
+- [config.yaml](https://github.com/winchestercanal/Yasb/blob/main/config.yaml)
+- [styles.css](https://github.com/winchestercanal/Yasb/blob/main/styles.css)
+- [toggle-theme-wallpaper.ps1](https://github.com/winchestercanal/Yasb/blob/main/toggle-theme-wallpaper.ps1)
 
 Ambos devem ser colocados no seguinte diretório:
+
 ```plaintext
-C:\Users\SEU_USUÁRIO\.config\yasb
+%USERPROFILE%\.config\yasb
 ```
+
+## 📁 Arquivo opcional
+
+Caso queira, você tambem pode usar um arquivo de variáveis de ambiente para isolar dados sensiveis como APIs de clima, endereços, IPs, etc.  Não é obrigatório, mas é recomendado caso tenha interesse em compartilhar suas configurações como estou fazendo nesse repositório.
+
+- [.env](https://github.com/winchestercanal/Yasb/blob/main/.env)
+
+Coloque-o junto dos outros arquivos de configuração 
 
 ---
 
@@ -40,18 +50,6 @@ Para entender como tudo funciona na prática, assista ao tutorial:
 ## 🌗 Widget `toggle_theme`
 
 O widget `toggle_theme` depende de um script externo para realizar a troca de tema e wallpaper automaticamente.
-
-### 1️⃣ Baixe o script
-
-Faça o download do script disponível aqui:
-
-👉 [toggle-theme-wallpaper.ps1](https://github.com/winchestercanal/Yasb/blob/main/toggle-theme-wallpaper.ps1)
-
-### 2️⃣ Configure o caminho no `.config`
-
-Após baixar o script, informe o caminho dele corretamente dentro do seu arquivo de configuração do YASB.
-
-### 3️⃣ Habilite a Execution Policy do PowerShell
 
 Para que o script possa ser executado no Windows, é necessário habilitar a política de execução do PowerShell.
 
