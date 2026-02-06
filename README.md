@@ -19,6 +19,35 @@ Ambos devem ser colocados no seguinte diretório:
 ```plaintext
 %USERPROFILE%\.config\yasb
 ```
+---
+🧪 Arquivo de demonstração (Showcase)
+
+⚠️ ATENÇÃO IMPORTANTE
+
+Dentro da pasta [Showcase](https://github.com/winchestercanal/Yasb/tree/main/Showcase) existe um outro arquivo chamado [config.yaml
+](https://github.com/winchestercanal/Yasb/blob/main/Showcase/config.yaml)
+
+Esse arquivo NÃO representa um setup real, organizado ou otimizado.
+
+O único objetivo dele é exibir TODOS os widgets disponíveis ao mesmo tempo, para que você possa:
+
+Ver rapidamente como cada widget se comporta
+
+Testar visualmente todos eles
+
+Decidir quais deseja manter no seu próprio setup
+
+Ele funciona como uma vitrine de widgets.
+
+❗ Não utilize esse arquivo como base para sua configuração final.
+
+❗ Ele não foi feito para ser bonito, organizado ou funcional no dia a dia.
+
+❗ Ele existe exclusivamente para fins de demonstração.
+
+Após experimentar e encontrar os widgets mais uteis para o seu setup, anote seus nomes e os insira no arquivo [config.yaml](https://github.com/winchestercanal/Yasb/blob/main/config.yaml) original.
+
+---
 
 ## 📁 Arquivo opcional
 
