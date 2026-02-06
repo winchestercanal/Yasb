@@ -201,7 +201,7 @@ widgets:
               instructions: "C:/Users/amnweb/Desktop/custom_gpt_chatmode.md" # Instruções customizadas
         - provider: "Google"
           api_endpoint: "https://generativelanguage.googleapis.com/v1beta"
-          credential: "AIzaSyC-G5aJ8nMinS04Jt6h3rRDCFyb479xrkk"  # Variável de ambiente com a chave API (Dica, a Google fornece API gratuitas para alguns modelos em https://aistudio.google.com/app/api-keys)
+          credential: "SuaAPI"  # Variável de ambiente com a chave API (Dica, a Google fornece API gratuitas para alguns modelos em https://aistudio.google.com/app/api-keys)
           models:
             - name: "gemini-2.5-flash-lite"
               label: "Gemini 2.5 Flash Lite"
@@ -1742,12 +1742,12 @@ widgets:
       # Variáveis: {icon}, {temp}, {location}, {min_temp}, {max_temp}, {humidity}
       label: "<span>{icon}</span> {temp}"
       label_alt: "{location}: Min {min_temp}, Max {max_temp}, Humidity {humidity}"
-      api_key: "5c790bc62ce441a29f9152158250905"  # Chave da API WeatherAPI.com
+      api_key: "api_key"  # Chave da API WeatherAPI.com
       # Obtenha gratuitamente em: https://www.weatherapi.com/
       update_interval: 600  # Atualização em segundos (mínimo: 600)
       hide_decimal: true    # Oculta casas decimais
       units: "metric"       # Unidades: "metric" (Celsius) ou "imperial" (Fahrenheit)
-      location: "Campinas SP"  # Formato: "Cidade", "País Cidade", "País Cidade CEP"
+      location: "endreço"  # Formato: "Cidade", "País Cidade", "País Cidade CEP"
       callbacks:
         on_left: "toggle_card"
         on_middle: "do_nothing"
@@ -1986,5 +1986,6 @@ widgets:
 # 3. Use class_name customizado para estilos CSS específicos
 #
 # =====================================================
+
 
 
