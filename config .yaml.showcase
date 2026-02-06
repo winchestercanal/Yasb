@@ -201,7 +201,7 @@ widgets:
               instructions: "C:/Users/amnweb/Desktop/custom_gpt_chatmode.md" # Instruções customizadas
         - provider: "Google"
           api_endpoint: "https://generativelanguage.googleapis.com/v1beta"
-          credential: "SuaAPI"  # Variável de ambiente com a chave API (Dica, a Google fornece API gratuitas para alguns modelos em https://aistudio.google.com/app/api-keys)
+          credential: "$env:GEMINI_API_KEY"  # Variável de ambiente com a chave API (Dica, a Google fornece API gratuitas para alguns modelos em https://aistudio.google.com/app/api-keys)
           models:
             - name: "gemini-2.5-flash-lite"
               label: "Gemini 2.5 Flash Lite"
@@ -462,15 +462,15 @@ widgets:
         medium: 50
         high: 90
       histogram_icons:  # Caracteres para histograma
-        - '\u2581' # 0%
-        - '\u2581' # 10%
-        - '\u2582' # 20%
-        - '\u2583' # 30%
-        - '\u2584' # 40%
-        - '\u2585' # 50%
-        - '\u2586' # 60%
-        - '\u2587' # 70%
-        - '\u2588' # 80%+
+        - "\u2581" # 0%
+        - "\u2581" # 10%
+        - "\u2582" # 20%
+        - "\u2583" # 30%
+        - "\u2584" # 40%
+        - "\u2585" # 50%
+        - "\u2586" # 60%
+        - "\u2587" # 70%
+        - "\u2588" # 80%+
       histogram_num_columns: 8
       callbacks:
         on_right: "exec cmd /c Taskmgr"  # Abre Gerenciador de Tarefas
@@ -726,11 +726,11 @@ widgets:
         - {title: "Usuário", path: "~"}
         # ATALHOS PARA PASTAS ESPECÍFICAS, substitua a variavel PATH pelo endereço de seus diretórios (geralmente exige barras duplas '\\' ao invés das barras simples tradicionais '\')
         # exemplo para o path: "C:\\Users\\Username\\Downloads"
-        - {title: "Downloads", path: "G:\\Downloads"} 
-        - {title: "Documentos", path: "C:\\Users\\rafae\\OneDrive\\Documentos"}
-        - {title: "Backups", path: "C:\\Users\\rafae\\OneDrive\\Documentos"}
-        - {title: "OBS", path: "C:\\Users\\rafae\\OneDrive\\Documentos"}
-        - {title: "StockFootage", path: "C:\\Users\\rafae\\OneDrive\\Documentos"}
+        - {title: "Downloads", path: "$env:Downloads"} 
+        - {title: "Documentos", path: "$env:Documentos"}
+        - {title: "Backups", path: "$env:Backups"}
+        - {title: "OBS", path: "$env:OBS"}
+        - {title: "StockFootage", path: "$env:StockFootage"}
         # ATALHOS PARA PASTAS DE SISTEMA
         - {title: "Desktop", path: "%USERPROFILE%\\Desktop"}
         - {title: "AppData", path: "%APPDATA%"}
@@ -1323,19 +1323,31 @@ widgets:
 
   # --- OBS WIDGET ---
   # Status de gravação do OBS Studio
+
   obs:
-    type: "yasb.obs.ObsWidget"
+    type: "yasb.obs.ObsWidget"  # Widget de status do OBS Studio
     options:
-      connection:
-        host: "192.168.0.99"  # IP do OBS (localhost = 127.0.0.1)
-        port: 4455             # Porta padrão do OBS WebSocket
-        password: "4444444444"  # Senha do WebSocket
-      icons:
-        recording: ""
-        stopped: ""
-        paused: ""
-      hide_when_not_recording: true
-      blinking_icon: true  # Ícone pisca durante gravação
+      connection:  # Configuração de conexão com o OBS WebSocket
+        host: "localhost"  # Endereço do OBS
+        port: 4455  # Porta do WebSocket (padrão OBS v28+)
+        password: "$env:YASB_OBS_PASSWORD"  # Senha definida no OBS WebSocket
+
+      icons:  # Ícones utilizados para cada estado do OBS
+        recording: "\ueba7"  # Ícone quando está gravando
+        stopped: "\ueba7"  # Ícone quando parado
+        paused: "\ueba7"  # Ícone quando pausado
+        virtual_cam_on: "\udb81\udda0"  # Ícone da câmera virtual ativa
+        virtual_cam_off: "\udb81\udda0"  # Ícone da câmera virtual desativada
+        studio_mode_on: "\udb84\uddd8"  # Ícone do modo estúdio ativo
+        studio_mode_off: "\udb84\uddd8"  # Ícone do modo estúdio desativado
+
+      hide_when_not_recording: false  # Oculta o widget quando não estiver gravando
+      blinking_icon: true  # Ícone pisca durante a gravação
+      show_record_time: true  # Exibe o tempo de gravação
+      show_virtual_cam: true  # Exibe status da câmera virtual
+      show_studio_mode: true  # Exibe status do modo estúdio
+      tooltip: true  # Exibe tooltip ao passar o mouse
+
 
   # --- POMODORO WIDGET ---
   # Timer de produtividade com técnica Pomodoro
@@ -1701,7 +1713,7 @@ widgets:
       label: "<span>\uDB83\uDE09</span>"
       # Caminhos para pastas com imagens
       # Pode ser string única ou lista de strings
-      image_path: "C:\\Users\\rafae\\OneDrive\\Imagens\\Wallpapers"  # Exemplo: variável de ambiente com múltiplos caminhos separados por ponto e vírgula
+      image_path: "$env:YASB_WALLPAPER_PATHS"  # Exemplo: variável de ambiente com múltiplos caminhos separados por ponto e vírgula
       # image_path: "C:\\Users\\{Username}\\Images"  # Exemplo alternativo
       change_automatically: false  # Altera automaticamente
       update_interval: 60          # Intervalo de mudança (segundos)
@@ -1742,12 +1754,12 @@ widgets:
       # Variáveis: {icon}, {temp}, {location}, {min_temp}, {max_temp}, {humidity}
       label: "<span>{icon}</span> {temp}"
       label_alt: "{location}: Min {min_temp}, Max {max_temp}, Humidity {humidity}"
-      api_key: "api_key"  # Chave da API WeatherAPI.com
+      api_key: "$env:YASB_WEATHER_API_KEY"  # Chave da API WeatherAPI.com
       # Obtenha gratuitamente em: https://www.weatherapi.com/
       update_interval: 600  # Atualização em segundos (mínimo: 600)
       hide_decimal: true    # Oculta casas decimais
       units: "metric"       # Unidades: "metric" (Celsius) ou "imperial" (Fahrenheit)
-      location: "endreço"  # Formato: "Cidade", "País Cidade", "País Cidade CEP"
+      location: "$env:YASB_WEATHER_LOCATION"  # Formato: "Cidade", "País Cidade", "País Cidade CEP"
       callbacks:
         on_left: "toggle_card"
         on_middle: "do_nothing"
@@ -1986,6 +1998,3 @@ widgets:
 # 3. Use class_name customizado para estilos CSS específicos
 #
 # =====================================================
-
-
-
