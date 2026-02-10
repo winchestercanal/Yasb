@@ -2086,63 +2086,88 @@ For more information about configuration options, please visit the Wiki https://
 /* ============================================================================
    POWER MENU WIDGET
    ============================================================================ */
+
 .power-menu-widget .label {
-    color: var(--red);
     font-size: 13px;
+    color: var(--red);
 }
+
+/* --------- POPUP CONTAINER --------- */
+
 .power-menu-popup {
-    background-color: transparent
+    background-color: rgba(255, 255, 255, 0.04);
+    padding: 32px;
 }
+
+/* ---------   BUTTONS   --------- */
+
 .power-menu-popup .button {
     padding: 0;
-    width: 180px;
-    height: 230px;
-    border-radius: 8px;
-    background-color: var(--bg-color1);
-    border: 4px solid transparent;
-    margin: 0px;
+    min-width: 140px;
+    max-width: 140px;
+    min-height: 80px;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.07);
+    border: 8px solid transparent;
 }
+
 .power-menu-popup .button.hover {
-    background-color: var(--bg-color2);
-    border: 4px solid var(--bg-color2);
+    background-color: var(--blue);
+    border: 8px solid var(--blue);
 }
+
 .power-menu-popup .button .label {
-    margin-bottom: 8px;
-    font-size: 16px;
-    font-weight: 500;
-    color: #9399b2
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Segoe UI';
+    color: var(--text2);
 }
+
 .power-menu-popup .button .icon {
-    font-size: 64px;
-    padding-top: 32px;
-    color: #7f849c
+    font-size: 32px;
+    color: rgba(255, 255, 255, 0.4);
 }
+
 .power-menu-popup .button.hover .label,
 .power-menu-popup .button.hover .icon {
-    color: rgba(255, 255, 255, 0.808)
+    color: #ffffff;
 }
-/*.power-menu-popup .button.cancel .icon {
-    padding: 0;
-    margin: 0;
-    max-height: 40;
-}
-.power-menu-popup .button.cancel .label {
-    color:  #f38ba8;
-    margin: 0;
-}
-.power-menu-popup .button.cancel {
-    height: 250px;
-    border-radius: 4px;
-}
-.power-menu-popup .button.cancel.hover .label {
-    color: rgb(255, 255, 255)
-}*/
 
-.uptime {
-    font-size: 14px;
-    margin-bottom: 10px;
-    color: #7f849c;
+/* ---------   PROFILE INFO   --------- */
+
+.power-menu-popup .profile-info {
+    padding: 0 0 16px 0;
+    margin-bottom: 16px;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.power-menu-popup .profile-info .profile-username {
+    font-size: 24px;
     font-weight: 600;
+    font-family: 'Segoe UI';
+    color: var(--text1);
+    margin-top: 0;
+}
+
+.power-menu-popup .profile-info .profile-account-type {
+    font-size: 13px;
+    font-family: 'Segoe UI';
+    color: var(--text3);
+    margin-top: 4px;
+}
+
+/* ---------   OVERLAY / UPTIME   --------- */
+
+.power-menu-overlay {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.power-menu-overlay .uptime {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text4);
 }
 
 /* ============================================================================
