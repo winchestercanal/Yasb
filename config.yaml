@@ -63,29 +63,27 @@ bars:
           "komorebi_control",          # Controles do Komorebi
           "komorebi_workspaces",       # Espaços de trabalho do Komorebi
           "komorebi_active_layout",    # Layout ativo do Komorebi
-          "active_window"              # Título da janela ativa
+          "active_window",              # Título da janela ativa
         ] 
       center: # Widgets centralizados
         [
          "notes",          # Notas rápidas
          "todo",           # Lista de tarefas
          "clock",          # Relógio e calendário
-         "obs",            # Status do OBS Studio
          "weather",        # Previsão do tempo
          "update_check",   # Exibe atualizaçoes pendentes de apps e do Windows
-         "apps",           # Atalhos de aplicativos
          "pomodoro",       # Timer Pomodoro
          "launchpad",      # Launcher de aplicativos
         ]
       right:  # Widgets alinhados à direita
         [
+          "obs",                   # Status do OBS Studio
           "ai_chat",               # Chat integrado com IA
           "bluetooth",             # Status e controle Bluetooth
-          "libre_monitor_widget",  # Monitor de hardware (CPU/GPU/Temp)
           "volume",                # Controle de volume
           "whkd",                  # Atalhos de teclado ativos
           "notifications",         # Central de notificações
-          "power_menu",            # Menu de energia (desligar/reiniciar)
+          "power_menu",            # Menu de energia
         ]
 
   # --- WIDGETS DISPONÍVEIS ---
@@ -112,10 +110,8 @@ bars:
 # notifications - Central de notificações do sistema
 # obs - Status do OBS Studio (gravando/streaming)
 # pomodoro - Timer Pomodoro para produtividade com intervalos configuráveis
-# power_menu - Menu de energia (desligar, reiniciar, suspender, bloquear)
-# task_switcher - Alternador de tarefas integrado
+# power_menu - Menu de energia (desligar, reiniciar, suspender, bloquear) em tela cheia
 # taskbar - Barra de tarefas com aplicativos fixados e abertos
-# terminal - Terminal embutido na barra
 # todo - Lista de tarefas (to-do list) integrada
 # toggle_theme - Alterna temas através de script personalizado
 # traffic - Monitor de tráfego de rede (download/upload)
@@ -125,6 +121,7 @@ bars:
 # weather - Previsão do tempo com informações detalhadas e animações
 # whkd - Exibe atalhos de teclado ativos do Komorebi (WHKD)
 # wifi - Status e controle de conexão WiFi/Ethernet
+# window_controls: CONTROLES DA JANELA ATIVA (Minimizar / Maximizar / Fechar)
 # windows_workspaces - Desktops virtuais nativos do Windows 10/11
 # win_button - Botão do menu iniciar do Windows
 
@@ -458,15 +455,15 @@ widgets:
         medium: 50
         high: 90
       histogram_icons:  # Caracteres para histograma
-        - '\u2581' # 0%
-        - '\u2581' # 10%
-        - '\u2582' # 20%
-        - '\u2583' # 30%
-        - '\u2584' # 40%
-        - '\u2585' # 50%
-        - '\u2586' # 60%
-        - '\u2587' # 70%
-        - '\u2588' # 80%+
+        - "\u2581" # 0%
+        - "\u2581" # 10%
+        - "\u2582" # 20%
+        - "\u2583" # 30%
+        - "\u2584" # 40%
+        - "\u2585" # 50%
+        - "\u2586" # 60%
+        - "\u2587" # 70%
+        - "\u2588" # 80%+
       histogram_num_columns: 8
       callbacks:
         on_right: "exec cmd /c Taskmgr"  # Abre Gerenciador de Tarefas
@@ -924,7 +921,7 @@ widgets:
       label_workspace_active_btn: "\uDB81\uDC3E"    # Ícone workspace ativo
       label_workspace_populated_btn: "\uDB81\uDC3E" # Ícone workspace com janelas
       label_zero_index: false  # true = começa do 0, false = começa do 1
-      hide_empty_workspaces: true
+      hide_empty_workspaces: false # Oculta workspaces sem janelas
       hide_if_offline: false
       animation: true
       toggle_workspace_layer:
@@ -996,6 +993,7 @@ widgets:
       window_animation:
         fade_in_duration: 200   # Duração da animação de entrada (ms)
         fade_out_duration: 200  # Duração da animação de saída (ms)
+      group_apps: false  # Agrupa aplicativos por categoria
       callbacks:
         on_left: "toggle_launchpad"
       app_title_shadow:
@@ -1318,19 +1316,37 @@ widgets:
 
   # --- OBS WIDGET ---
   # Status de gravação do OBS Studio
+
   obs:
-    type: "yasb.obs.ObsWidget"
+    type: "yasb.obs.ObsWidget"  # Widget de status do OBS Studio
     options:
-      connection:
-        host: "$env:YASB_OBS_IP"  # IP do OBS (localhost = 127.0.0.1)
-        port: 4455             # Porta padrão do OBS WebSocket
-        password: "$env:YASB_OBS_PASSWORD"  # Senha do WebSocket
-      icons:
-        recording: ""
-        stopped: ""
-        paused: ""
-      hide_when_not_recording: true
-      blinking_icon: true  # Ícone pisca durante gravação
+      connection:  # Configuração de conexão com o OBS WebSocket
+        host: "localhost"  # Endereço do OBS
+        port: 4455  # Porta do WebSocket (padrão OBS v28+)
+        password: "$env:YASB_OBS_PASSWORD"  # Senha definida no OBS WebSocket
+
+      icons:  # Ícones utilizados para cada estado do OBS
+        recording: "\ueba7"  # Ícone quando está gravando
+        stopped: "\ueba7"  # Ícone quando parado
+        paused: "\ueba7"  # Ícone quando pausado
+        virtual_cam_on: "\udb81\udda0"  # Ícone da câmera virtual ativa
+        virtual_cam_off: "\udb81\udda0"  # Ícone da câmera virtual desativada
+        studio_mode_on: "\udb84\uddd8"  # Ícone do modo estúdio ativo
+        studio_mode_off: "\udb84\uddd8"  # Ícone do modo estúdio desativado
+        streaming: "\udb82\udd02" # Ícone quando está transmitindo ao vivo
+        streaming_stopped: "\udb82\udd02"  # Ícone quando não está transmitindo
+
+      hide_when_not_recording: true  # Oculta o widget quando não estiver gravando
+      blinking_icon: true  # Ícone pisca durante a gravação
+      show_record_time: false  # Exibe o tempo de gravação
+      show_virtual_cam: false  # Exibe status da câmera virtual
+      show_studio_mode: false  # Exibe status do modo estúdio
+      show_stream: true # Exibe status de transmissão ao vivo
+      show_stream_time: true # Exibe tempo de transmissão ao vivo
+      show_scene_name: false # Exibe o nome da cena ativa
+      show_stream_stats: true # Exibe estatísticas da transmissão (FPS, bitrate)
+      tooltip: true  # Exibe tooltip ao passar o mouse
+
 
   # --- POMODORO WIDGET ---
   # Timer de produtividade com técnica Pomodoro
@@ -1379,29 +1395,31 @@ widgets:
         offset: [1, 1]
 
   # --- POWER MENU WIDGET ---
-  # Menu de opções de energia (desligar, reiniciar, etc)
-  power_menu:
-    type: "yasb.power_menu.PowerMenuWidget"
-    options:
-      label: ""
-      uptime: true              # Mostra tempo ligado
-      blur: false               # Desfoque do menu
-      blur_background: true     # Desfoque do fundo
-      animation_duration: 200   # Duração da animação (ms)
-      button_row: 5             # Botões por linha (1-5)
-      buttons:  # Personalização dos botões
-        lock: ["", "Bloquear"]
-        sleep: ["⏾", "Dormir"]
-        signout: ["\uDB80\uDF43", "Sair"]
-        shutdown: ["", "Desligar"]
-        restart: ["", "Reiniciar"]
-        hibernate: ["", "Hibernar"]
-        cancel: ["\uDB81\uDF3A", "Cancelar"]
-      label_shadow:
-        enabled: false
-        color: "black"
-        radius: 3
-        offset: [1, 1]
+  # Menu de opções de energia (desligar, reiniciar, etc) em tela cheia
+  power_menu:  # Nome do widget dentro do layout do YASB
+    type: "yasb.power_menu.PowerMenuWidget"  # Classe do widget responsável pelo menu de energia
+    options:  # Bloco de configurações do widget
+      label: "\uf011"  # Ícone exibido no widget (ícone de energia - fonte Nerd/Segoe Fluent)
+      uptime: true  # Exibe o tempo que o sistema está ligado no menu
+      show_user: true  # Mostra o nome do usuário logado no topo do menu
+      blur: true  # Desativa o efeito de desfoque no próprio widget
+      blur_background: true  # Ativa desfoque apenas no fundo atrás do menu ao abrir
+      animation_duration: 120 # Duração da animação de abertura/fechamento em milissegundos
+      button_row: 3 # Quantidade de botões por linha (mínimo 1, máximo 6)
+
+      buttons:  # Definição dos botões que aparecem no menu
+        restart: ["\uead2", "Restart"]  # Botão Reiniciar (ícone + texto)
+        shutdown: ["\uf011", "Shut Down"]  # Botão Desligar
+        signout: ["\udb80\udf43", "Sign out"]  # Botão Sair da conta (logoff)
+        hibernate: ["\uf28e", "Hibernate"]  # Botão Hibernar
+        lock: ["\uea75", "Lock"]  # Botão Bloquear sessão
+        cancel: ["\udb81\udf3a", "Cancel"]  # Botão Cancelar/fechar o menu
+
+      label_shadow:  # Configuração da sombra aplicada ao ícone principal do widget
+        enabled: false  # Ativa ou desativa a sombra do ícone
+        color: "black"  # Cor da sombra
+        radius: 3  # Intensidade/espalhamento da sombra
+        offset: [ 1, 1 ]  # Deslocamento da sombra no eixo X e Y
 
   # --- POWER PLAN WIDGET ---
   # Mostra e altera o plano de energia do Windows
@@ -1672,7 +1690,7 @@ widgets:
         offset_top: 6
         offset_left: 0
         show_apps: true           # Mostra lista de apps com áudio
-        show_app_labels: true    # Mostra nomes dos apps
+        show_app_labels: false    # Mostra nomes dos apps
         show_app_icons: true      # Mostra ícones dos apps
         show_apps_expanded: true # Apps expandidos por padrão
         app_icons:  # Ícones do botão de expandir/colapsar
@@ -1696,9 +1714,7 @@ widgets:
       label: "<span>\uDB83\uDE09</span>"
       # Caminhos para pastas com imagens
       # Pode ser string única ou lista de strings
-      image_path:
-        - "$env:wallpapers_path"
-        - "D:\\Wallpapers\\Nature"
+      image_path: "$env:YASB_WALLPAPER_PATHS"  # Exemplo: variável de ambiente com múltiplos caminhos separados por ponto e vírgula
       # image_path: "C:\\Users\\{Username}\\Images"  # Exemplo alternativo
       change_automatically: false  # Altera automaticamente
       update_interval: 60          # Intervalo de mudança (segundos)
@@ -1770,7 +1786,7 @@ widgets:
         round_corners: true
         round_corners_type: "normal"
         border_color: "system"
-        alignment: "right"
+        alignment: "center"
         direction: "down"
         icon_size: 64
         show_hourly_forecast: true  # Previsão horária
@@ -1805,6 +1821,7 @@ widgets:
         color: "black"
         radius: 3
         offset: [1, 1]
+
   # --- WIFI WIDGET ---
   # Status e controle de conexão WiFi
   wifi:
@@ -1874,6 +1891,25 @@ widgets:
         color: "black"
         radius: 3
         offset: [1, 1]
+
+  # --- Window Control ---
+  # Controle de janelas ativas (Minimizar / Maximizar / Fechar)
+
+
+  window_controls:
+    type: "yasb.window_controls.WindowControlsWidget"  # Tipo do widget de controles da janela ativa
+    options:
+      show_app_name: true            # Exibe o nome do aplicativo ao lado dos botões
+      maximized_only: false         # Mostra mesmo quando a janela NÃO está maximizada
+      buttons: [ "minimize", "maximize", "close" ]  # Botões exibidos (ordem da esquerda para a direita)
+      button_labels:                # Ícones utilizados nos botões (Nerd Font / Fluent / MDL2)
+        minimize: "\uea71"         # Ícone do botão minimizar
+        maximize: "\uea71"         # Ícone do botão maximizar
+        restore:  "\uea71"         # Ícone do botão restaurar
+        close:    "\uea71"         # Ícone do botão fechar
+      monitor_exclusive: true       # Exibe apenas se a janela ativa estiver neste monitor
+      animation_duration: 120       # Duração da animação ao trocar de janela (ms)
+
 
   # --- WINDOWS WORKSPACES WIDGET ---
   # Desktops virtuais nativos do Windows
@@ -1963,6 +1999,5 @@ widgets:
 # 3. Use class_name customizado para estilos CSS específicos
 #
 # =====================================================
-
 
 
