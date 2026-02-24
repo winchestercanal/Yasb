@@ -3580,3 +3580,426 @@ For more information about configuration options, please visit the Wiki https://
 .github-menu .contents .item.new .icon {
     color: var(--lavender);
 }
+
+
+/* ============================================================================
+   QUICK LAUNCH WIDGET
+   ============================================================================ */
+.quick-launch-widget .icon {
+    font-size: 14px;
+    padding: 0 4px;
+}
+
+.quick-launch-widget .icon:hover {
+    color: var(--text1);
+}
+
+/* Popup - main window */
+.quick-launch-popup .container {
+    background-color: rgba(29, 29, 29, 0.45);
+}
+
+/* Search bar */
+.quick-launch-popup .search {
+    padding: 12px 16px;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.quick-launch-popup .search .loader-line {
+    color: var(--blue);
+}
+
+.quick-launch-popup .search .search-icon,
+.quick-launch-popup .search .search-submit-icon {
+    font-family: "Segoe Fluent Icons";
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.6);
+    min-width: 18px;
+}
+
+.quick-launch-popup .search .search-icon {
+    padding-right: 8px;
+}
+
+.quick-launch-popup .search .search-input {
+    background-color: transparent;
+    border: none;
+    padding: 4px 0;
+    font-family: "Segoe UI";
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text1);
+}
+
+/* Search prefix (e.g., ">" for commands) */
+.quick-launch-popup .search .prefix {
+    background-color: var(--blue);
+    border-radius: 6px;
+    padding: 0 8px;
+    margin-top: 2px;
+    margin-right: 4px;
+    max-height: 28px;
+    font-family: "Segoe UI";
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text1);
+}
+
+/* Results */
+.quick-launch-popup .results {
+    background-color: transparent;
+    padding: 8px;
+}
+
+.quick-launch-popup .results-list-view {
+    font-family: "Segoe UI";
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text1);
+}
+
+.quick-launch-popup .results-list-view .description {
+    font-family: "Segoe UI";
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.quick-launch-popup .results-list-view::item {
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.quick-launch-popup .results-list-view::item:hover,
+.quick-launch-popup .results-list-view::item:selected {
+    background-color: rgba(128, 130, 158, 0.1);
+}
+
+.quick-launch-popup .results-empty-text {
+    padding-top: 8px;
+    font-family: "Segoe UI";
+    font-size: 24px;
+    color: var(--text1);
+}
+
+/* Preview pane */
+.quick-launch-popup .preview {
+    background-color: transparent;
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.quick-launch-popup .preview .preview-text {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: none;
+    padding: 8px 12px;
+    font-family: "Segoe UI";
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.quick-launch-popup .preview .preview-image {
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 8px 12px;
+}
+
+.quick-launch-popup .preview .preview-meta {
+    padding: 6px 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    font-family: "Segoe UI";
+}
+
+.quick-launch-popup .preview .preview-meta .preview-title {
+    margin-bottom: 10px;
+    margin-left: -2px;
+    font-family: "Segoe UI";
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text1);
+}
+
+.quick-launch-popup .preview .preview-meta .preview-subtitle {
+    padding-bottom: 1px;
+    font-family: "Segoe UI";
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Preview inline edit form */
+.quick-launch-popup .preview.edit .preview-title {
+    padding: 8px 12px 4px 12px;
+    font-family: "Segoe UI";
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text1);
+}
+
+.quick-launch-popup .preview.edit .preview-line-edit,
+.quick-launch-popup .preview.edit .preview-text-edit {
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    padding: 6px 8px;
+    margin: 0 12px;
+    font-family: "Segoe UI";
+    font-size: 13px;
+    color: var(--text1);
+}
+
+.quick-launch-popup .preview.edit .preview-line-edit:focus,
+.quick-launch-popup .preview.edit .preview-text-edit:focus {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.quick-launch-popup .preview.edit .preview-actions {
+    padding: 8px 12px;
+}
+
+.quick-launch-popup .preview.edit .preview-btn {
+    background-color: var(--bg-color2);
+    border: none;
+    border-radius: 4px;
+    padding: 4px 16px;
+    font-family: "Segoe UI";
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.quick-launch-popup .preview.edit .preview-btn:hover {
+    background-color: rgba(59, 60, 63, 1);
+}
+
+.quick-launch-popup .preview.edit .preview-btn.save {
+    background-color: var(--blue);
+    color: var(--text1);
+}
+
+.quick-launch-popup .preview.edit .preview-btn.save:hover {
+    background-color: rgba(19, 90, 204, 1);
+}
+
+
+/* ============================================================================
+   OPEN METEO WIDGET
+   ============================================================================ */
+.open-meteo-widget {
+    padding: 0 6px;
+}
+
+.open-meteo-widget .icon {
+    font-size: 18px;
+    color: var(--text1);
+}
+
+/* Individual weather icons */
+.open-meteo-widget .icon.sunnyDay {}
+.open-meteo-widget .icon.clearNight {}
+.open-meteo-widget .icon.cloudyDay {}
+.open-meteo-widget .icon.cloudyNight {}
+.open-meteo-widget .icon.drizzleDay {}
+.open-meteo-widget .icon.drizzleNight {}
+.open-meteo-widget .icon.rainyDay {}
+.open-meteo-widget .icon.rainyNight {}
+.open-meteo-widget .icon.snowyDay {}
+.open-meteo-widget .icon.snowyNight {}
+.open-meteo-widget .icon.foggyDay {}
+.open-meteo-widget .icon.foggyNight {}
+.open-meteo-widget .icon.thunderstormDay {}
+.open-meteo-widget .icon.thunderstormNight {}
+.open-meteo-widget .icon.default {}
+
+.open-meteo-widget .label {
+    padding-left: 4px;
+    font-family: "Segoe UI";
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text1);
+}
+
+/* Card */
+.open-meteo-card {
+    background-color: rgba(27, 26, 26, 0.5);
+    min-width: 500px;
+}
+
+.open-meteo-card .hourly-container {
+    background-color: transparent;
+    border: none;
+    min-height: 120px;
+}
+
+.open-meteo-card .hourly-data {
+    font-family: "Segoe UI";
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.open-meteo-card .hourly-data.temperature {
+    background-color: #c9be48;
+}
+
+.open-meteo-card .hourly-data.rain {
+    background-color: var(--blue);
+}
+
+.open-meteo-card .hourly-data.snow {
+    background-color: #a0c4ff;
+}
+
+.open-meteo-card .hourly-data .hourly-rain-animation {
+    background-color: transparent;
+    color: rgba(150, 200, 255, 0.16);
+}
+
+.open-meteo-card .hourly-data .hourly-snow-animation {
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.59);
+}
+
+.open-meteo-card .hourly-data-buttons {
+    margin-top: 11px;
+    margin-left: 11px;
+}
+
+.open-meteo-card .hourly-data-button {
+    border: 1px solid transparent;
+    border-radius: 4px;
+    min-width: 24px;
+    max-width: 24px;
+    min-height: 24px;
+    max-height: 24px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.open-meteo-card .hourly-data-button.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text1);
+}
+
+.open-meteo-card .search-head {
+    font-family: "Segoe UI";
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.open-meteo-card .search-description {
+    padding-bottom: 8px;
+    font-family: "Segoe UI";
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.open-meteo-card .no-data-icon {
+    font-size: 88px;
+}
+
+.open-meteo-card .no-data-text {
+    font-family: "Segoe UI";
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* Search dialog */
+.open-meteo-card .search-input {
+    background-color: rgba(17, 17, 27, 0.1);
+    border: 1px solid var(--text4);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-family: "Segoe UI";
+    font-size: 14px;
+    color: var(--text1);
+}
+
+.open-meteo-card .search-input:focus {
+    background-color: rgba(17, 17, 27, 0.2);
+    border: 1px solid var(--blue);
+}
+
+.open-meteo-card .search-results {
+    background-color: transparent;
+    border: none;
+    border-radius: 6px;
+    font-family: "Segoe UI";
+    font-size: 13px;
+    color: var(--text2);
+}
+
+.open-meteo-card .search-results::item {
+    padding: 6px;
+}
+
+.open-meteo-card .search-results::item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Today */
+.open-meteo-card-today .label {
+    font-family: "Segoe UI";
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text2);
+}
+
+.open-meteo-card-today .label.location {
+    font-family: "Segoe UI";
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text1);
+}
+
+.open-meteo-card-today .label.sunrisesunset {
+    font-family: "Segoe UI";
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--yellow);
+}
+
+.open-meteo-card-today .label.sunrisesunset-icon {
+    font-family: "JetBrainsMono NFP";
+    font-size: 18px;
+    color: var(--yellow);
+}
+
+/* Day cards */
+.open-meteo-card-day {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 4px;
+    min-width: 70px;
+}
+
+.open-meteo-card-day:hover {
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+.open-meteo-card-day.active {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.open-meteo-card-day .day-name {
+    font-family: "Segoe UI";
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.open-meteo-card-day .day-temp-max {
+    font-family: "Segoe UI";
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text1);
+}
+
+.open-meteo-card-day .day-temp-min {
+    font-family: "Segoe UI";
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text1);
+}
