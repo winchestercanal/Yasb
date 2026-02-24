@@ -70,10 +70,11 @@ bars:
          "notes",          # Notas rápidas
          "todo",           # Lista de tarefas
          "clock",          # Relógio e calendário
-         "weather",        # Previsão do tempo
+         "open_meteo",     # Previsão do tempo usando a API Open-Meteo (sem necessidade de chave de API)
          "update_check",   # Exibe atualizaçoes pendentes de apps e do Windows
          "pomodoro",       # Timer Pomodoro
          "launchpad",      # Launcher de aplicativos
+         "quick_launch",   # Launcher de busca rápida
         ]
       right:  # Widgets alinhados à direita
         [
@@ -109,8 +110,13 @@ bars:
 # notes - Bloco de notas rápidas integrado na barra
 # notifications - Central de notificações do sistema
 # obs - Status do OBS Studio (gravando/streaming)
+# open_meteo - Previsão do tempo usando a API Open-Meteo (sem necessidade de chave de API)
 # pomodoro - Timer Pomodoro para produtividade com intervalos configuráveis
 # power_menu - Menu de energia (desligar, reiniciar, suspender, bloquear) em tela cheia
+# quick_launch - Launcher de busca rápida com múltiplos provedores (apps, calculadora, clipboard, etc.)
+# recycle_bin - Monitor da lixeira do Windows
+# server_monitor - Monitor de status de servidores/sites
+# systray - Bandeja do sistema (system tray) com ícones de aplicativos
 # taskbar - Barra de tarefas com aplicativos fixados e abertos
 # todo - Lista de tarefas (to-do list) integrada
 # toggle_theme - Alterna temas através de script personalizado
@@ -1347,6 +1353,77 @@ widgets:
       show_stream_stats: true # Exibe estatísticas da transmissão (FPS, bitrate)
       tooltip: true  # Exibe tooltip ao passar o mouse
 
+# --- OPEN METEO WIDGET ---
+  # Previsão do tempo usando a API Open-Meteo (sem necessidade de chave de API)
+  open_meteo:
+    type: "yasb.open_meteo.OpenMeteoWidget"
+    options:
+      # Variáveis disponíveis: {icon}, {temp}, {location}, {min_temp}, {max_temp}, {humidity}
+      label: "<span>{icon}</span> {temp}"          # Ícone + temperatura atual
+      label_alt: "{location}: Min {min_temp}, Max {max_temp}, Humidity {humidity}"  # Informações detalhadas
+      tooltip: true           # Exibe tooltip ao passar o mouse
+      update_interval: 600    # Intervalo de atualização em segundos (600 = 10 minutos)
+      hide_decimal: true      # Oculta casas decimais da temperatura
+      units: "metric"         # Sistema de unidades: "metric" (°C) ou "imperial" (°F)
+      callbacks:
+        on_left: "toggle_card"    # Abre/fecha o card de previsão
+        on_middle: "do_nothing"   # Sem ação
+        on_right: "toggle_label"  # Alterna entre label e label_alt
+      icons:  # Ícones para cada condição climática (Nerd Fonts)
+        sunnyDay: "\ue30d"              # Dia ensolarado
+        clearNight: "\ue32b"            # Noite limpa
+        cloudyDay: "\ue312"             # Dia nublado
+        cloudyNight: "\ue311"           # Noite nublada
+        drizzleDay: "\udb81\ude7e"      # Garoa diurna
+        drizzleNight: "\udb81\ude7e"    # Garoa noturna
+        rainyDay: "\ue308"              # Chuva diurna
+        rainyNight: "\ue333"            # Chuva noturna
+        snowyDay: "\ue30a"              # Neve diurna
+        snowyNight: "\ue335"            # Neve noturna
+        foggyDay: "\ue303"              # Neblina diurna
+        foggyNight: "\ue346"            # Neblina noturna
+        thunderstormDay: "\ue30f"       # Tempestade diurna
+        thunderstormNight: "\ue338"     # Tempestade noturna
+        default: "\uebaa"               # Ícone padrão (condição desconhecida)
+      weather_card:  # Configurações do card de previsão detalhada
+        blur: true                      # Efeito de desfoque no fundo
+        round_corners: true             # Cantos arredondados
+        round_corners_type: "normal"    # Tipos: "normal", "small"
+        border_color: "system"          # "system", "none", ou cor HEX
+        alignment: "right"              # Alinhamento: "left", "center", "right"
+        direction: "down"               # Direção do popup: "up", "down"
+        icon_size: 48                   # Tamanho do ícone principal em pixels
+        show_hourly_forecast: true      # Exibe previsão hora a hora
+        time_format: "24h"              # Formato de hora: "24h" ou "12h"
+        hourly_point_spacing: 76        # Espaçamento entre pontos do gráfico horário
+        hourly_icon_size: 24            # Tamanho dos ícones da previsão horária
+        icon_smoothing: true            # Suavização dos ícones
+        temp_line_width: 2              # Espessura da linha de temperatura
+        current_line_color: "#8EAEE8"   # Cor da linha do horário atual
+        current_line_width: 1           # Espessura da linha do horário atual
+        current_line_style: "dot"       # Estilo da linha: "dot", "dash", "solid"
+        hourly_gradient:
+          enabled: false                # Ativa gradiente sob a linha de temperatura
+          top_color: "#8EAEE8"          # Cor superior do gradiente
+          bottom_color: "#2A3E68"       # Cor inferior do gradiente
+        hourly_forecast_buttons:
+          enabled: true                         # Exibe botões para alternar visualização
+          default_view: "temperature"           # Visualização padrão: "temperature", "rain", "snow"
+          temperature_icon: "\udb81\udd99"      # Ícone do botão de temperatura
+          rain_icon: "\udb81\udd96"             # Ícone do botão de chuva
+          snow_icon: "\udb81\udd98"             # Ícone do botão de neve
+        weather_animation:
+          enabled: false              # Ativa animações climáticas no card
+          snow_overrides_rain: true   # Neve sobrepõe chuva
+          temp_line_animation_style: both  # "rain", "snow", "both", "none"
+          rain_effect_intensity: 1.0  # Intensidade da animação de chuva (0.01 - 10.0)
+          snow_effect_intensity: 1.0  # Intensidade da animação de neve (0.01 - 10.0)
+          scale_with_chance: true     # Escala a intensidade com a % de precipitação
+      label_shadow:
+        enabled: true
+        color: "black"
+        radius: 3
+        offset: [1, 1]
 
   # --- POMODORO WIDGET ---
   # Timer de produtividade com técnica Pomodoro
@@ -1453,6 +1530,126 @@ widgets:
         color: "#000000"
         offset: [0, 1]
         radius: 2
+
+# --- QUICK LAUNCH WIDGET ---
+  # Launcher de busca rápida com múltiplos provedores (apps, calculadora, clipboard, etc.)
+  quick_launch:
+    type: "yasb.quick_launch.QuickLaunchWidget"
+    options:
+      label: "<span>\uf002</span>"              # Ícone de lupa (FontAwesome)
+      search_placeholder: "Search applications..."  # Texto de placeholder na barra de busca
+      max_results: 50                           # Número máximo de resultados exibidos
+      show_icons: true                          # Exibe ícones nos resultados
+      icon_size: 32                             # Tamanho dos ícones em pixels
+      providers:  # Provedores de busca disponíveis e seus prefixos de ativação
+        apps:
+          enabled: true       # Busca aplicativos instalados
+          prefix: "*"         # Prefixo para ativar este provedor
+          priority: 0         # Ordem de exibição (menor = maior prioridade)
+          show_recent: true   # Exibe aplicativos usados recentemente
+          max_recent: 5       # Número máximo de itens recentes
+          show_description: true  # Exibe descrição do aplicativo
+        calculator:
+          enabled: true       # Calculadora integrada
+          prefix: "="         # Ex: "= 2+2"
+          priority: 1
+        clipboard_history:
+          enabled: true       # Histórico da área de transferência
+          prefix: "cb"        # Ex: "cb texto copiado"
+          priority: 2
+          max_items: 30       # Número máximo de itens no histórico
+        currency:
+          enabled: true       # Conversor de moedas
+          prefix: "$"         # Ex: "$ 100 USD BRL"
+          priority: 3
+        bookmarks:
+          enabled: true       # Favoritos do navegador
+          prefix: "*"         # Ex: "* github"
+          priority: 4
+          browser: "all"      # Navegador: "all", "chrome", "firefox", "edge"
+          profile: "Default"  # Perfil do navegador
+        web_search:
+          enabled: true       # Busca na web
+          prefix: "?"         # Ex: "? como instalar python"
+          priority: 5
+          engine: "google"    # Motor de busca: "google", "bing", "duckduckgo"
+        system_commands:
+          enabled: true       # Comandos do sistema (desligar, reiniciar, etc.)
+          prefix: ">"         # Ex: "> restart"
+          priority: 6
+        settings:
+          enabled: true       # Abre páginas de configurações do Windows
+          prefix: "@"         # Ex: "@ bluetooth"
+          priority: 7
+        kill_process:
+          enabled: true       # Encerra processos em execução
+          prefix: "kk"        # Ex: "kk chrome"
+          priority: 8
+        port_viewer:
+          enabled: true       # Visualiza portas em uso
+          prefix: "pv"        # Ex: "pv 8080"
+          priority: 9
+          tcp_listening_only: true    # Exibe apenas portas em modo LISTEN
+          include_established: false  # Inclui conexões já estabelecidas
+        file_search:
+          enabled: true       # Busca arquivos no sistema
+          prefix: "/"         # Ex: "/ relatorio.pdf"
+          priority: 10
+          backend: "auto"     # Motor de busca: "auto", "everything", "windows"
+          show_path: true     # Exibe o caminho completo do arquivo
+        unit_converter:
+          enabled: true       # Conversor de unidades
+          prefix: "~"         # Ex: "~ 100 km miles"
+          priority: 11
+        emoji:
+          enabled: true       # Busca e copia emojis
+          prefix: ":"         # Ex: ":smile"
+          priority: 12
+        color:
+          enabled: true       # Conversor e seletor de cores
+          prefix: "c:"        # Ex: "c: #FF0000"
+          priority: 13
+        world_clock:
+          enabled: true       # Relógio mundial por fuso horário
+          prefix: "tz"        # Ex: "tz Tokyo"
+          priority: 14
+        snippets:
+          enabled: true       # Atalhos de texto (snippets)
+          prefix: ";"         # Ex: ";email" expande para texto completo
+          priority: 15
+          type_delay: 200     # Atraso entre caracteres ao digitar o snippet (ms)
+        hacker_news:
+          enabled: true       # Notícias do Hacker News
+          prefix: "hn"        # Ex: "hn"
+          priority: 16
+          cache_ttl: 300      # Tempo de cache em segundos
+          max_items: 30       # Número máximo de notícias exibidas
+        dev_tools:
+          enabled: true       # Ferramentas para desenvolvedores (encode, decode, hash, etc.)
+          prefix: "dev"       # Ex: "dev base64 hello"
+          priority: 17
+        ip_info:
+          enabled: true       # Informações de IP (local e público)
+          prefix: "ip"        # Ex: "ip"
+          priority: 18
+        vscode:
+          enabled: true       # Projetos recentes do VS Code
+          prefix: "vsc"       # Ex: "vsc meu-projeto"
+          priority: 19
+      popup:  # Configurações visuais do popup de busca
+        width: 720                      # Largura do popup em pixels
+        height: 480                     # Altura do popup em pixels
+        screen: "focus"                 # Tela onde abrir: "focus" (tela ativa) ou nome da tela
+        blur: true                      # Efeito de desfoque no fundo
+        round_corners: true             # Cantos arredondados
+        round_corners_type: "normal"    # Tipos: "normal", "small"
+        border_color: "system"          # "system", "none", ou cor HEX
+        dark_mode: true                 # Força tema escuro no popup
+      callbacks:
+        on_left: "toggle_quick_launch"  # Abre/fecha o launcher ao clicar
+      keybindings:
+        - keys: "alt+space"             # Atalho global para abrir o launcher
+          action: "toggle_quick_launch"
 
   # --- RECYCLE BIN WIDGET ---
   # Monitor da lixeira do Windows
