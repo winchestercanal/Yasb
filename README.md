@@ -78,9 +78,9 @@ Para entender como tudo funciona na prática, assista ao tutorial:
 
 ## 🌗 Widget `toggle_theme`
 
-O widget `toggle_theme` depende de um script externo para realizar a troca de tema e wallpaper automaticamente.
+O widget `toggle_theme` depende de um script externo para realizar a troca de tema e wallpaper automaticamente. Como o script não possui assinatura digital, o Windows bloqueia sua execução por padrão. Siga os passos abaixo para liberar o funcionamento:
 
-Para que o script possa ser executado no Windows, é necessário habilitar a política de execução do PowerShell.
+1. Habilitar Política de Execução
 
 Abra o **PowerShell como Administrador** e execute:
 ```powershell
@@ -89,7 +89,17 @@ Set-ExecutionPolicy RemoteSigned
 
 Confirme com `Y` quando solicitado.
 
-> ⚠️ Essa configuração permite a execução de scripts locais confiáveis no seu sistema.
+2. Desbloquear o Arquivo do Script
+Mesmo com a política habilitada, você precisa remover o bloqueio individual do arquivo que foi baixado da internet. Ainda no terminal (PowerShell), execute os comandos abaixo:
+
+```powershell
+# Entre na pasta de configurações do YASB
+cd $env:USERPROFILE\.config\yasb
+
+# Desbloqueie o script para execução
+Unblock-File .\toggle-theme-wallpaper.ps1
+```
+Feito isso, o script deve funcionar!
 
 ---
 
