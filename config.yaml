@@ -1538,10 +1538,12 @@ widgets:
     options:
       label: "<span>\uf002</span>"              # Ícone de lupa (FontAwesome)
       search_placeholder: "Search applications..."  # Texto de placeholder na barra de busca
-      max_results: 50                           # Número máximo de resultados exibidos
+      max_results: 100                           # Número máximo de resultados exibidos
       show_icons: true                          # Exibe ícones nos resultados
       icon_size: 32                             # Tamanho dos ícones em pixels
-      providers:  # Provedores de busca disponíveis e seus prefixos de ativação
+      home_page: true                           # Habilita página inicial com provedores destacados
+      compact_mode: false                       # Modo compacto sem descrições (apenas ícones e nomes)
+      providers:                                # Provedores de busca disponíveis e seus prefixos de ativação
         apps:
           enabled: true       # Busca aplicativos instalados
           prefix: "*"         # Prefixo para ativar este provedor
@@ -1639,7 +1641,7 @@ widgets:
       popup:  # Configurações visuais do popup de busca
         width: 720                      # Largura do popup em pixels
         height: 480                     # Altura do popup em pixels
-        screen: "focus"                 # Tela onde abrir: "focus" (tela ativa) ou nome da tela
+        screen: "focus"                 # Tela onde abrir: "focus" (tela ativa), "primary" (tela principal), ou "cursor" (tela onde está o cursor)
         blur: true                      # Efeito de desfoque no fundo
         round_corners: true             # Cantos arredondados
         round_corners_type: "normal"    # Tipos: "normal", "small"
@@ -2196,5 +2198,6 @@ widgets:
 # 3. Use class_name customizado para estilos CSS específicos
 #
 # =====================================================
+
 
 
