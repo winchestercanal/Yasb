@@ -1897,7 +1897,8 @@ widgets:
           toggle_up: ""
       callbacks:
         on_left: "toggle_volume_menu"
-        on_right: "toggle_mute"
+        on_middle: "toggle_mute"
+        on_right: "exec start ms-settings:sound"   # Abre as configurações de som do Windows
       label_shadow:
         enabled: true
         color: "black"
@@ -2198,6 +2199,7 @@ widgets:
 # 3. Use class_name customizado para estilos CSS específicos
 #
 # =====================================================
+
 
 
 
