@@ -9,6 +9,8 @@ For more information about configuration options, please visit the Wiki https://
 :root {
     --mauve: #cba6f7;
     --red: #f38ba8;
+    --darkred: #c90000;
+    --orange: #ff6b35;
     --yellow: #ffd16d;
     --blue: #88b8ff;
     --lavender: #b4befe;
@@ -591,24 +593,292 @@ For more information about configuration options, please visit the Wiki https://
 }
 
 .cpu-widget .widget-container .label.status-low {
-    color: var(--lavender);
+    color: var(--text1);
 }
 
 .cpu-widget .widget-container .label.status-medium {
-    color: var(--yellow);
+    color: var(--blue);
 }
 
 .cpu-widget .widget-container .label.status-high {
-    color: var(--mauve);
+    color: var(--red);
 }
 
 .cpu-widget .widget-container .label.status-critical {
-    color: var(--red);
+    color: var(--darkred);
 }
 
 /* Progress bar customization */
 .cpu-widget .progress-circle {
     margin-right: 6px;
+}
+
+/* CPU popup */
+.cpu-popup {
+    background-color: rgba(28, 28, 28, 0.7);
+    min-width: 400px;
+}
+
+.cpu-popup .header {
+    background: transparent;
+    padding: 12px 16px;
+}
+
+.cpu-popup .header .text {
+    font-size: 16px;
+    font-family: "Segoe UI";
+    color: #ffffff;
+}
+
+.cpu-popup .header .pin-btn {
+    font-size: 14px;
+    background: transparent;
+    font-family: "Segoe Fluent Icons";
+    border: none;
+    padding: 6px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.cpu-popup .header .pin-btn:hover {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.cpu-popup .header .pin-btn.pinned {
+    color: #ffffff;
+}
+
+/* Graph area */
+.cpu-popup .graph-container {
+    background: transparent;
+    min-height: 64px;
+}
+
+.cpu-popup .cpu-graph {
+    color: var(--blue);
+}
+
+.cpu-popup .cpu-graph-grid {
+    color: rgba(255, 255, 255, 0.05);
+}
+
+.cpu-popup .graph-title {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: "Segoe UI";
+    padding: 0px 0px 4px 14px;
+}
+
+/* Stats grid */
+.cpu-popup .stats {
+    background: transparent;
+    padding: 16px;
+}
+
+.cpu-popup .stats .stat-item {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin: 8px;
+}
+
+.cpu-popup .stats .stat-label {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.65);
+    font-family: "Segoe UI";
+    font-weight: 400;
+    padding: 6px 4px 2px 4px;
+}
+
+.cpu-popup .stats .stat-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    font-family: "Segoe UI";
+    padding: 0 4px 12px 4px;
+}
+
+/* GPU popup */
+.gpu-popup {
+    background-color: rgba(28, 28, 28, 0.7);
+    min-width: 400px;
+}
+
+.gpu-popup .header {
+    background: transparent;
+    padding: 12px 16px;
+}
+
+.gpu-popup .header .text {
+    font-size: 16px;
+    font-family: "Segoe UI";
+    color: #ffffff;
+}
+
+.gpu-popup .header .pin-btn {
+    font-size: 14px;
+    background: transparent;
+    font-family: "Segoe Fluent Icons";
+    border: none;
+    padding: 6px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.gpu-popup .header .pin-btn:hover {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.gpu-popup .header .pin-btn.pinned {
+    color: #ffffff;
+}
+
+/* Graph area */
+.gpu-popup .graph-container {
+    background: transparent;
+    min-height: 64px;
+}
+
+.gpu-popup .gpu-graph {
+    color: var(--blue);
+}
+
+.gpu-popup .gpu-graph-grid {
+    color: rgba(255, 255, 255, 0.05);
+}
+
+.gpu-popup .gpu-temp-graph {
+    color: var(--orange);
+}
+
+.gpu-popup .gpu-temp-graph-grid {
+    color: rgba(255, 255, 255, 0.05);
+}
+
+.gpu-popup .graph-title {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: "Segoe UI";
+    padding: 0px 0px 4px 14px;
+    margin-top: 12px;
+}
+
+.gpu-popup .graph-title.first {
+    margin-top: 0px;
+}
+
+/* Stats grid */
+.gpu-popup .stats {
+    background: transparent;
+    padding: 16px;
+}
+
+.gpu-popup .stats .stat-item {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin: 8px;
+}
+
+.gpu-popup .stats .stat-label {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.65);
+    font-family: "Segoe UI";
+    font-weight: 400;
+    padding: 6px 4px 2px 4px;
+}
+
+.gpu-popup .stats .stat-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    font-family: "Segoe UI";
+    padding: 0 4px 12px 4px;
+}
+
+/* Memory popup */
+.memory-popup {
+    background-color: rgba(28, 28, 28, 0.7);
+    min-width: 400px;
+}
+
+.memory-popup .header {
+    background: transparent;
+    padding: 12px 16px;
+}
+
+.memory-popup .header .text {
+    font-size: 16px;
+    font-family: "Segoe UI";
+    color: #ffffff;
+}
+
+.memory-popup .header .pin-btn {
+    font-size: 14px;
+    background: transparent;
+    font-family: "Segoe Fluent Icons";
+    border: none;
+    padding: 6px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.memory-popup .header .pin-btn:hover {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.memory-popup .header .pin-btn.pinned {
+    color: #ffffff;
+}
+
+/* Graph area */
+.memory-popup .graph-container {
+    background: transparent;
+    min-height: 64px;
+}
+
+.memory-popup .memory-graph {
+    color: var(--blue);
+}
+
+.memory-popup .memory-graph-grid {
+    color: rgba(255, 255, 255, 0.05);
+}
+
+.memory-popup .graph-title {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: "Segoe UI";
+    padding: 0px 0px 4px 14px;
+}
+
+/* Stats grid */
+.memory-popup .stats {
+    background: transparent;
+    padding: 16px;
+}
+
+.memory-popup .stats .stat-item {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin: 8px;
+}
+
+.memory-popup .stats .stat-label {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.65);
+    font-family: "Segoe UI";
+    font-weight: 400;
+    padding: 6px 4px 2px 4px;
+}
+
+.memory-popup .stats .stat-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    font-family: "Segoe UI";
+    padding: 0 4px 12px 4px;
 }
 
 
@@ -1959,12 +2229,12 @@ For more information about configuration options, please visit the Wiki https://
    NOTES WIDGET
    ============================================================================ */
 .notes-widget {
-    padding: 0px 6px 0 0px;
+    padding: 0;
 }
 
 .notes-widget .label {
     font-size: 14px;
-    color: var(--text1);
+    color: var(--blue);
 }
 
 .notes-widget .icon {
@@ -1976,9 +2246,41 @@ For more information about configuration options, please visit the Wiki https://
 .notes-menu {
     min-width: 400px;
     max-width: 400px;
-    background-color: var(--bg-color1);
-    border-radius: 8px;
-    border: 1px solid var(--bg-color2);
+    background-color: rgba(17, 17, 27, 0.4);
+}
+
+.notes-menu.floating {
+    min-width: 600px;
+    max-width: 600px;
+    min-height: 600px;
+    max-height: 600px;
+}
+
+.notes-menu .notes-header {
+    background-color: rgba(0, 0, 0, 0);
+    padding: 4px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notes-menu .notes-header .header-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text1);
+}
+
+.notes-menu .notes-header .float-button,
+.notes-menu .notes-header .close-button {
+    background-color: transparent;
+    border: none;
+    color: var(--text1);
+    font-size: 16px;
+    padding: 4px;
+}
+
+.notes-menu .notes-header .float-button:hover,
+.notes-menu .notes-header .close-button:hover {
+    background-color: var(--bg-color2);
+    border-radius: 4px;
 }
 
 .notes-menu .note-item {
@@ -1987,7 +2289,7 @@ For more information about configuration options, please visit the Wiki https://
 }
 
 .notes-menu .note-item:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--bg-color2);
 }
 
 .notes-menu .note-item .icon {
@@ -1996,7 +2298,7 @@ For more information about configuration options, please visit the Wiki https://
 }
 
 .notes-menu .delete-button {
-    color: #ff6b6b;
+    color: var(--red);
     background: transparent;
     border: none;
     font-size: 8px;
@@ -2009,7 +2311,7 @@ For more information about configuration options, please visit the Wiki https://
 }
 
 .notes-menu .copy-button {
-    color: #babfd3;
+    color: var(--text1);
     background: transparent;
     border: none;
     font-size: 16px;
@@ -2027,17 +2329,17 @@ For more information about configuration options, please visit the Wiki https://
 
 .notes-menu .note-item .title {
     font-size: 13px;
-    font-family: 'Segoe UI'
+    font-family: "Segoe UI";
 }
 
 .notes-menu .note-item .date {
     font-size: 12px;
-    font-family: 'Segoe UI';
+    font-family: "Segoe UI";
     color: rgba(255, 255, 255, 0.4);
 }
 
 .notes-menu .empty-list {
-    font-family: 'Segoe UI';
+    font-family: "Segoe UI";
     color: rgba(255, 255, 255, 0.2);
     font-size: 24px;
     font-weight: 600;
@@ -2047,11 +2349,11 @@ For more information about configuration options, please visit the Wiki https://
 .notes-menu .add-button,
 .notes-menu .cancel-button {
     padding: 8px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--bg-color2);
     border: none;
     border-radius: 4px;
-    color: white;
-    font-family: 'Segoe UI'
+    color: var(--text1);
+    font-family: "Segoe UI";
 }
 
 .notes-menu .cancel-button {
@@ -2072,15 +2374,32 @@ For more information about configuration options, please visit the Wiki https://
 .notes-menu .note-input {
     background-color: rgba(17, 17, 27, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    font-family: 'Segoe UI';
+    font-family: "Segoe UI";
     font-size: 14px;
-    max-height: 30px;
+    max-height: 130px;
     padding: 4px;
     border-radius: 6px;
 }
 
 .notes-menu .note-input:focus {
-    border: 1px solid #89b4fa;
+    border: 1px solid var(--blue);
+}
+
+.notes-menu .input-copy-button {
+    color: #babfd3;
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+.notes-menu .input-copy-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.notes-menu .input-copy-button:pressed {
+    color: #ffffff;
 }
 
 /* ============================================================================
