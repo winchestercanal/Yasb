@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=28&duration=99999999&pause=99999999&color=0078D7&center=true&vCenter=true&width=600&lines=Minhas+Configura%C3%A7%C3%B5es+do+YASB+%F0%9F%8E%A8" alt="Minhas Configurações do YASB 🎨" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=28&duration=4000&pause=100000&color=0078D7&center=true&vCenter=true&width=600&lines=Minhas+Configura%C3%A7%C3%B5es+do+YASB+%F0%9F%8E%A8" alt="Minhas Configurações do YASB 🎨" />
 
 <br/>
 
@@ -8,6 +8,8 @@
 [![YASB](https://img.shields.io/badge/YASB-Status_Bar-4D4D4D?style=for-the-badge&logo=windowsterminal&logoColor=white)](https://github.com/amnweb/yasb)
 [![YAML](https://img.shields.io/badge/Config-.yaml-CB171E?style=for-the-badge&logo=yaml&logoColor=white)]()
 [![YouTube](https://img.shields.io/badge/Tutorial-YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/rddIT4NQvso)
+
+</div>
 
 <br/>
 
