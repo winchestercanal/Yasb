@@ -1933,9 +1933,12 @@ widgets:
       # Caminhos para pastas com imagens
       # Pode ser string única ou lista de strings
       image_path: "$env:YASB_WALLPAPER_PATHS"  # Exemplo: variável de ambiente com múltiplos caminhos separados por ponto e vírgula
-      # image_path: "C:\\Users\\{Username}\\Images"  # Exemplo alternativo
+      # image_path: "C:\\Users\\{Username}\\Images"  # Exemplo alternativo! Repare que é necessario ter barras duplas, então certifique-se de ajustar isso ao inserir seu caminho personalizado!
       change_automatically: false  # Altera automaticamente
       update_interval: 60          # Intervalo de mudança (segundos)
+      engine: 
+        enabled: true  # Habilita animações para a troca de wallpaper
+        animation: "circle" # Estilo da animação (circle/slide_top/diamond/split)
       gallery:  # Configurações da galeria de imagens
         enabled: true
         blur: true
