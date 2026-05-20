@@ -39,7 +39,7 @@ Todos devem ser colocados no seguinte diretório:
 ```
 %USERPROFILE%\.config\yasb
 ```
-
+(copie o endereço acima e cole na barra de endereço do explorador de arquivos)
 ---
 
 ## 🧪 Showcase de Widgets
