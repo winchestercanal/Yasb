@@ -44,6 +44,20 @@ Todos devem ser colocados no seguinte diretório:
 
 ---
 
+## 🔄 Mantenha o YASB Atualizado
+
+Execute o comando abaixo periodicamente para garantir que o YASB esteja na versão mais recente:
+
+```bash
+yasbc update
+```
+
+---
+As informações acima já são o suficiente para que o Yasb funcione!
+Abaixo estão apenas configurações opcionais que podem aprimorar sua experiência de alguma forma.
+
+---
+
 ## 🧪 Showcase de Widgets
 
 Dentro da pasta [Showcase](https://github.com/winchestercanal/Yasb/tree/main/Showcase) existe um arquivo especial: [config.yaml](https://github.com/winchestercanal/Yasb/blob/main/Showcase/config.yaml)
@@ -73,17 +87,8 @@ Caso queira isolar dados sensíveis como APIs de clima, endereços ou IPs, você
 Coloque-o junto dos outros arquivos de configuração.
 
 > [!TIP]
-> Usar o `.env` é especialmente útil se você pretende compartilhar suas configurações publicamente, evitando expor dados pessoais no repositório.
-
----
-
-## 🔄 Mantenha o YASB Atualizado
-
-Execute o comando abaixo periodicamente para garantir que o YASB esteja na versão mais recente:
-
-```bash
-yasbc update
-```
+> Usar o `.env` é especialmente útil se você pretende compartilhar suas configurações publicamente, evitando expor dados pessoais no repositório. Se for para uso pessoal, não há necessidade de utiliza-lo.
+> Entretanto, o arquivo [📄 config.yaml](https://github.com/winchestercanal/Yasb/blob/main/config.yaml) está configurado para usar as variaveis do `.env` , para iniciantes pode ser mais simples alterar as informações dele ao invés do arquivo Config que é mais complexo.
 
 ---
 
