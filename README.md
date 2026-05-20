@@ -38,8 +38,10 @@ Todos devem ser colocados no seguinte diretório:
 
 ```
 %USERPROFILE%\.config\yasb
-```
-(copie o endereço acima e cole na barra de endereço do explorador de arquivos)
+``` 
+
+(copie o endereço acima e cole no Menu Iniciar ou na barra de endereço do Explorador de Arquivos)
+
 ---
 
 ## 🧪 Showcase de Widgets
