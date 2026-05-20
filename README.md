@@ -40,7 +40,7 @@ Todos devem ser colocados no seguinte diretório:
 %USERPROFILE%\.config\yasb
 ``` 
 
-(copie o endereço acima e cole no Menu Iniciar ou na barra de endereço do Explorador de Arquivos)
+(copie o endereço acima e cole no Executar (Win+R) ou na barra de endereço do Explorador de Arquivos)
 
 ---
 
