@@ -22,7 +22,7 @@ bars:
     # --- SELEÇÃO DE TELAS ---
     # Defina em quais monitores a barra aparecerá
     screens: ['*']  # '*' = todas as telas
-    # screens: ['DELL P2419H (1)']  # Exemplo para tela específica
+    # screens: ['DELL P2419H (1)']  # Exemplo para tela específica | use o comando "yasbc monitor-information" no terminal para obter os nomes de suas telas
     class_name: "yasb-bar"  # Nome da classe CSS para estilização customizada
 
     # --- POSICIONAMENTO ---
