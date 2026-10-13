@@ -1,158 +1,130 @@
-/* 
-This is default and very simple styles file for Yasb. 
-For more information about configuration options, please visit the Wiki https://github.com/amnweb/yasb/wiki
-*/
-
-/* ============================================================================
-   CSS VARIABLES
-   ============================================================================ */
 :root {
-    --mauve: #cba6f7;
-    --red: #f38ba8;
-    --darkred: #c90000;
-    --orange: #ff6b35;
-    --yellow: #ffd16d;
-    --blue: #88b8ff;
-    --lavender: #b4befe;
-    --text1: #d1d1d1;
-    --text2: #8f929e;
-    --text3: #9399b2;
-    --text4: #7f849c;
-    --bg-color1: #191919;
-    --bg-color2: #333333;
+  --font-name-primary: "Segoe UI", "JetBrainsMono NFP";
+  --font-name-secondary: "JetBrainsMono NFP";
+  --font-name-icons: "Segoe Fluent Icons";
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.54);
+  --text-small: 12px;
+  --text-normal: 14px;
+  --text-lg: 16px;
+  --text-xl: 18px;
+  --text-2xl: 24px;
+  --text-3xl: 30px;
+  --text-5xl: 48px;
+  --text-6xl: 64px;
+  --font-normal: 400;
+  --font-bold: 600;
+  --font-bold-xl: 900;
+  --bg-taskbar: rgb(0, 0, 0);
+  --bg-primary: rgba(8, 8, 8, 0.4);
+  --bg-secondary: rgba(28, 30, 29, 1);
+  --bg-hover-primary: rgba(255, 255, 255, 0.08);
+  --bg-hover-secondary: rgba(255, 255, 255, 0.04);
+  --bg-hover-third: rgba(255, 255, 255, 0.12);
+  --bg-hover-fourth: rgba(24, 24, 37, 0.212);
+  --color-grey: rgba(128, 130, 158, 0.3);
+  --color-dark-grey: hsla(236, 13%, 36%, 0.3);
+  --color-light-grey: rgba(186, 187, 202, 0.3);
+  --color-yellow: #fae93f;
+  --color-green: #3f925f;
+  --color-dark-green: #223a2c;
+  --color-light-green: #61ad7e;
+  --color-red: #cb3b42;
+  --color-dark-red: #5a1e22;
+  --color-light-red: #e04c52;
+  --color-light-blue: rgb(112, 157, 255);
+  --radius-normal: 8px;
+  --radius-xl: 20px;
+  --padding-normal: 0 8px;
+  --margin-small: 2px 0;
+  --margin-normal: 8px;
+  --margin-lg: 12px;
+  --padding-label: 0px 2px 2px 2px;
+  --padding-menu: 12px 84px 12px 14px;
+  --padding-volume: 12px 14px;
+  --padding-button: 4px 8px;
+  --margin-widget: 4px 0;
+  --padding-tooltip: 12px 24px;
+  --mauve: #cba6f7;
+  --red: #f38ba8;
+  --darkred: #c90000;
+  --orange: #ff6b35;
+  --yellow: #ffd16d;
+  --blue: #88b8ff;
+  --lavender: #b4befe;
+  --text1: #d1d1d1;
+  --text2: #8f929e;
+  --text3: #9399b2;
+  --text4: #7f849c;
+  --bg-color1: #191919;
+  --bg-color2: #333333;
 }
 
-/* ============================================================================
-   GLOBAL STYLES
-   ============================================================================ */
 * {
-    font-size: 12px;
-    color: var(--text1);
-    font-weight: 600;
-    font-family: "JetBrainsMono NFP";
+  font-size: var(--text-normal);
+  color: var(--text-primary);
+  font-weight: var(--font-bold);
+  font-family: var(--font-name-primary);
+  margin: 0;
+  padding: 0;
 }
-
-/* ============================================================================
-   YASB BAR STYLES
-   ============================================================================ */
 .yasb-bar {
-    background-color: var(--bg-color1);
-    border-radius: 18px;
-    border: 1px solid var(--bg-color2);
+  padding: var(--padding-normal);
+  margin: 0;
+  background-color: var(--bg-taskbar);
 }
-
 /* ============================================================================
-   GLOBAL TOOLTIP STYLES
+   ADAPTIVE BAR
    ============================================================================ */
-.tooltip {
-    background-color: var(--bg-color1);
-    border-radius: 4px;
-    color: var(--text1);
-    padding: 5px 10px;
-    font-size: 12px;
-    font-family: 'Segoe UI';
-    font-weight: 600;
-    margin-top: 4px;
-}
 
-/* ============================================================================
-   GLOBAL CONTEXT MENU STYLES
-   ============================================================================ */
-.context-menu,
-.context-menu .menu-checkbox {
-    background-color: var(--bg-color1);
+.yasb-bar.adaptive {
+    background-color: var(--bg-taskbar);
+    -qproperty-railheight: 2;
+    -qproperty-islandradius: 16;
+    -qproperty-grouppadding: 8;
+    -qproperty-edgeradius: 30;
     border: none;
-    padding: 4px 0px;
-    font-family: 'Segoe UI';
-    font-size: 12px;
-    color: var(--text1)
+    -qproperty-borderwidth: 0;
+    -qproperty-bordercolor: #ffffff;
 }
 
-.context-menu::right-arrow {
-    width: 8px;
-    height: 8px;
-    padding-right: 24px;
-}
-
-.context-menu::item,
-.context-menu .menu-checkbox {
-    background-color: transparent; 
-    padding: 6px 12px;
-    margin: 2px 6px;
-    border-radius: 6px;
-    min-width: 100px;
-}
-
-.context-menu::item:selected,
-.context-menu .menu-checkbox:hover {
-    background-color: var(--bg-color2);
-    color: #FFFFFF;
-}
-
-.context-menu::separator {
-    height: 1px;
-    background-color: #404040;
-    margin: 4px 8px;
-}
-
-.context-menu::item:disabled {
-    color: #666666;
+/* Widgets transparentes para deixar as ilhas do Adaptive Bar aparecerem */
+.yasb-bar.adaptive .widget {
     background-color: transparent;
 }
 
-.context-menu .menu-checkbox .checkbox {
-    border: none;
-    padding: 8px 16px;
-    font-size: 12px;
-    margin: 0;
-    color: var(--text1);
-    font-family: 'Segoe UI'
-}
-
-.context-menu .submenu::item:disabled {
-    margin: 0;
-    padding-left: 16px;
-}
-
-.context-menu .menu-checkbox .checkbox:unchecked {
-    color: var(--text2)
-}
-
-.context-menu .menu-checkbox .checkbox::indicator {
-    width: 12px;
-    height: 12px;
-    margin-left: 0px;
-    margin-right: 8px;
-}
-
-.context-menu .menu-checkbox .checkbox::indicator:unchecked {
-    background: #444444;
-    border-radius: 2px;
-}
-
-.context-menu .menu-checkbox .checkbox::indicator:checked {
-    background: var(--blue);
-    border-radius: 2px;
-}
-
-.context-menu .menu-checkbox .checkbox:focus {
-    outline: none;
-}
-
-/* ============================================================================
-   GENERAL WIDGET STYLES
-   ============================================================================ */
 .widget {
-    padding: 0 9px;
-    margin: 0;
+    padding: var(--padding-normal);
+    margin: var(--margin-widget);
+    border-radius: var(--radius-normal);
 }
 
+.widget {
+  padding: var(--padding-normal);
+  margin: var(--margin-widget);
+  border-radius: var(--radius-normal);
+}
+.widget:hover {
+  background-color: var(--bg-hover-primary);
+}
 .widget .label {
-    padding: 0px 2px;
+  padding: var(--padding-label);
+  font-family: var(--font-name-primary);
+}
+.icon {
+  font-size: var(--text-xl);
 }
 
-.icon {
-    font-size: 16px;
+/* Tooltip */
+.tooltip {
+  margin-top: var(--margin-small);
+  padding: var(--padding-tooltip);
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-normal);
+  border: 1px solid var(--color-grey);
+  color: var(--text-primary);
+  font-size: var(--text-normal);
+  font-weight: var(--font-bold);
 }
 
 /* ============================================================================
@@ -1376,8 +1348,8 @@ For more information about configuration options, please visit the Wiki https://
    ============================================================================ */
 
 .systeminfo-grouper .container { /* The name of the css class is the name given in the config */
-    background-color: color-mix(in srgb, var(--bg-color2) 80%, transparent);
-    border: 1px solid color-mix(in srgb, var(--text1) 10%, transparent);
+    background-color: color-mix(in srgb, var(--bg-taskbar) 94%, var(--text-primary));
+    border: 1px solid color-mix(in srgb, var(--text-primary) 5%, transparent);
     margin: 4 0px;
     border-radius: 12px;
 }
@@ -1409,6 +1381,8 @@ For more information about configuration options, please visit the Wiki https://
 }
 
 .home-widget .icon {
+    font-family: "Segoe Fluent Icons", "Segoe MDL2 Assets";
+    font-weight: 400;
     color: var(--lavender);
 }
 
@@ -2168,7 +2142,7 @@ For more information about configuration options, please visit the Wiki https://
 
 /* Microphone menu */
 .microphone-menu {
-    min-width: 420px;
+    min-width: 100px;
     max-width: 420px;
     background-color: var(--bg-color1);
     border-radius: 8px;
@@ -2476,6 +2450,10 @@ For more information about configuration options, please visit the Wiki https://
     margin-top: 4px;
 }
 
+.power-menu-popup .profile-info .profile-email {
+  opacity: 0;
+}
+
 /* ---------   OVERLAY / UPTIME   --------- */
 
 .power-menu-overlay {
@@ -2581,10 +2559,16 @@ For more information about configuration options, please visit the Wiki https://
    SYSTEM INFO WIDGET
    ============================================================================ */
 .systeminfo-grouper .container {
-    background-color: rgba(46, 52, 64, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    margin: 4 0px;
+    background-color: color-mix(in srgb, var(--bg-taskbar) 94%, var(--text-primary));
+    border: 1px solid color-mix(in srgb, var(--text-primary) 5%, transparent);
+    margin: 0;
+    padding: 0;
     border-radius: 12px;
+}
+
+/* Evita acumular as margens verticais dos widgets dentro do Grouper. */
+.systeminfo-grouper .widget {
+    margin: 0;
 }
 
 .systeminfo-grouper .grouper-button {
@@ -3177,6 +3161,14 @@ For more information about configuration options, please visit the Wiki https://
 .audio-menu .system-volume-container .volume-slider {
     border: none;
 }
+
+/* Volume progress bar styles if enabled */
+/* Substituído de .progress-container para .progress-circle conforme a documentação */
+.volume-widget .progress-circle {
+    /* Você pode adicionar margens ou ajustes de posicionamento aqui, se necessário */
+    margin-right: 4px;
+}
+
 /* Device list styles */
 .audio-menu .audio-container .device {
     background-color:transparent;
@@ -4111,23 +4103,6 @@ For more information about configuration options, please visit the Wiki https://
     color: var(--text1);
 }
 
-/* Individual weather icons */
-.open-meteo-widget .icon.sunnyDay {}
-.open-meteo-widget .icon.clearNight {}
-.open-meteo-widget .icon.cloudyDay {}
-.open-meteo-widget .icon.cloudyNight {}
-.open-meteo-widget .icon.drizzleDay {}
-.open-meteo-widget .icon.drizzleNight {}
-.open-meteo-widget .icon.rainyDay {}
-.open-meteo-widget .icon.rainyNight {}
-.open-meteo-widget .icon.snowyDay {}
-.open-meteo-widget .icon.snowyNight {}
-.open-meteo-widget .icon.foggyDay {}
-.open-meteo-widget .icon.foggyNight {}
-.open-meteo-widget .icon.thunderstormDay {}
-.open-meteo-widget .icon.thunderstormNight {}
-.open-meteo-widget .icon.default {}
-
 .open-meteo-widget .label {
     padding-left: 4px;
     font-family: "Segoe UI";
@@ -4321,4 +4296,2457 @@ For more information about configuration options, please visit the Wiki https://
     font-size: 13px;
     font-weight: 400;
     color: var(--text1);
+}
+
+
+/* ============================================================================
+    WINDOW SWITCHER WIDGET
+   ============================================================================ */
+
+.window-switcher-widget .icon {
+    font-family: "JetBrainsMono NFP"
+}
+
+/* Styling for the popup container */
+.window-switcher-popup {
+    background-color: rgba(18, 19, 20, 0.4);
+    padding: 10px;
+}
+/* Styling for each window item */
+.window-switcher-popup .item {
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 8px;
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid transparent
+}
+/* Hover or keyboard-focus effect */
+.window-switcher-popup .item:hover,
+.window-switcher-popup .item.active {
+    background-color: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+}
+/* Window title text styling */
+.window-switcher-popup .title {
+    padding: 10px 10px 5px 10px;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.158);
+}
+
+
+
+
+/* ============================================================================
+   Do Not Disturb Widget
+   ============================================================================ */
+
+   .dnd-widget {
+    padding: 0 8px;
+}
+
+.dnd-widget .icon {
+    font-size: 14px;
+    margin-right: 6px;
+}
+
+.dnd-widget .label {
+    font-size: 13px;
+    color: #e0e0e0;
+}
+
+/* Disabled - Green */
+.dnd-widget .icon.status-disabled {
+    color: #a6e3a1; 
+}
+.dnd-widget .label.status-disabled {
+    color: #a6e3a1; 
+}
+
+/* Priority Only - Yellow */
+.dnd-widget .icon.status-priority {
+    color: #f9e2af; 
+}
+.dnd-widget .label.status-priority {
+    color: #f9e2af; 
+}
+
+/* Alarms Only - Red */
+.dnd-widget .icon.status-alarms {
+    color: #f38ba8; 
+}
+.dnd-widget .label.status-alarms {
+    color: #f38ba8; 
+}
+
+/* ============================================================================ */
+/* MEDIA LITE WIDGET */
+/* ============================================================================ */
+
+/* --- BARRA --- */
+.media-lite-widget {
+    padding: 0;
+    margin: 0;
+}
+
+.media-lite-widget .text {
+    padding: 0;
+}
+
+.media-lite-widget .label {
+    font-size: 12px;
+    font-family: "Segoe UI";
+    padding: 0 2px;
+}
+
+.media-lite-widget .title {
+    font-size: 12px;
+    font-weight: 600;
+    font-family: "Segoe UI";
+    padding: 0 2px;
+}
+
+.media-lite-widget .artist {
+    font-size: 11px;
+    color: var(--text4);
+    font-family: "Segoe UI";
+    padding: 0 2px;
+}
+
+
+/* --- MENU DE MÍDIA --- */
+.media-lite-menu {
+    min-width: 280px;
+    max-width: 280px;
+    background-color: color-mix(in srgb, var(--bg-color2) 50%, transparent);
+    border: 1px solid color-mix(in srgb, var(--text1) 10%, transparent);
+    border-radius: 12px;
+}
+
+.media-lite-menu .header {
+    padding: 16px 16px 0 16px;
+}
+
+.media-lite-menu .thumbnail {
+    cursor: pointer;
+}
+
+.media-lite-menu .controls {
+    padding: 32px 16px 32px 16px;
+}
+
+.media-lite-menu .title {
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Segoe UI";
+}
+
+.media-lite-menu .artist {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text3);
+    font-family: "Segoe UI";
+    margin-top: 4px;
+    margin-bottom: 16px;
+}
+
+.media-lite-menu .source {
+    min-width: 16px;
+    min-height: 16px;
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+/* --- CONTROLE DE VOLUME --- */
+.media-lite-menu .volume-button {
+    font-family: "Segoe Fluent Icons";
+    font-size: 16px;
+    min-width: 24px;
+    min-height: 24px;
+    color: var(--text1);
+}
+
+.media-lite-menu .volume-button.muted {
+    color: var(--text2);
+}
+
+.media-lite-menu .volume-button.unavailable {
+    color: var(--text4);
+}
+
+.media-lite-menu .volume-slider-popup {
+    background-color: var(--bg-color1);
+    border: 1px solid var(--bg-color2);
+    border-radius: 10px;
+    padding: 12px 8px;
+}
+
+.media-lite-menu .volume-slider {
+    min-height: 120px;
+    max-height: 120px;
+}
+
+.media-lite-menu .volume-slider::groove {
+    background: var(--bg-hover-secondary);
+    width: 3px;
+    border-radius: 2px;
+}
+
+.media-lite-menu .volume-slider::sub-page {
+    background: var(--bg-hover-secondary);
+    border-radius: 2px;
+}
+
+.media-lite-menu .volume-slider::add-page {
+    background: var(--text1);
+    border-radius: 2px;
+}
+
+
+/* --- CONTROLES DE REPRODUÇÃO --- */
+.media-lite-menu .btn {
+    font-family: "Segoe Fluent Icons";
+    font-size: 14px;
+    font-weight: 400;
+    margin: 4px 2px;
+    min-width: 40px;
+    max-width: 40px;
+    min-height: 40px;
+    max-height: 40px;
+    border-radius: 20px;
+    transition: background-color 0.08s, opacity 0.08s;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.media-lite-menu .btn:clicked,
+.media-lite-menu .btn:pressed {
+    opacity: 0.5;
+}
+
+.media-lite-menu .btn:hover {
+    color: var(--text1);
+    background-color: var(--bg-hover-primary);
+}
+
+.media-lite-menu .btn.play {
+    background-color: var(--text1);
+    color: var(--bg-color1);
+    font-size: 20px;
+}
+
+.media-lite-menu .btn.shuffle.active,
+.media-lite-menu .btn.repeat.active {
+    color: var(--color-green);
+}
+
+.media-lite-menu .btn.disabled:hover,
+.media-lite-menu .btn.disabled {
+    color: var(--text2);
+    background-color: transparent;
+    opacity: 1;
+    cursor: default;
+}
+
+
+/* --- PROGRESSO DA MÍDIA --- */
+.media-lite-menu .playback-time {
+    font-size: 11px;
+    font-family: "Segoe UI";
+    color: var(--text4);
+}
+
+.media-lite-menu .progress-slider {
+    height: 10px;
+    margin: 2px 0;
+    border-radius: 3px;
+}
+
+.media-lite-menu .progress-slider::groove {
+    background: var(--bg-hover-secondary);
+    height: 2px;
+    border-radius: 3px;
+}
+
+.media-lite-menu .progress-slider::groove:hover {
+    height: 6px;
+    background: var(--bg-hover-third);
+}
+
+.media-lite-menu .progress-slider::sub-page {
+    background: var(--text1);
+    border-radius: 3px;
+}
+
+
+/* Ícone da central de controle: usa a fonte dos códigos Unicode do widget. */
+.control-center-widget .icon {
+    font-family: "Segoe Fluent Icons", "Segoe MDL2 Assets";
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* POPUP WINDOW */
+.control-center-menu {
+    background: rgba(0, 0, 0, 0.397);
+    min-width: 360px;
+}
+
+/* SECTIONS */
+/* Left and right padding of 12 px + 4 px margin for quick action and power plan, 
+which is 16 pixels same as the other sections. */
+.control-center-menu .section {
+    background: rgba(255, 255, 255, 0);
+    margin: 0;
+    padding: 16px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* We dont want a padding at the bottom of the first section. */
+.control-center-menu .section.system-controls {
+    padding: 12px 16px 0 16px;
+}
+.control-center-menu .section.sliders {
+    padding: 16px;
+}
+.control-center-menu .section.media,
+.control-center-menu .section.power,
+.control-center-menu .section.system-controls {
+    border-bottom: 1px solid rgba(255, 255, 255, 0);
+}
+
+/* SHARED SEGOE FLUENT ICONS */
+.control-center-menu .section.system-controls .button,
+.control-center-menu .section.quick-actions .button .icon,
+.control-center-menu .section.sliders .slider .icon,
+.control-center-menu .section.sliders .slider .source-selector,
+.control-center-menu .section.power .plan-name .icon,
+.control-center-menu .section.power .mode-name .icon,
+.control-center-menu .section.media .button {
+    font-family: "Segoe Fluent Icons", "Segoe MDL2 Assets";
+    font-weight: 400;
+}
+
+/* SHARED HOVER & TRANSITION TRANSITIONS */
+.control-center-menu .section.quick-actions .button .icon,
+.control-center-menu .section.system-controls .button,
+.control-center-menu .section.sliders .slider .source-selector,
+.control-center-menu .section.power .plan-name,
+.control-center-menu .section.power .mode-name,
+.control-center-menu .section.media .button {
+    transition: background-color 0.08s, opacity 0.08s;
+    opacity: 1;
+}
+
+/* SHARED CLICKED / PRESSED STATES */
+.control-center-menu .section.system-controls .button:clicked,
+.control-center-menu .section.system-controls .button:pressed,
+.control-center-menu .section.quick-actions .button .icon:clicked,
+.control-center-menu .section.quick-actions .button .icon:pressed,
+.control-center-menu .section.sliders .slider .source-selector:clicked,
+.control-center-menu .section.sliders .slider .source-selector:pressed,
+.control-center-menu .section.power .plan-name:clicked,
+.control-center-menu .section.power .plan-name:pressed,
+.control-center-menu .section.power .mode-name:clicked,
+.control-center-menu .section.power .mode-name:pressed,
+.control-center-menu .section.media .button:clicked,
+.control-center-menu .section.media .button:pressed {
+    opacity: 0.5;
+}
+
+/* SHARED DISABLED STATES */
+.control-center-menu .section.quick-actions .button.disabled .title,
+.control-center-menu .section.quick-actions .button.disabled .icon,
+.control-center-menu .section.sliders .slider.disabled,
+.control-center-menu .section.media .button.disabled,
+.control-center-menu .section.media .button.disabled:hover {
+    opacity: 0.5;
+}
+
+/* SYSTEM CONTROLS */
+.control-center-menu .section.system-controls .button {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    min-height: 32px;
+    max-height: 32px;
+    min-width: 32px;
+    max-width: 32px;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    transition: background-color 0.08s, opacity 0.08s;
+}
+.control-center-menu .section.system-controls .button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* QUICK ACTIONS */
+.control-center-menu .section.quick-actions .button {
+    margin: 0 4px;
+    cursor: pointer;
+}
+.control-center-menu .section.quick-actions .button .icon {
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    min-height: 48px;
+    border-radius: 6px;
+    color: rgb(255, 255, 255); 
+}
+.control-center-menu .section.quick-actions .button .icon:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.control-center-menu .section.quick-actions .button.active .icon {
+    background-color: #47AFF5;
+    border: 1px solid #47AFF5;
+    color: #000;
+}
+.control-center-menu .section.quick-actions .button.active .icon:hover {
+    background-color: #42a0df;
+    border: 1px solid #42a0df;
+    color: #000;
+}
+.control-center-menu .section.quick-actions .button.disabled .icon:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.control-center-menu .section.quick-actions .button.active .icon:pressed {
+    background-color: #3795d3;
+    border: 1px solid #3795d3;
+}
+.control-center-menu .section.quick-actions .button .title {
+    font-size: 12px;
+    margin: 4px 0 8px 0;
+    padding: 0;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+}
+
+/* SLIDERS */
+.control-center-menu .section.sliders .slider {
+    background: transparent;
+    border: none;
+    min-height: 34px;
+    margin: 0 4px 0 4px;
+}
+.control-center-menu .section.sliders .slider .icon {
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    min-width: 36px;
+}
+.control-center-menu .section.sliders .slider .value {
+    min-width: 36px;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+}
+.control-center-menu .section.sliders .slider .source-selector {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0);
+    margin-left: 4px;
+}
+.control-center-menu .section.sliders .slider .source-selector:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* POWER PLAN & POWER MODE */
+.control-center-menu .section.power .plan-name,
+.control-center-menu .section.power .mode-name {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    min-height: 36px;
+    margin: 0 4px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+.control-center-menu .section.power .plan-name:hover,
+.control-center-menu .section.power .mode-name:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+.control-center-menu .section.power .mode-name.disabled,
+.control-center-menu .section.power .mode-name.disabled:hover {
+    opacity: 0.5;
+    background: rgba(255, 255, 255, 0.06);
+}
+.control-center-menu .section.power .plan-name .title,
+.control-center-menu .section.power .mode-name .title {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+}
+.control-center-menu .section.power .plan-name .subtext,
+.control-center-menu .section.power .mode-name .subtext {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+}
+.control-center-menu .section.power .plan-name .icon,
+.control-center-menu .section.power .mode-name .icon {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+}
+
+/* MEDIA CONTROLS */
+.control-center-menu .section.media {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.control-center-menu .section.media .track-info {
+     padding-left: 8px;
+}
+.control-center-menu .section.media .title {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+}
+.control-center-menu .section.media .subtext {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+}
+.control-center-menu .section.media .button {
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0);
+    min-width: 32px;
+    min-height: 32px;
+    max-width: 32px;
+    max-height: 32px;
+    border-radius: 6px;
+    margin: 0 0 0 4px;
+}
+.control-center-menu .section.media .button:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+.control-center-menu .section.media .button.disabled,
+.control-center-menu .section.media .button.disabled:hover {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+/* Context menu styles for dropdowns and menus inside the Control Center panel */
+.control-center-menu .context-menu {
+    background-color: rgba(48, 48, 48, 0.86);
+    padding: 4px 0px;
+    font-family: "Segoe UI Variable", "Segoe UI";
+    font-weight: 600;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.9);
+}
+.control-center-menu .context-menu::item {
+    background-color: transparent;
+    padding: 6px 12px;
+    margin: 2px 6px;
+    border-radius: 4px;
+    min-width: 100px;
+}
+.control-center-menu .context-menu::item:selected  {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
+}
+.control-center-menu .context-menu::separator {
+    height: 1px;
+    background-color: rgb(68, 68, 68);
+    margin: 4px 0;
+}
+.control-center-menu .context-menu::indicator:unchecked {
+    width: 4px;
+    height: 12px;
+    margin-left: 0;
+    color: transparent;
+    background-color: transparent;
+}
+.control-center-menu .context-menu::indicator:checked {
+    width: 4px;
+    height: 12px;
+    background-color: #47AFF5;
+    border-radius: 2px;
+    margin-left: 0;
+}
+
+/* ============================================================================
+   AUDIO VISUALIZER — ESTILOS COMPLEMENTARES
+   Elementos documentados que ainda não tinham regras neste arquivo.
+   ============================================================================ */
+
+.audio-visualizer-widget {
+    padding: 0;
+    margin: 0;
+}
+
+.audio-visualizer-widget .widget-container {
+    padding: 0;
+    margin: 0;
+}
+
+.audio-visualizer-widget .audio-visualizer-canvas {
+    -qproperty-fillbrush: linear-gradient(to top, #8A9AFF, #8A8AFF, #C38AFF);
+}
+
+/* ============================================================================
+   BLUETOOTH — ESTILOS COMPLEMENTARES
+   Elementos documentados que ainda não tinham regras neste arquivo.
+   ============================================================================ */
+
+.bluetooth-widget .icon.bt-off,
+.bluetooth-widget .label.bt-off {
+    color: #888;
+}
+
+.bluetooth-widget .icon.bt-on {
+    color: var(--blue);
+}
+
+.bluetooth-widget .label.bt-on {
+    color: #4cc2ff;
+}
+
+.bluetooth-widget .icon.bt-connected {
+    color: var(--blue);
+}
+
+.bluetooth-widget .label.bt-connected {
+    color: var(--blue);
+}
+
+.bluetooth-menu {
+    background: rgba(28, 28, 28, 0.6);
+    min-width: 360px;
+    min-height: 480px;
+}
+
+.bluetooth-menu .header {
+    padding: 12px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bluetooth-menu .header .title {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+}
+
+.bluetooth-menu .header .power-button {
+    background-color: rgba(255, 255, 255, 0.12);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 14px;
+    margin-left: 8px;
+}
+
+.bluetooth-menu .header .power-button:checked {
+    background-color: #4cc2ff;
+    color: #000;
+}
+
+.bluetooth-menu .progress-bar {
+    min-height: 2px;
+    max-height: 2px;
+    color: #4cc2ff;
+}
+
+.bluetooth-menu .bluetooth-list {
+    background-color: transparent;
+}
+
+.bluetooth-menu .section {
+    background-color: transparent
+}
+
+.bluetooth-menu .section-title {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 10px 12px 4px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.bluetooth-menu .error-message {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 0;
+    background-color: #92242d;
+    color: #e7bfc2;
+}
+
+.bluetooth-menu .bluetooth-item {
+    min-height: 44px;
+    padding: 6px 12px;
+    margin: 2px 4px;
+    border-radius: 6px;
+}
+
+.bluetooth-menu .bluetooth-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.bluetooth-menu .bluetooth-item.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+}
+
+.bluetooth-menu .bluetooth-item .icon {
+    font-family: 'Segoe Fluent Icons';
+    font-size: 18px;
+    margin-right: 12px;
+    min-width: 28px;
+    font-weight: 400;
+}
+
+.bluetooth-menu .bluetooth-item .name {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.bluetooth-menu .bluetooth-item .status {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 600;
+}
+
+.bluetooth-menu .bluetooth-item .battery {
+    font-size: 13px;
+    font-weight: 600;
+    padding-right: 6px;
+}
+
+.bluetooth-menu .bluetooth-item .battery-icon {
+    font-size: 18px;
+    font-weight: 400;
+    font-family: 'Segoe Fluent Icons';
+}
+
+.bluetooth-menu .bluetooth-item .controls-container {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.bluetooth-menu .bluetooth-item .connect {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 4px 12px;
+    border-radius: 4px;
+    border: none;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.bluetooth-menu .bluetooth-item .connect:hover {
+    background-color: rgba(255, 255, 255, 0.22);
+}
+
+.bluetooth-menu .footer {
+    padding: 8px 12px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bluetooth-menu .footer .settings-button {
+    background-color: transparent;
+    border: none;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.bluetooth-menu .footer .scan-icon {
+    font-family: 'Segoe Fluent Icons';
+    background-color: transparent;
+    border: none;
+    font-weight: 400;
+    min-width: 28px;
+    min-height: 28px;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.bluetooth-menu .footer .scan-icon:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================================================
+   BRIGHTNESS — ESTILOS COMPLEMENTARES
+   Elementos documentados que ainda não tinham regras neste arquivo.
+   ============================================================================ */
+
+.brightness-menu .monitor-row {
+    background-color: rgba(139, 69, 19, 0);
+    margin: 12px;
+}
+
+.brightness-menu .monitor-row.monitor-0 {
+    margin-bottom: 0;
+}
+
+.brightness-menu .monitor-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-top: 4px;
+}
+
+.brightness-menu .monitor-subtitle {
+    font-size: 11px;
+    color: #a6adc8;
+    margin-top: 2px;
+    margin-bottom: 8px;
+}
+
+.brightness-menu .slider-rows {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.brightness-menu .slider-icon {
+    font-family: "Segoe Fluent Icons";
+}
+
+.brightness-menu .slider-row {
+    margin: 4px 0;
+    padding: 8px 0px;
+}
+
+/* ============================================================================
+   CAVA — ESTILOS COMPLEMENTARES
+   Elementos documentados que ainda não tinham regras neste arquivo.
+   ============================================================================ */
+
+.cava-widget {
+    padding: 0;
+    margin: 0;
+}
+
+/* ============================================================================
+   CLAUDE USAGE — ESTILOS COMPLEMENTARES
+   Elementos documentados que ainda não tinham regras neste arquivo.
+   ============================================================================ */
+
+.claude-usage .icon {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    margin: 1px 4px 0 0;
+}
+
+.claude-usage .label {
+    color: rgba(255, 255, 255, 0.9);
+    padding: 0 2px;
+}
+
+.claude-usage .stale {
+    color: #ff6b6b;
+    margin-left: 4px;
+}
+
+.claude-usage .status {
+    margin-right: 4px;
+}
+
+.claude-usage .status.none {
+    color: #6ccb5f;
+}
+
+.claude-usage .status.minor {
+    color: #ffc83d;
+}
+
+.claude-usage .status.major {
+    color: #ff9d42;
+}
+
+.claude-usage .status.critical {
+    color: #ff6b6b;
+}
+
+.claude-usage .status.unknown {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.claude-usage-menu {
+    background: rgba(32, 32, 32, 0.6);
+    min-width: 300px;
+}
+
+.claude-usage-menu .header {
+    padding: 14px 16px 10px 16px;
+}
+
+.claude-usage-menu .header .text {
+    color: var(--text-primary);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.claude-usage-menu .header .refresh,
+.claude-usage-menu .header .pin-btn {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 15px;
+    padding: 2px 4px;
+    margin-left: 4px;
+    border-radius: 4px;
+    transition: background-color 0.08s, color 0.08s;
+}
+
+.claude-usage-menu .header .refresh:hover,
+.claude-usage-menu .header .pin-btn:hover {
+    color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.claude-usage-menu .header .pin-btn.pinned {
+    color: #47AFF5;
+}
+
+.claude-usage-menu .status-row {
+    padding: 0 16px 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.claude-usage-menu .status-row .dot {
+    font-size: 10px; margin-right: 8px;
+}
+
+.claude-usage-menu .status-row .dot.none {
+    color: #6ccb5f;
+}
+
+.claude-usage-menu .status-row .dot.minor {
+    color: #ffc83d;
+}
+
+.claude-usage-menu .status-row .dot.major {
+    color: #ff9d42;
+}
+
+.claude-usage-menu .status-row .dot.critical {
+    color: #ff6b6b;
+}
+
+.claude-usage-menu .status-row .dot.unknown {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.claude-usage-menu .status-row .status-text {
+    color: rgba(255, 255, 255, 0.6); font-size: 12px;
+}
+
+.claude-usage-menu .section {
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.claude-usage-menu .section.tokens {
+    border-bottom: none;
+}
+
+.claude-usage-menu .section .title {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    font-weight: 600;
+    padding-bottom: 8px;
+}
+
+.claude-usage-menu .progress {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    min-height: 8px;
+    max-height: 8px;
+}
+
+.claude-usage-menu .progress .fill {
+    background-color: #47AFF5;
+    border-radius: 4px;
+}
+
+.claude-usage-menu .progress.medium .fill {
+    background-color: #ffc83d;
+}
+
+.claude-usage-menu .progress.high .fill {
+    background-color: #ff6b6b;
+}
+
+.claude-usage-menu .reset {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    padding-top: 8px;
+}
+
+.claude-usage-menu .percent {
+    color: var(--text-primary);
+    font-size: 13px;
+    font-weight: 600;
+    padding-top: 8px;
+}
+
+.claude-usage-menu .percent.medium {
+    color: #ffc83d;
+}
+
+.claude-usage-menu .percent.high {
+    color: #ff6b6b;
+}
+
+.claude-usage-menu .date {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 11px;
+    padding-top: 2px;
+}
+
+.claude-usage-menu .section .period-toggle {
+    padding-bottom: 10px;
+}
+
+.claude-usage-menu .section .period-btn {
+    color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.06);
+    border: none;
+    border-radius: 4px;
+    
+    padding: 4px 12px 4px 0;
+    font-size: 12px;
+}
+
+.claude-usage-menu .section .period-btn.active {
+    color: #000000;
+    background-color: #47AFF5;
+    font-weight: 600;
+}
+
+.claude-usage-menu .section .token-total {
+    color: var(--text-primary);
+    font-size: 20px;
+    font-weight: 600;
+    padding: 2px 0 8px 0;
+}
+
+.claude-usage-menu .section .graph-container {
+    min-height: 60px;
+}
+
+.claude-usage-menu .section.tokens .model-usage {
+    padding-bottom: 12px;
+}
+
+.claude-usage-menu .section.tokens .model-usage .title {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.claude-usage-menu .section.tokens .model-name {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 12px;
+    min-width: 90px;
+}
+
+.claude-usage-menu .section.tokens .model-total {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    min-width: 48px;
+}
+
+.claude-usage-menu .section.tokens .model-rows .progress {
+    min-height: 6px;
+    max-height: 6px;
+}
+
+.claude-usage-menu .section.tokens .model-rows .progress.model-0 .fill {
+    background-color: #47AFF5;
+}
+
+.claude-usage-menu .section.tokens .model-rows .progress.model-1 .fill {
+    background-color: #b48ce0;
+}
+
+.claude-usage-menu .section.tokens .model-rows .progress.model-2 .fill {
+    background-color: #6ccb5f;
+}
+
+.claude-usage-menu .section.tokens .model-rows .progress.model-3 .fill {
+    background-color: #ffc83d;
+}
+
+.claude-usage-menu .section.tokens .model-rows .progress.model-4 .fill {
+    background-color: #ff9d42;
+}
+
+/* ============================================================================
+   CODEX USAGE — ESTILOS COMPLEMENTARES
+   Elementos documentados que ainda não tinham regras neste arquivo.
+   ============================================================================ */
+
+.codex-usage .label {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 12px;
+    font-weight: 500;
+    padding-left: 5px;
+}
+
+.codex-usage .progress-container {
+    margin-left: 3px;
+}
+
+.codex-usage-menu {
+    background-color: rgba(32, 32, 32, 0.68);
+    font-family: var(--font-name-primary);
+    min-width: 340px;
+}
+
+.codex-usage-menu .header {
+    padding: 9px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.codex-usage-menu .header .text {
+    color: var(--text-primary);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.codex-usage-menu .header .refresh-status {
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 12px;
+    padding-right: 6px;
+}
+
+.codex-usage-menu .header .refresh-status.busy {
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.codex-usage-menu .header .refresh-status.success {
+    color: #6ccb5f;
+}
+
+.codex-usage-menu .header .refresh-status.error {
+    color: #ff6b6b;
+}
+
+.codex-usage-menu .header .refresh {
+    font-family: "Segoe Fluent Icons";
+    color: rgba(255, 255, 255, 0.72);
+    background-color: transparent;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    min-width: 28px;
+    max-width: 28px;
+    min-height: 28px;
+    max-height: 28px;
+    padding: 0;
+    margin: 0;
+}
+
+.codex-usage-menu .header .refresh:hover {
+    color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.codex-usage-menu .section {
+    padding: 8px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.codex-usage-menu .section .title {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 13px;
+    font-weight: 600;
+    padding-bottom: 6px;
+}
+
+.codex-usage-menu .section .progress {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    min-height: 8px;
+    max-height: 8px;
+}
+
+.codex-usage-menu .section .progress .fill {
+    background-color: #6ccb5f;
+    border-radius: 4px;
+}
+
+.codex-usage-menu .section .progress.low .fill {
+    background-color: #ffc83d;
+}
+
+.codex-usage-menu .section .progress.critical .fill {
+    background-color: #ff6b6b;
+}
+
+.codex-usage-menu .section .stats {
+    padding-top: 7px;
+}
+
+.codex-usage-menu .section .used {
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 12px;
+}
+
+.codex-usage-menu .section .remaining {
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.codex-usage-menu .section .remaining.good {
+    color: #6ccb5f;
+}
+
+.codex-usage-menu .section .remaining.low {
+    color: #ffc83d;
+}
+
+.codex-usage-menu .section .remaining.critical {
+    color: #ff6b6b;
+}
+
+.codex-usage-menu .section .timing {
+    padding-top: 6px;
+}
+
+.codex-usage-menu .section .reset {
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 12px;
+}
+
+.codex-usage-menu .section .date {
+    color: rgba(255, 255, 255, 0.48);
+    font-size: 12px;
+}
+
+.codex-usage-menu .pager {
+    background-color: transparent;
+}
+
+.codex-usage-menu .page-nav {
+    padding: 5px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.codex-usage-menu .page-button,
+.codex-usage-menu .month-nav {
+    font-family: "Segoe Fluent Icons";
+    color: rgba(255, 255, 255, 0.68);
+    background-color: transparent;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    min-width: 26px;
+    max-width: 26px;
+    min-height: 26px;
+    max-height: 26px;
+    padding: 0;
+}
+
+.codex-usage-menu .page-button:hover,
+.codex-usage-menu .month-nav:hover {
+    color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.codex-usage-menu .page-button:disabled,
+.codex-usage-menu .month-nav:disabled {
+    color: rgba(255, 255, 255, 0.22);
+}
+
+.codex-usage-menu .page-indicator {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.codex-usage-menu .page-stack {
+    background-color: transparent;
+}
+
+.codex-usage-menu .page {
+    padding: 12px 16px;
+}
+
+.codex-usage-menu .empty-state {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 12px;
+    padding: 18px 0;
+}
+
+.codex-usage-menu .overview-tokens {
+    padding-bottom: 12px;
+}
+
+.codex-usage-menu .section-title,
+.codex-usage-menu .activity-title {
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.codex-usage-menu .periods {
+    padding-bottom: 4px;
+}
+
+.codex-usage-menu .period-name {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 11px;
+}
+
+.codex-usage-menu .period-value {
+    color: var(--text-primary);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.codex-usage-menu .details {
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.codex-usage-menu .details .name {
+    color: rgba(255, 255, 255, 0.56);
+    font-size: 12px;
+}
+
+.codex-usage-menu .details .value {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 12px;
+}
+
+.codex-usage-menu .details .status.live {
+    color: #6ccb5f;
+}
+
+.codex-usage-menu .details .status.stale {
+    color: #ffc83d;
+}
+
+.codex-usage-menu .details .error {
+    color: #ff6b6b;
+    font-size: 11px;
+    max-height: 30px;
+    padding-top: 5px;
+}
+
+.codex-usage-menu .reset-credits-count {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 11px;
+}
+
+.codex-usage-menu .reset-credit-card {
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 5px;
+    min-height: 44px;
+    max-height: 44px;
+    padding: 6px 10px;
+}
+
+.codex-usage-menu .reset-credit-title {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.codex-usage-menu .reset-credit-expiration {
+    color: rgba(255, 255, 255, 0.52);
+    font-size: 11px;
+}
+
+.codex-usage-menu .model-row {
+    min-height: 27px;
+    max-height: 27px;
+}
+
+.codex-usage-menu .model-name {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 12px;
+    min-width: 96px;
+    max-width: 96px;
+}
+
+.codex-usage-menu .model-value {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 12px;
+    min-width: 52px;
+    max-width: 52px;
+}
+
+.codex-usage-menu .model-bar {
+    background-color: rgba(255, 255, 255, 0.11);
+    border-radius: 3px;
+    min-height: 7px;
+    max-height: 7px;
+}
+
+.codex-usage-menu .model-bar .fill {
+    background-color: #7d88e8; border-radius: 3px;
+}
+
+.codex-usage-menu .row-2 .model-bar .fill {
+    background-color: #b87ae7;
+}
+
+.codex-usage-menu .row-3 .model-bar .fill {
+    background-color: #e49ada;
+}
+
+.codex-usage-menu .row-4 .model-bar .fill {
+    background-color: #7eb5e8;
+}
+
+.codex-usage-menu .row-5 .model-bar .fill {
+    background-color: #7bc7a4;
+}
+
+.codex-usage-menu .activity-header {
+    padding-bottom: 7px;
+}
+
+.codex-usage-menu .month-label {
+    color: var(--text-primary);
+    font-size: 12px;
+    font-weight: 600;
+    min-width: 106px;
+    max-width: 106px;
+}
+
+.codex-usage-menu .heatmap .weekday {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 11px;
+    min-width: 20px;
+    max-width: 20px;
+    padding-bottom: 2px;
+}
+
+.codex-usage-menu .history-note {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 11px;
+    padding-top: 6px;
+}
+
+.codex-usage-menu .heatmap .cell {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+    min-width: 20px;
+    max-width: 20px;
+    min-height: 20px;
+    max-height: 20px;
+}
+
+.codex-usage-menu .heatmap .cell.level-1 {
+    background-color: #244f2b;
+}
+
+.codex-usage-menu .heatmap .cell.level-2 {
+    background-color: #34713b;
+}
+
+.codex-usage-menu .heatmap .cell.level-3 {
+    background-color: #50a653;
+}
+
+.codex-usage-menu .heatmap .cell.level-4 {
+    background-color: #79d677;
+}
+
+.codex-usage-menu .heatmap .cell.future,
+.codex-usage-menu .heatmap .cell.outside {
+    background-color: transparent;
+}
+
+.codex-usage-menu .heatmap .cell.unavailable {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ============================================================================
+   GLAZEWM BINDING MODE — ESTILOS COMPLEMENTARES
+   Elementos documentados que ainda não tinham regras neste arquivo.
+   ============================================================================ */
+
+.glazewm-binding-mode {
+    background-color: var(--crust);
+    margin: 4px 0;
+    border-radius: 12px;
+    border: 0;
+}
+
+.glazewm-binding-mode .label {
+    color: var(--text);
+    font-size: 12px;
+}
+
+.glazewm-binding-mode .label-offline {
+    color: var(--subtext0);
+    font-size: 10px;
+}
+
+.glazewm-binding-mode .icon.none {
+    color: var(--blue);
+}
+
+.glazewm-binding-mode .icon.resize {
+    color: var(--yellow);
+}
+
+.glazewm-binding-mode .icon.pause {
+    color: var(--red);
+}
+
+/* ============================================================================
+   GLAZEWM TILING DIRECTION — ESTILOS COMPLEMENTARES
+   Elementos documentados que ainda não tinham regras neste arquivo.
+   ============================================================================ */
+
+.glazewm-tiling-direction {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+.glazewm-tiling-direction .btn {
+    font-size: 18px;
+    width: 14px;
+    padding: 0 4px 0 4px;
+    color: #CDD6F4;
+    border: none;
+}
+
+.glazewm-tiling-direction .btn:hover {
+    background-color: #727272;
+}
+
+/* ============================================================================
+   GLUCOSE MONITOR — ESTILOS COMPLEMENTARES
+   Elementos documentados que ainda não tinham regras neste arquivo.
+   ============================================================================ */
+
+.cgm-widget {
+    padding: 0 4px 0 4px;
+}
+
+.cgm-widget .sgv.in-range {
+    color: green;
+}
+
+.cgm-widget .sgv.out-range {
+    color: red;
+}
+
+/* ============================================================================
+   LAUNCHPAD — ESTILOS COMPLEMENTARES
+   Elementos documentados que ainda não tinham regras neste arquivo.
+   ============================================================================ */
+
+.launchpad .app-dialog .group-field {
+    background-color: #181818;
+    border: 1px solid #303030;
+    border-radius: 4px;
+    padding: 0 6px;
+    font-family: 'Segoe UI';
+    font-size: 12px;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin: 10px 0px 5px 0;
+    min-height: 30px;
+}
+
+.launchpad .group-icon {
+    background-color: rgba(102, 10, 10, 0);
+    border-radius: 12px;
+    border: 2px solid rgba(112, 76, 32, 0);
+    padding-top: 10px;
+    margin: 24px 6px 6px 6px;
+    max-width: 110px;
+    min-width: 110px;
+    min-height: 110px;
+    max-height: 110px;
+}
+
+.launchpad .group-icon:focus {
+    border: 2px solid var(--blue);
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.launchpad .group-icon:hover {
+    border: 2px solid var(--blue);
+    background-color: rgba(255, 255, 255, 0.13);
+}
+
+.launchpad .group-icon .group-icon-container {
+    background-color: rgb(39, 40, 43);
+    border: 1px solid rgb(47, 49, 53);
+    border-radius: 8px;
+}
+
+.launchpad .group-icon .title {
+    color: #a6adc8;
+    font-family: 'Segoe UI';
+    font-size: 14px;
+    margin-top: 2px;
+    font-weight: 600;
+}
+
+.launchpad .group-icon .group-icon-container.browser {
+    background-color: rgb(33, 47, 71);
+    border-color: rgb(34, 57, 94);
+}
+
+.launchpad .group-back-button {
+    background-color: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 18px;
+    font-family: var(--font-name-primary);
+    font-weight: 400;
+    text-align: left;
+    padding: 0 32px;
+}
+
+.launchpad .group-back-button:hover {
+    color: var(--text-primary);
+}
+
+/* ============================================================================
+   LIBRE HW MONITOR — ESTILOS COMPLEMENTARES
+   Elementos documentados que ainda não tinham regras neste arquivo.
+   ============================================================================ */
+
+.libre-menu {
+    background-color:rgba(17, 17, 27, 0.9);
+}
+
+.libre-menu .header {
+    font-size: 18px;
+    font-weight: 600;
+    color: #cdd6f4;
+    font-family: var(--font-name-primary);
+    padding: 20px 0 10px 0;
+    margin: 0 40px;
+}
+
+.libre-menu .sensor-item {
+    background-color:rgba(255, 255, 255, 0.01);
+    padding: 0px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.libre-menu .sensor-item:hover {
+    background-color:rgba(255, 255, 255, 0.05);
+}
+
+.libre-menu .sensor-name {
+    font-size: 12px;
+    font-weight: 600;
+    font-family: var(--font-name-primary);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.libre-menu .sensor-value {
+    font-size: 12px;
+    font-family: var(--font-name-primary);
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    min-width: 60px;
+}
+
+/* ============================================================================
+   MEDIA — ESTILOS COMPLEMENTARES
+   Elementos documentados que ainda não tinham regras neste arquivo.
+   ============================================================================ */
+
+.media-menu .source.aimp {
+    background-color: #6f42c1;
+    color: var(--text-primary);
+}
+
+.media-menu .source.apple-music {
+    background-color: #fa2b56;
+    color: var(--text-primary);
+}
+
+.media-menu .source.brave {
+    background-color: #fb542b;
+    color: var(--text-primary);
+}
+
+.media-menu .source.chrome {
+    background-color: #4285f4;
+    color: var(--text-primary);
+}
+
+.media-menu .source.edge {
+    background-color: #0078d4;
+    color: var(--text-primary);
+}
+
+.media-menu .source.firefox {
+    background-color: #ff7139;
+    color: var(--text-primary);
+}
+
+.media-menu .source.foobar2000 {
+    background-color: #444444;
+    color: var(--text-primary);
+}
+
+.media-menu .source.media-player {
+    background-color: #0078d4;
+    color: var(--text-primary);
+}
+
+.media-menu .source.murglar {
+    background-color: #8a8a8a;
+    color: var(--text-primary);
+}
+
+.media-menu .source.musicbee {
+    background-color: #ffcc00;
+    color: #000000;
+}
+
+.media-menu .source.nsmusics {
+    background-color: #e64a19;
+    color: var(--text-primary);
+}
+
+.media-menu .source.opera {
+    background-color: #ff1b2d;
+    color: var(--text-primary);
+}
+
+.media-menu .source.qobuz {
+    background-color: #003a6f;
+    color: var(--text-primary);
+}
+
+.media-menu .source.spotify {
+    background-color: #1db954;
+    color: var(--text-primary);
+}
+
+.media-menu .source.tidal {
+    background-color: #000000;
+    color: var(--text-primary);
+}
+
+.media-menu .source.winamp {
+    background-color: #f1a11b;
+    color: #000000;
+}
+
+.media-menu .source.youtube {
+    background-color: #ff0000;
+    color: var(--text-primary);
+}
+
+.media-menu .source.youtube-music {
+    background-color: #c51f1f;
+    color: var(--text-primary);
+}
+
+.media-menu .source.zen {
+    background-color: #2ecc71;
+    color: #000000;
+}
+
+/* ============================================================================
+   NOTES — ESTILOS COMPLEMENTARES
+   Elementos documentados que ainda não tinham regras neste arquivo.
+   ============================================================================ */
+
+.notes-menu.floating .note-input {
+    max-height: 100px;
+}
+
+.note-input:focus {
+    border: 1px solid #4c90fd;
+}
+
+/* ============================================================================
+   OBS — ESTILOS COMPLEMENTARES
+   Elementos documentados que ainda não tinham regras neste arquivo.
+   ============================================================================ */
+
+.obs-widget .icon.stream.on {
+    color: #ff3b3b;
+}
+
+.obs-widget .icon.stream.off {
+    color: #90939c;
+}
+
+.obs-widget .icon.stream.starting {
+    color: #ffaa3b;
+}
+
+.obs-widget .icon.stream.stopping {
+    color: #ffaa3b;
+}
+
+.obs-widget .label.stream-time {
+    font-size: 12px;
+    font-family: var(--font-name-primary);
+    color: var(--text-primary);
+}
+
+.obs-widget .label.scene-name {
+    font-size: 12px;
+    font-family: var(--font-name-primary);
+    color: #c4ff3b;
+}
+
+.obs-widget .label.stream-stats {
+    font-size: 12px;
+    font-family: var(--font-name-primary);
+    color: #aaaaaa;
+}
+
+/* ============================================================================
+   POWER MENU — ESTILOS COMPLEMENTARES
+   Elementos documentados que ainda não tinham regras neste arquivo.
+   ============================================================================ */
+
+.power-menu-compact {
+    min-width: 260px;
+    background-color: rgba(55, 58, 65, 0.6);
+}
+
+.power-menu-compact .profile-info {
+    padding: 12px 0 24px 0;
+}
+
+.power-menu-compact .profile-info .profile-username {
+    font-size: 16px;
+    font-weight: 600;
+    color: #e0e3ee;
+    font-family: 'Segoe UI';
+    margin-top: 4px;
+}
+
+.power-menu-compact .profile-info .profile-account-type {
+    font-size: 12px;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-top: 8px;
+    font-family: 'Segoe UI';
+    background-color: #0f68dd;
+    padding: 2px 6px;
+    border-radius: 6px;
+}
+
+.power-menu-compact .profile-info .profile-email {
+    font-size: 13px;
+    color: rgba(205, 214, 244, 0.6);
+    margin-top: 2px;
+    font-family: 'Segoe UI';
+}
+
+.power-menu-compact .manage-accounts {
+    font-size: 12px;
+    background-color: rgba(255, 255, 255, 0.08);
+    font-family: 'Segoe UI';
+    font-weight: 600;
+    padding: 2px 8px;
+    margin-top: 16px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.power-menu-compact .manage-accounts:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.power-menu-compact .buttons {
+    background-color: rgba(255, 255, 255, 0.05);
+    margin: 0 12px 12px 12px;
+    border-radius: 8px;
+}
+
+.power-menu-compact .button {
+    padding: 8px 16px;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+}
+
+.power-menu-compact .button.hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.power-menu-compact .button.lock.hover {
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+.power-menu-compact .button.shutdown.hover {
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.power-menu-compact .button .icon {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.4);
+    padding-right: 10px;
+    min-width: 20px;
+}
+
+.power-menu-compact .button .label {
+    font-size: 13px;
+    font-weight: 500;
+    font-family: var(--font-name-primary);
+    color: #bebec0;
+}
+
+.power-menu-compact .icon.hover,
+.power-menu-compact .label.hover {
+    color: var(--text-primary);
+}
+
+/* ============================================================================
+   POWER PLAN — ESTILOS COMPLEMENTARES
+   Elementos documentados que ainda não tinham regras neste arquivo.
+   ============================================================================ */
+
+.power-plan-widget {
+    padding: 0 6px 0 6px;
+}
+
+.power-plan-widget .label {
+    font-size: 12px;
+}
+
+.power-plan-widget .icon {
+    font-size: 12px;
+}
+
+.power-plan-menu {
+    background-color: rgba(24, 25, 27, 0.6);
+}
+
+.power-plan-widget .icon.balanced,
+.power-plan-widget .label.balanced {
+    color: var(--yellow);
+}
+
+.power-plan-widget .icon.high-performance,
+.power-plan-widget .label.high-performance {
+    color: var(--red);
+}
+
+.power-plan-widget .icon.power-saver,
+.power-plan-widget .label.power-saver {
+    color: var(--blue);
+}
+
+.power-plan-menu .menu-content {
+    margin: 10px;
+}
+
+.power-plan-menu .menu-content .button {
+    background-color: transparent;
+    font-weight: 600;
+    font-size: 13px;
+    font-family: 'Segoe UI';
+    padding: 6px 12px;
+    margin: 1px 0;
+    border: none;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.power-plan-menu .menu-content  .button:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.power-plan-menu .menu-content .button.active {
+    background-color: rgba(0, 120, 212, 0.1);
+    border: 1px solid rgba(0, 120, 212, 0.4);
+}
+
+/* ============================================================================
+   QUICK LAUNCH — ESTILOS COMPLEMENTARES
+   Elementos documentados que ainda não tinham regras neste arquivo.
+   ============================================================================ */
+
+.quick-launch-popup .results-list-view .separator {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+    font-family: 'Segoe UI';
+    font-weight: 600;
+    padding: 4px 0 4px 12px;
+}
+
+/* ============================================================================
+   SERVER MONITOR — ESTILOS COMPLEMENTARES
+   Elementos documentados que ainda não tinham regras neste arquivo.
+   ============================================================================ */
+
+.server-widget {
+    padding: 0 6px 0 6px
+}
+
+.server-widget .icon {
+    font-size: 14px
+}
+
+.server-widget .warning .icon {
+    color: var(--yellow)
+}
+
+.server-widget .error .icon {
+    color: var(--red)
+}
+
+.server-menu {
+    background-color:rgba(17, 17, 27, 0.4);
+}
+
+.server-menu-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.server-menu-header .refresh-time {
+    padding-left: 18px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    font-family: 'Segoe UI';
+}
+
+.server-menu-header .reload-button {
+    font-size: 16px;
+    padding-right: 18px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    color: #cdd6f4
+}
+
+.server-menu-header .loader-line {
+    color: #2d8fff;
+}
+
+.server-menu-container {
+    background-color:rgba(17, 17, 27, 0.74);
+}
+
+.server-menu-container .row {
+    font-family: 'Segoe UI';
+    max-height: 40px;
+    padding:8px;
+    border-radius: 6px;
+    min-width: 300px;
+    border: 1px solid rgba(128, 128, 128, 0);
+}
+
+.server-menu-container .row:hover {
+    background-color:rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.server-menu-container .name {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 10px 2px 10px;
+    color: #cdd6f4;
+    font-family: 'Segoe UI';
+}
+
+.server-menu-container .status {
+    font-size: 24px;
+    padding-right: 10px;
+    font-family: 'Segoe UI';
+}
+
+.server-menu-container .details {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 10px 6px 10px;
+    color: #9399b2;
+    font-family: 'Segoe UI';
+}
+
+.server-menu-container .row.online .status {
+    color: #09e098
+}
+
+.server-menu-container .row.offline .status {
+    color: var(--red)
+}
+
+.server-menu-container .row.warning .status {
+    color: #ccca53
+}
+
+.server-menu-container .placeholder {
+    font-family: 'Segoe UI';
+    font-size: 16px;
+    font-weight: 600;
+    color: #cdd6f4;
+    padding:50px 8px;
+    min-width: 300px;
+    background-color:transparent
+}
+
+/* ============================================================================
+   SYSTRAY — ESTILOS COMPLEMENTARES
+   Elementos documentados que ainda não tinham regras neste arquivo.
+   ============================================================================ */
+
+.systray .button.drag-over {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.systray .pinned-container.drop-target {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.systray-popup .button.drag-over {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.systray .pinned-container.pinned-container.drop-target {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.systray-popup {
+    background-color: rgba(48, 48, 48, 0.6);
+    padding: 4px;
+}
+
+.systray-popup .button {
+    padding: 10px;
+    margin: 0;
+    border: 0;
+    border-radius: 6px;
+}
+
+.systray-popup .button:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* ============================================================================
+   TASKBAR — ESTILOS COMPLEMENTARES
+   Elementos documentados que ainda não tinham regras neste arquivo.
+   ============================================================================ */
+
+.taskbar-widget .app-container.running.minimized {
+    opacity: 0.5;
+}
+
+.taskbar-widget .app-container .app-count {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0 4px;
+    margin-left: 4px;
+    margin-right: 0;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    font-size: 12px;
+}
+
+.taskbar-widget .app-container.grouped {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding-right: 0;
+}
+
+.taskbar-widget .app-container.flashing .app-count {
+    background-color: rgba(241, 127, 127, 0.3);
+}
+
+.taskbar-preview .preview-item {
+    background-color: rgba(38, 38, 38, 0.01);
+}
+
+.taskbar-preview .preview-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.taskbar-preview .preview-item.flashing {
+    background-color: rgba(241, 127, 127, 0.45);
+}
+
+.taskbar-preview .preview-item .header .title {
+    color: #d6d6d6;
+    font-family: var(--font-name-primary);
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.taskbar-preview .preview-item .close-button {
+    font-size: 10px;
+    min-width: 24px;
+    min-height: 24px;
+    border-radius: 4px;
+    color: #eee;
+    background-color: transparent;
+    font-family: "Segoe Fluent Icons";
+}
+
+.taskbar-preview .preview-item .close-button:hover {
+    color: var(--text-primary);
+    background-color: #c42b1c;
+}
+
+/* ============================================================================
+   UPDATE CHECK — ESTILOS COMPLEMENTARES
+   Elementos documentados que ainda não tinham regras neste arquivo.
+   ============================================================================ */
+
+.update-check-widget .widget-container.scoop {
+    background: #6549e6;
+    margin: 6px 2px;
+    border-radius: 4px;
+    border: 1px solid #8267ff;
+}
+
+.update-check-widget .widget-container.paired-left {
+    margin-left: 2px;
+}
+
+.update-check-widget .widget-container.paired-right {
+    margin-right: 2px;
+}
+
+.update-check-widget .widget-container.scoop .icon {
+    color: var(--text-primary);
+    margin: 0 1px 0 6px;
+}
+
+.update-check-widget .widget-container.scoop .label {
+    margin: 0 6px 0 1px;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* ============================================================================
+   VSCODE — ESTILOS COMPLEMENTARES
+   Elementos documentados que ainda não tinham regras neste arquivo.
+   ============================================================================ */
+
+.vscode-widget .icon {
+    color: var(--blue);
+    font-family: "Segoe Fluent Icons";
+}
+
+.vscode-menu {
+    max-height: 500px;
+    background: rgba(32, 32, 32, 0.6);
+    min-width: 360px;
+}
+
+.vscode-menu .header {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: transparent
+}
+
+.vscode-menu .header .title {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.vscode-menu .header .filter-button {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #acacac;
+}
+
+.vscode-menu .header .filter-button:hover {
+    color: var(--text-primary);
+}
+
+.vscode-menu .header .filter-button.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--text-primary);
+}
+
+.vscode-menu .search-bar {
+    padding: 6px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: transparent;
+}
+
+.vscode-menu .search-bar .input {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    color: var(--text-primary);
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+.vscode-menu .search-bar .input:focus {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.vscode-menu .contents {
+    background-color: transparent;
+}
+
+.vscode-menu .contents .item {
+    min-height: 40px;
+    margin:0px 8px;
+    border-radius: 8px;
+    padding:4px 8px;
+}
+
+.vscode-menu .contents .item .title {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.vscode-menu .contents .item .modified-date {
+    font-size: 12px;
+    font-weight: 600;
+    color: #8f8f8f;
+}
+
+.vscode-menu .contents .item .folder-icon,
+.vscode-menu .contents .item .file-icon,
+.vscode-menu .contents .item .remote-icon {
+    font-size: 16px;
+    color: var(--text-primary);
+    font-family: "Segoe Fluent Icons";
+    margin-right: 8px;
+}
+
+.vscode-menu .contents .item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+}
+
+/* ============================================================================
+   WALLPAPERS — ESTILOS COMPLEMENTARES
+   Elementos documentados que ainda não tinham regras neste arquivo.
+   ============================================================================ */
+
+.wallpapers-widget .widget-container .icon {
+    font-size: 16px;
+    font-weight: 400;
+    font-family: "Segoe Fluent Icons", "Segoe MDL2 Assets";
+}
+
+/* ============================================================================
+   WINDOWS DESKTOPS — ESTILOS COMPLEMENTARES
+   Elementos documentados que ainda não tinham regras neste arquivo.
+   ============================================================================ */
+
+.windows-desktops {
+    padding: 0 4px 0 14px;
+}
+
+.windows-desktops .widget-container {
+    background-color: #11111b;
+    margin: 4px 0 4px 0;
+    border-radius: 12px;
+}
+
+.windows-desktops .ws-btn {
+    color: #7f849c;
+    border: none;
+    font-size: 14px;
+    margin: 0 3px;
+    padding: 0
+}
+
+.windows-desktops .ws-btn.active {
+    color: var(--blue);
+}
+
+.windows-desktops .context-menu {
+    background-color:rgba(17, 17, 27, 0.75);
+    border: none;
+    border-radius: 2px;
+    padding: 8px 0;
+}
+
+.windows-desktops .context-menu .menu-item {
+    padding: 6px 16px;
+}
+
+.windows-desktops .context-menu .menu-item:hover {
+    background-color: rgba(255,255,255,0.05);
+    color: var(--text-primary);
+}
+
+.windows-desktops .context-menu .separator {
+    margin: 2px 0px 2px 0px;
+    height: 1px;
+    background-color: rgba(255,255,255,0.1);
+}
+
+.windows-desktops-popup.rename {
+    min-width: 320px;
+    background-color: rgb(43, 43, 43);
+}
+
+.windows-desktops-popup.rename .windows-desktops-popup-container {
+    padding: 16px;
+}
+
+.windows-desktops-popup.rename .windows-desktops-popup-footer {
+    padding: 16px;
+    background-color:rgb(32, 32, 32)
+}
+
+.windows-desktops-popup .popup-title {
+    font-size: 16px;
+    font-family: "Segoe UI Variable", "Segoe UI";
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 4px;
+}
+
+.windows-desktops-popup .popup-description {
+    font-size: 13px;
+    font-family: "Segoe UI Variable", "Segoe UI";
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 12px;
+}
+
+.windows-desktops-popup .rename-input {
+    font-size: 14px;
+    font-family: "Segoe UI Variable", "Segoe UI";
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 4px 8px;
+    outline: none;
+    min-width: 280px;
+}
+
+.windows-desktops-popup .rename-input:focus {
+    border: 1px solid #4cc2ff;
+}
+
+.windows-desktops-popup .button {
+    border-radius: 4px;
+    font-family: "Segoe UI Variable", "Segoe UI";
+    font-size: 13px;
+    min-height: 28px;
+    min-width: 120px;
+    margin: 4px 0;
+    background-color: rgb(43, 43, 43);
+}
+
+.windows-desktops-popup .button.save {
+    margin-right: 8px;
+}
+
+.windows-desktops-popup .button:hover {
+    background-color: rgba(255, 255, 255, 0.15);
 }
