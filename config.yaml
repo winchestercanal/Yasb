@@ -24,18 +24,16 @@ bars:
     screens: ['*']  # '*' = todas as telas
     # screens: ['DELL P2419H (1)']  # Exemplo para tela específica | use o comando "yasbc monitor-information" no terminal para obter os nomes de suas telas
     class_name: "yasb-bar"  # Nome da classe CSS para estilização customizada
+    style: "adaptive"
 
     # --- POSICIONAMENTO ---
     alignment:
       position: "top"   # Posições: "top", "bottom"
-      center: false     # true = centraliza conteúdo, false = distribui nas 3 áreas
-
     # --- EFEITOS VISUAIS (Windows 11) ---
     blur_effect:
       enabled: false     # Ativa efeito de desfoque na barra
-      acrylic: true      # Efeito acrílico (translúcido)
-      dark_mode: false   # Adiciona mais sombra ao desfoque
-      round_corners: false  # Cantos arredondados
+      dark_mode: true   # Adiciona mais sombra ao desfoque
+      round_corners: true  # Cantos arredondados
       border_color: System  # Opções: "System", "None", ou cor HEX (#RRGGBB)
 
     # --- COMPORTAMENTO DA JANELA ---
@@ -50,7 +48,7 @@ bars:
 
     # --- ESPAÇAMENTO INTERNO ---
     padding:
-      top: 4      # Espaço superior
+      top: 0      # Espaço superior
       left: 0     # Espaço esquerdo
       bottom: 4   # Espaço inferior
       right: 0    # Espaço direito
@@ -61,12 +59,12 @@ bars:
       left:   # Widgets alinhados à esquerda
         [
           "home",                      # Menu de início com atalhos, algumas pastas vao exigir que voce configure o endereço manualmente para funcionar.
-          "toggle_theme",              # Alterna entre tema claro e escuro através de um script (precisa ajustar o endereço do script no código)
           "wallpapers",                # Gerenciador de papéis de parede
           "komorebi_control",          # Controles do Komorebi
           "komorebi_workspaces",       # Espaços de trabalho do Komorebi
           "komorebi_active_layout",    # Layout ativo do Komorebi
-          "active_window",              # Título da janela ativa
+          "active_window",             # Título da janela ativa
+          "audio_visualizer",          # Visualizador de áudio nativo do Windows
         ] 
       center: # Widgets centralizados
         [
@@ -75,23 +73,88 @@ bars:
          "clock",          # Relógio e calendário
          "open_meteo",     # Previsão do tempo usando a API Open-Meteo (sem necessidade de chave de API)
          "update_check",   # Exibe atualizaçoes pendentes de apps e do Windows
-         "pomodoro",       # Timer Pomodoro
-         "launchpad",      # Launcher de aplicativos
-         "quick_launch",   # Launcher de busca rápida
         ]
       right:  # Widgets alinhados à direita
         [
           "obs",                   # Status do OBS Studio
-          "cpu",                   # Monitor de uso da CPU
-          "memory",                # Monitor de uso da memória RAM
-          "gpu",                   # Monitor de uso da GPU
-          "ai_chat",               # Chat integrado com IA
+          "grouper",               # Monitor de uso da CPU
           "bluetooth",             # Status e controle Bluetooth
           "volume",                # Controle de volume
           "whkd",                  # Atalhos de teclado ativos
-          "notifications",         # Central de notificações
-          "power_menu",            # Menu de energia
+          "control_center",        # Central de controle do Windows
         ]
+
+# =====================================================================
+#                     CATÁLOGO DE WIDGETS DISPONÍVEIS
+# =====================================================================
+# Para exibir um widget, adicione seu nome à lista left, center ou right.
+# Os widgets de um Grouper já aparecem dentro dele; evite duplicá-los.
+#
+# - active_window: Mostra informações sobre a janela atualmente ativa
+# - apps: Atalhos personalizados para aplicativos e ações do sistema
+# - audio_visualizer: Visualizador nativo do áudio do Windows, sem processo externo
+# - battery: Indicador de bateria para notebooks
+# - bluetooth: Status e controle de dispositivos Bluetooth
+# - brightness: Controle de brilho da tela (notebooks)
+# - cava: Visualizador de áudio (estilo equalizer)
+# - claude_usage: Mostra o consumo dos limites de 5 horas e 7 dias do Claude Code. Requer login no Claude Code
+# - clock: Relógio com calendário, fusos horários e alarmes
+# - codex_usage: Mostra os limites restantes do Codex; requer Codex CLI instalado e login com uma conta ChatGPT
+# - control_center: Central de controle com ações rápidas, brilho, volume, microfone, mídia e energia
+# - copilot: Monitor de uso do GitHub Copilot
+# - cpu: Indicador de uso da CPU
+# - disk: Monitor de espaço em disco
+# - disk_group: Mostra um grupo de unidades de disco com espaço usado e disponível
+# - dnd: Ativa e controla o modo Não Perturbe do Windows
+# - github: Notificações do GitHub
+# - glazewm-grouper: Agrupa widgets relacionados ao GlazeWM
+# - glazewm_binding_mode: Exibe e alterna os modos de atalhos do GlazeWM
+# - glazewm_tiling_direction: Exibe e alterna a divisão horizontal ou vertical das janelas do GlazeWM
+# - glazewm_workspaces: Exibe e permite alternar os espaços de trabalho do GlazeWM
+# - glucose_monitor: Mostra dados de um servidor Nightscout. Configure host e a variável YASB_CGM_SECRET antes de ativar
+# - gpu: Monitor de uso da GPU (NVIDIA/AMD)
+# - grouper: Agrupa múltiplos widgets com opção de colapsar
+# - home: Menu de início com atalhos para pastas e opções do sistema
+# - ip_info: Mostra informações de IP e localização via API
+# - komorebi_active_layout: Exibe e controla o layout ativo do Komorebi
+# - komorebi_control: Controles para iniciar, reiniciar ou parar o Komorebi
+# - komorebi_stack: Transfere o controle e visualização de janelas empilhadas (abas) do Komorebi para a barra
+# - komorebi_workspaces: Exibe e permite alternar os espaços de trabalho do Komorebi
+# - language: Indicador de idioma/layout do teclado
+# - launchpad: Lançador de aplicativos com lista de atalhos
+# - libre_gpu: Monitora os sensores da GPU via LibreHardwareMonitor
+# - libre_monitor_widget: Monitora sensores de hardware configuráveis via LibreHardwareMonitor
+# - media: Controle de reprodução de mídia (Spotify, YouTube, etc)
+# - media_lite: Controle de reprodução de mídia com miniatura da capa e menu de mídia
+# - memory: Monitor de uso de memória RAM
+# - microphone: Status e controle do microfone
+# - notes: Notas rápidas persistentes
+# - notifications: Central de notificações do Windows
+# - obs: Status de gravação do OBS Studio
+# - open_meteo: Previsão do tempo usando a API Open-Meteo (sem necessidade de chave de API)
+# - pomodoro: Temporizador de foco e pausas com a técnica Pomodoro
+# - power_menu: Menu de opções de energia (desligar, reiniciar, etc) em tela cheia
+# - power_plan: Mostra e altera o plano de energia do Windows
+# - quick_launch: Busca rápida de aplicativos, arquivos, cálculos, área de transferência e outros provedores
+# - recycle_bin: Monitor da lixeira do Windows
+# - server_monitor: Monitor de status de servidores/sites
+# - systray: Bandeja do sistema com ícones de aplicativos
+# - taskbar: Barra de tarefas com janelas abertas
+# - todo: Lista persistente de tarefas com itens pendentes e concluídos
+# - toggle_theme: Alterna entre os temas claro e escuro usando o script configurado
+# - traffic: Monitor de tráfego de rede com velocidades de download e upload
+# - update_check: Verificador de atualizações (Windows Update e Winget)
+# - volume: Controle de volume do sistema e por aplicativo
+# - vscode: Abre pastas e arquivos recentes do Visual Studio Code; requer o editor e seu comando no PATH
+# - wallpapers: Gerenciador de papéis de parede com galeria
+# - weather: Previsão do tempo com card detalhado
+# - whkd: Widget para mostrar atalhos de teclado do Komorebi (WHKD)
+# - wifi: Status e controle de conexão WiFi
+# - win_button: Botão do menu iniciar do Windows
+# - window_controls: Controle de janelas ativas (Minimizar / Maximizar / Fechar)
+# - window_switcher: Widget para alternar entre janelas abertas
+# - windows_workspaces: Desktops virtuais nativos do Windows
+# =====================================================================
 
 # =====================================================================
 #                              TASKBAR                                 
@@ -122,7 +185,6 @@ bars:
       auto_hide: false # Ativa o recurso de auto-ocultar a barra (aparece ao mover o mouse para a borda da tela)
     blur_effect:
       enabled: false
-      acrylic: true
       dark_mode: false
       round_corners: false
       round_corners_type: normal
@@ -154,74 +216,25 @@ widgets:
     type: "yasb.active_window.ActiveWindowWidget"
     options:
       # Variáveis disponíveis: {win[title]}, {win[class_name]}, {win[process][name]}, {win[hwnd]}
-      label: "{win[title]}"  # Texto principal (título da janela)
+      label: "{win[app_name]}"  # Texto principal (título da janela)
       label_alt: "[class_name='{win[class_name]}' exe='{win[process][name]}' hwnd={win[hwnd]}]"  # Texto alternativo
       label_no_window: "Inscreva-se em www.youtube.com/WINchesterCanal"  # Texto quando nenhuma janela está ativa
       label_icon: true         # Mostra ícone do aplicativo
-      label_icon_size: 16      # Tamanho do ícone em pixels
-      max_length: 15           # Comprimento máximo do texto
-      max_length_ellipsis: "..."  # Texto para truncamento
       monitor_exclusive: false # true = mostra apenas janelas do monitor atual
-      label_shadow:            # Sombra do texto
-        enabled: false
-        color: "black"
-        radius: 3
-        offset: [1, 1]
-
-  # --- AI CHAT WIDGET ---
-  # Chat integrado com modelos de IA (Ollama, OpenAI)
-  ai_chat:
-    type: "yasb.ai_chat.AiChatWidget"
-    options:
-      label: "<span>\uF086</span>"  # Ícone do widget (FontAwesome)
-      chat:
-        blur: true              # Efeito de desfoque no fundo
-        round_corners: true     # Cantos arredondados
-        round_corners_type: "normal"  # Tipos: "normal", "small"
-        border_color: "system"  # "system", "none", ou cor HEX
-        alignment: "center"     # Alinhamento: "left", "center", "right"
-        direction: "down"       # Direção do popup: "up", "down"
-        offset_left: 0         # Deslocamento horizontal
-        offset_top: 6          # Deslocamento vertical
-      icons:
-        send: "\uF1D8"         # Ícone de enviar mensagem
-        stop: "\uF04D"         # Ícone de parar geração
-        clear: "\uF1F8"        # Ícone de limpar chat
-        assistant: "\uDB81\uDE74"  # Ícone do assistente
-      notification_dot:
-        enabled: false         # Indicador de notificação
-        corner: "top_right"    # Posição: "top_left", "top_right", "bottom_left", "bottom_right"
-        color: "red"
-        margin: [0, 2]
-      callbacks:
-        on_left: "toggle_chat" # Ação ao clicar
-      providers:  # Configure múltiplos provedores de IA
-        - provider: "Ollama"
-          api_endpoint: "http://localhost:11434/v1"
-          credential: "ollama"
-          models:
-            - name: "gemma3:1b"
-              label: "Gemma3"
-        - provider: "OpenAI"
-          api_endpoint: "https://api.openai.com/v1"
-          credential: "dsfsfsfs65sd6f56sd5f6"  # Sua chave API
-          models:
-            - name: "gpt-3.5-turbo"
-              label: "GPT3.5 Turbo"
-            - name: "gpt-4"
-              label: "GPT4"
-              temperature: 0.3    # Criatividade (0.0-2.0)
-              top_p: 0.95        # Diversidade de resposta
-              max_tokens: 4096   # Tamanho máximo da resposta
-              instructions: "C:/Users/amnweb/Desktop/custom_gpt_chatmode.md" # Instruções customizadas
-        - provider: "Google"
-          api_endpoint: "https://generativelanguage.googleapis.com/v1beta"
-          credential: "$env:GEMINI_API_KEY"  # Variável de ambiente com a chave API (Dica, a Google fornece API gratuitas para alguns modelos em https://aistudio.google.com/app/api-keys)
-          models:
-            - name: "gemini-2.5-flash-lite"
-              label: "Gemini 2.5 Flash Lite"
-              temperature: 0.7
-              max_tokens: 8192
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      label_icon_size: 16  # Tamanho do ícone do aplicativo em pixels
+      max_length: null  # Limite de caracteres exibidos
+      max_length_ellipsis: "..."  # Texto usado ao abreviar o rótulo
+      rewrite: []  # Regras opcionais para substituir partes do título
+      ignore_window:  # Janelas que devem ser ignoradas
+        classes: []  # Classes de janela ignoradas
+        processes: []  # Nomes dos processos ignorados
+        titles: []  # Títulos de janela ignorados
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
+      callbacks:  # Ações ao clicar com os botões do mouse
+        on_left: "toggle_label"  # Clique esquerdo
+        on_middle: "do_nothing"  # Clique do meio
+        on_right: "do_nothing"  # Clique direito
 
   # --- APPLICATIONS WIDGET ---
   # Atalhos personalizados para aplicativos e ações do sistema
@@ -229,11 +242,6 @@ widgets:
     type: "yasb.applications.ApplicationsWidget"
     options:
       label: "{data}"
-      container_padding:
-        top: 0
-        left: 8
-        bottom: 0
-        right: 8
       app_list:  # Lista de atalhos
         # Formato: {icon: "ícone", launch: "comando ou ação"}
         # Ações especiais: "quick_settings", "notification_center", "search", "widget", "launcher"
@@ -241,11 +249,48 @@ widgets:
         - {icon: "\uDB81\uDEB0", launch: "start cmd.exe /k winget upgrade --all"}  # Atualizar tudo
         - {icon: "\uEAD3", launch: "komorebic start --whkd"}  # Iniciar Komorebi
         - {icon: "\uEAD7", launch: "komorebic stop --whkd"}   # Parar Komorebi
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      image_icon_size: 14  # Tamanho dos ícones de imagem em pixels
+      tooltip: true  # Informação exibida ao passar o mouse
+  
+
+  # --- AUDIO VISUALIZER WIDGET ---
+  # Visualizador nativo do áudio do Windows, sem processo externo.
+  # Para exibir, adicione "audio_visualizer" a uma lista left, center ou right da barra.
+  audio_visualizer:
+    type: "yasb.audio_visualizer.AudioVisualizerWidget"
+    options:
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      style: "bars"  # Estilo do visualizador: bars, waves ou dots
+      height: 14  # Altura da área de desenho em pixels
+      smoothness: 55  # Suavização dos movimentos de 0 a 100
+      sensitivity: 50  # Sensibilidade do visualizador
+      auto_gain: true  # Ajusta automaticamente a sensibilidade
+      framerate: 60  # Limite de quadros por segundo
+      freq_min: 50  # Frequência mínima em Hz
+      freq_max: 12000  # Frequência máxima em Hz
+      hide_idle: false  # Oculta o visualizador quando não há áudio
+      hide_idle_after: 2000  # Tempo sem áudio antes de ocultar, em milissegundos
+      channels: "mono"  # Canais de áudio: mono ou stereo
+      mono_option: "average"  # Origem do áudio mono: average, left ou right
+      reverse: false  # Inverte a ordem das frequências
+      mirror: false  # Espelha o desenho a partir do centro vertical
+      edge_fade: 0  # Suavização nas bordas em pixels
+      bars:  # Configurações do desenho em barras
+        count: 24  # Quantidade de elementos visuais
+        width: 2  # Largura em pixels
+        gap: 4  # Espaçamento em pixels
+      waves:  # Configurações do desenho em ondas
+        width: 80  # Largura em pixels
+      dots:  # Configurações do desenho em pontos
+        count: 24  # Quantidade de elementos visuais
+        size: 2  # Tamanho em pixels
+        gap: 4  # Espaçamento em pixels
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
+      callbacks:  # Ações ao clicar com os botões do mouse
+        on_left: "do_nothing"  # Clique esquerdo
+        on_middle: "do_nothing"  # Clique do meio
+        on_right: "do_nothing"  # Clique direito
 
   # --- BATTERY WIDGET ---
   # Indicador de bateria para notebooks
@@ -275,11 +320,24 @@ widgets:
         icon_medium: "\uF242"
         icon_high: "\uF241"
         icon_full: "\uF240"
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      time_remaining_unlimited_icon: "unlimited"  # Símbolo usado quando o tempo restante é ilimitado
+      progress_bar:  # Aparência e comportamento do indicador de progresso
+        enabled: false  # Ativa ou desativa este recurso
+        progress_type: "circular"  # Tipo: circular, linear_horizontal ou linear_vertical
+        size: 18  # Tamanho em pixels
+        thickness: 3  # Espessura em pixels
+        radius: 0  # Raio dos cantos em pixels
+        color: "#00C800"  # Cor principal; aceita hexadecimal
+        background_color: "#3C3C3C"  # Cor de fundo
+        position: "left"  # Posição do elemento
+        animation: true  # Animação das mudanças do indicador
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
+      callbacks:  # Ações ao clicar com os botões do mouse
+        on_left: "toggle_label"  # Clique esquerdo
+        on_middle: "do_nothing"  # Clique do meio
+        on_right: "do_nothing"  # Clique direito
+  
 
   # --- BLUETOOTH WIDGET ---
   # Status e controle de dispositivos Bluetooth
@@ -301,13 +359,58 @@ widgets:
         - name: "T5.0"
           alias: "\uF025"
       callbacks:
-        on_left: "toggle_label"
+        on_left: "toggle_menu"  # Clique esquerdo: abre ou fecha o menu de dispositivos Bluetooth
         on_right: "exec cmd.exe /c start ms-settings:bluetooth"  # Abre configurações
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
+        on_middle: "toggle_label"  # Clique do meio: alterna o texto do widget
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      tooltip: true  # Informação exibida ao passar o mouse
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
+      menu_config:  # Aparência e controles do menu de Bluetooth
+        blur: true  # Ativa o efeito de desfoque
+        round_corners: true  # Arredonda os cantos da janela
+        round_corners_type: "normal"  # Tipo de arredondamento: normal ou small
+        border_color: "System"  # Cor da borda: System, None ou uma cor hexadecimal
+        alignment: "center"  # Alinhamento horizontal: left, center ou right
+        direction: "down"  # Direção de abertura: up ou down
+        offset_top: 6  # Deslocamento vertical em pixels
+        offset_left: 0  # Deslocamento horizontal em pixels
+        labels:  # Ajuste de rótulos
+          connect: "Conectar"  # Ajuste de conectar
+          connected: "Conectado"  # Ajuste de conectado
+          connecting: "Conectando..."  # Ajuste de conectando
+          disconnect: "Desconectar"  # Ajuste de desconectar
+          disconnecting: "Desconectando..."  # Ajuste de desconectando
+          manage: "Gerenciar"  # Ajuste de gerenciar
+          more_settings: "Mais configura\u00e7\u00f5es de Bluetooth"  # Ajuste de mais configurações
+          new_devices: "Novos dispositivos"  # Título da lista de novos dispositivos
+          not_connected: "N\u00e3o conectado"  # Ajuste de não conectado
+          pair: "Parear"  # Ajuste de parear
+          power_off: "Desligado"  # Ícone para desligar o Bluetooth
+          power_on: "Ligado"  # Ícone para ligar o Bluetooth
+          title: "Bluetooth"  # Título exibido
+          your_devices: "Seus dispositivos"  # Título da lista de dispositivos conhecidos
+        device_icons:  # Ícones por tipo de dispositivo
+          battery:  # Ícone de bateria
+            empty: "\ueba0"  # Ajuste de vazio
+            full: "\uebaa"  # Ícone do estado completo
+            high: "\ueba8"  # Limite ou ícone do estado alto
+            low: "\ueba2"  # Limite ou ícone do estado baixo
+            medium: "\ueba5"  # Limite ou ícone do estado médio
+          camera: "\ue722"  # Ajuste de câmera
+          computer: "\ue950"  # Ajuste de computador
+          controller: "\ue7fc"  # Ajuste de controle
+          generic: "\ue702"  # Ajuste de genérico
+          headphones: "\ue7f6"  # Ajuste de fones de ouvido
+          headset: "\ue95b"  # Ajuste de fone com microfone
+          keyboard: "\ue765"  # Ajuste de teclado
+          laptop: "\ue7f8"  # Ajuste de notebook
+          mouse: "\ue962"  # Ajuste de mouse
+          phone: "\ue8ea"  # Ajuste de telefone
+          scan: "\ue72c"  # Ajuste de leitura
+          speaker: "\ue7f5"  # Ajuste de alto-falante
+          tablet: "\ue70a"  # Ajuste de tablet
+          watch: "\ue918"  # Ajuste de observar
+  
 
   # --- BRIGHTNESS WIDGET ---
   # Controle de brilho da tela (notebooks)
@@ -317,7 +420,6 @@ widgets:
       label: "<span>{icon}</span>"
       label_alt: "Brightness {percent}%"
       tooltip: true
-      hide_unsupported: true
       brightness_toggle_level: [0, 50, 100]  # Níveis de alternância ao clicar
       auto_light: false          # Ajuste automático dia/noite
       auto_light_icon: "\uDB80\uDCE1"
@@ -334,13 +436,29 @@ widgets:
         border_color: "System"
         alignment: "right"
         direction: "down"
+        offset_top: 6  # Deslocamento vertical em pixels
+        offset_left: 0  # Deslocamento horizontal em pixels
+        contrast_icon: "\ue7a1"  # Ícone do contraste
+        brightness_icon: "\ue706"  # Ícone do brilho
       callbacks:
         on_left: "toggle_label"
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
+        on_middle: "do_nothing"  # Clique do meio
+        on_right: "do_nothing"  # Clique direito
+      scroll_step: 1  # Quantidade alterada a cada passo da roda do mouse
+      invert_wheel: false  # Inverte o sentido da roda do mouse
+      ddc_poll_interval: 60  # Intervalo de consulta do brilho dos monitores DDC em segundos
+      progress_bar:  # Aparência e comportamento do indicador de progresso
+        enabled: false  # Ativa ou desativa este recurso
+        progress_type: "circular"  # Tipo: circular, linear_horizontal ou linear_vertical
+        size: 18  # Tamanho em pixels
+        thickness: 3  # Espessura em pixels
+        radius: 0  # Raio dos cantos em pixels
+        color: "#00C800"  # Cor principal; aceita hexadecimal
+        background_color: "#3C3C3C"  # Cor de fundo
+        position: "left"  # Posição do elemento
+        animation: true  # Animação das mudanças do indicador
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
+  
 
   # --- CAVA WIDGET ---
   # Visualizador de áudio (estilo equalizer)
@@ -364,6 +482,72 @@ widgets:
       bar_type: "bars"        # Tipo: "bars", "wave"
       framerate: 60           # Taxa de atualização (FPS)
       hide_empty: true        # Oculta quando não há áudio
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      source: "auto"  # Origem do áudio; auto ou vazio usa a seleção padrão do visualizador
+      output_bit_format: "16bit"  # Profundidade de bits da saída do Cava
+      orientation: "bottom"  # Orientação do visualizador
+      sleep_timer: 0  # Tempo de inatividade antes de suspender o Cava
+      sensitivity: 100  # Sensibilidade do visualizador
+      lower_cutoff_freq: 50  # Frequência mínima em Hz
+      higher_cutoff_freq: 10000  # Frequência máxima em Hz
+      noise_reduction: 77  # Redução de ruído do visualizador
+      channels: "stereo"  # Canais de áudio: mono ou stereo
+      mono_option: "average"  # Origem do áudio mono: average, left ou right
+      reverse: 0  # Inverte a ordem das frequências
+      waveform: 0  # Usa a forma de onda em vez do espectro
+      monstercat: 1  # Suavização do espectro no estilo Monstercat
+      waves: 0  # Configurações do desenho em ondas
+      edge_fade: 0  # Suavização nas bordas em pixels
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
+      callbacks:  # Ações ao clicar com os botões do mouse
+        on_left: "do_nothing"  # Clique esquerdo
+        on_middle: "do_nothing"  # Clique do meio
+        on_right: "reload_cava"  # Clique direito
+
+  # --- CLAUDE USAGE WIDGET ---
+  # Mostra o consumo dos limites de 5 horas e 7 dias do Claude Code. Requer login no Claude Code.
+  # Para exibir, adicione "claude_usage" a uma lista left, center ou right da barra.
+  claude_usage:
+    type: "yasb.claude_usage.ClaudeUsageWidget"
+    options:
+      label: "Claude {five_hour}%"  # Texto principal; aceita as variáveis do widget
+      label_alt: "Claude {seven_day}% semanal"  # Texto alternativo ao alternar o rótulo
+      update_interval: 60  # Intervalo entre atualizações; consulte a unidade na documentação do widget
+      cache_ttl: 120  # Tempo de validade do cache em segundos
+      token_history:  # Histórico local de tokens; ativação opcional
+        enabled: false  # Ativa ou desativa este recurso
+        default_period: "today"  # Período inicial: session, today, week, month ou year
+        show_graph: false  # Exibe o gráfico de consumo
+        show_graph_grid: false  # Exibe a grade do gráfico
+        show_models: false  # Exibe a distribuição por modelo
+        week_starts_on: "monday"  # Primeiro dia da semana: monday ou sunday
+        count_cache_read: true  # Inclui tokens lidos do cache no total
+        scan_interval: 120  # Intervalo de leitura dos registros locais em segundos
+      status:  # Indicador opcional de disponibilidade do serviço
+        enabled: false  # Ativa ou desativa este recurso
+        show_in_menu: true  # Exibe o indicador de estado no menu
+        icon: "\u25cf"  # Ícone exibido
+        poll_interval: 300  # Intervalo de consulta do serviço em segundos
+      five_hour_reset_format: "relative"  # Formato da renovação de 5 horas: relative ou absolute
+      seven_day_reset_format: "absolute"  # Formato da renovação semanal: relative ou absolute
+      reset_show_date: true  # Inclui a data na renovação exibida
+      tooltip: true  # Informação exibida ao passar o mouse
+      callbacks:  # Ações ao clicar com os botões do mouse
+        on_left: "toggle_menu"  # Clique esquerdo
+        on_middle: "do_nothing"  # Clique do meio
+        on_right: "toggle_label"  # Clique direito
+      menu:  # Aparência e posicionamento do menu
+        blur: true  # Ativa o efeito de desfoque
+        round_corners: true  # Arredonda os cantos da janela
+        round_corners_type: "normal"  # Tipo de arredondamento: normal ou small
+        border_color: "System"  # Cor da borda: System, None ou uma cor hexadecimal
+        alignment: "right"  # Alinhamento horizontal: left, center ou right
+        direction: "down"  # Direção de abertura: up ou down
+        offset_top: 6  # Deslocamento vertical em pixels
+        offset_left: 0  # Deslocamento horizontal em pixels
+        pin_icon: "\ue718"  # Ícone para fixar a janela
+        unpin_icon: "\ue77a"  # Ícone para desafixar a janela
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- CLOCK WIDGET ---
   # Relógio com calendário, fusos horários e alarmes
@@ -401,26 +585,189 @@ widgets:
         border_color: 'System'
         alignment: 'center'
         direction: 'down'
-        distance: 6
         show_holidays: true      # Mostra feriados
         show_week_numbers: true   # Mostra número da semana
         country_code: "BR"        # Código do país para feriados
         holiday_color: "#FF6464"  # Cor dos feriados
         extended: true           # Calendário expandido
+        offset_top: 6  # Deslocamento vertical em pixels
+        offset_left: 0  # Deslocamento horizontal em pixels
+        subdivision: null  # Subdivisão regional usada no calendário de feriados
+        show_years: false  # Exibe a seleção de anos no calendário
       callbacks:
         on_left: "toggle_calendar"
         on_middle: "next_timezone"
         on_right: "toggle_label"
-      container_padding:
-        top: 0
-        left: 0
-        bottom: 0
-        right: 0
-      label_shadow:
-        enabled: false
-        color: "black"
-        radius: 3
-        offset: [1, 1]
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      tooltip: true  # Informação exibida ao passar o mouse
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
+
+  # --- CODEX USAGE WIDGET ---
+  # Mostra os limites restantes do Codex; requer Codex CLI instalado e login com uma conta ChatGPT.
+  # Para exibir, adicione "codex_usage" a uma lista left, center ou right da barra.
+  codex_usage:
+    type: "yasb.codex_usage.CodexUsageWidget"
+    options:
+      label: "Codex {primary_remaining}% restante"  # Texto principal; aceita as variáveis do widget
+      label_alt: "Codex {secondary_window}: {secondary_remaining}% restante"  # Texto alternativo ao alternar o rótulo
+      codex_path: "codex"  # Comando ou caminho completo do executável do Codex CLI
+      update_interval: 60  # Intervalo entre atualizações; consulte a unidade na documentação do widget
+      cache_ttl: 120  # Tempo de validade do cache em segundos
+      timeout: 15.0  # Tempo limite de resposta em segundos
+      tooltip: true  # Informação exibida ao passar o mouse
+      show_token_usage: true  # Inclui o histórico local de uso de tokens
+      stale_icon: "\u26a0"  # Ícone de aviso quando os dados estão desatualizados
+      progress_bar:  # Aparência e comportamento do indicador de progresso
+        enabled: true  # Ativa ou desativa este recurso
+        progress_type: "linear_horizontal"  # Tipo: circular, linear_horizontal ou linear_vertical
+        size: 36  # Tamanho em pixels
+        thickness: 6  # Espessura em pixels
+        radius: 3  # Raio dos cantos em pixels
+        color: "#4caf50"  # Cor principal; aceita hexadecimal
+        background_color: "#3c3c3c"  # Cor de fundo
+        position: "left"  # Posição do elemento
+        animation: true  # Animação das mudanças do indicador
+      callbacks:  # Ações ao clicar com os botões do mouse
+        on_left: "toggle_menu"  # Clique esquerdo
+        on_middle: "refresh"  # Clique do meio
+        on_right: "toggle_label"  # Clique direito
+      menu:  # Aparência e posicionamento do menu
+        blur: true  # Ativa o efeito de desfoque
+        round_corners: true  # Arredonda os cantos da janela
+        round_corners_type: "normal"  # Tipo de arredondamento: normal ou small
+        border_color: "System"  # Cor da borda: System, None ou uma cor hexadecimal
+        alignment: "right"  # Alinhamento horizontal: left, center ou right
+        direction: "down"  # Direção de abertura: up ou down
+        offset_top: 6  # Deslocamento vertical em pixels
+        offset_left: 0  # Deslocamento horizontal em pixels
+        show_overview: true  # Exibe o resumo de uso
+        show_models: true  # Exibe a distribuição por modelo
+        show_activity: true  # Exibe a atividade local
+        show_resets: true  # Exibe os horários de renovação dos limites
+        show_details: true  # Exibe os detalhes da conta e dos limites
+        refresh_icon: "\ue72c"  # Ícone do botão de atualizar
+        previous_page_icon: "\ue76b"  # Ícone da página anterior
+        next_page_icon: "\ue76c"  # Ícone da próxima página
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
+
+# --- CONTROL CENTER WIDGET ---
+# Central de controle com ações rápidas, controles de brilho/volume/microfone,
+  # reprodução de mídia e opções de energia
+  control_center:
+    type: "yasb.control_center.ControlCenterWidget"
+    options:
+      label: "<span>\ue7e8</span>"  # Ícone da central de controle (Segoe Fluent Icons / Segoe MDL2 Assets)
+      tooltip: true                 # Exibe informações ao passar o mouse
+
+      # Ordem das seções exibidas dentro da central de controle
+      sections_order:
+        - "system_controls"
+        - "quick_actions"
+        - "sliders"
+        - "power"
+        - "media"
+
+      # --- JANELA DA CENTRAL ---
+      popup:
+        alignment: "center"            # Alinhamento horizontal do menu
+        direction: "down"              # Direção em que o menu será aberto
+        border_color: System           # Cor da borda: "System" usa a cor do sistema
+        round_corners: true             # Arredonda os cantos do menu
+        round_corners_type: normal      # Tipo de arredondamento
+        offset_top: 8                  # Distância entre o widget e o menu (px)
+        blur: true  # Ativa o efeito de desfoque
+        offset_left: 0  # Deslocamento horizontal em pixels
+
+      # --- CONTROLES DO SISTEMA ---
+      sections:
+        system_controls:
+          profile_image_size: 28       # Tamanho da imagem do perfil (px)
+          power_icon: "\uE7E8"          # Ícone do botão de energia
+          lock_icon: "\uE72E"           # Ícone do botão de bloqueio
+          settings_icon: "\uE713"       # Ícone do botão de configurações
+          show: true  # Ajuste de exibição
+
+        # --- AÇÕES RÁPIDAS ---
+        quick_actions:
+          show: true                   # Exibe a seção de ações rápidas
+          columns: 3                   # Número de colunas dos botões
+          label_position: "default"    # Posição do texto dos botões
+          actions:
+            - id: "toggle_dnd"
+              label: "N\u00e3o perturbe"
+              icon: "\uf285"
+
+            - id: "toggle_mute"
+              label: "Silenciar \u00e1udio"
+              icon: "\ue74f"
+
+            - id: "toggle_mic_mute"
+              label: "Silenciar microfone"
+              icon: "\ue720"  # Ícone de microfone compatível com Segoe
+
+            - id: "screenshot"
+              label: "Captura de tela"
+              icon: "\ue91b"
+
+            - id: "touch_keyboard"
+              label: "Teclado virtual"
+              icon: "\uE765"
+
+            - id: "toggle_theme"
+              label: "Tema escuro"
+              icon: "\uE708"
+
+        # --- CONTROLES DESLIZANTES ---
+        sliders:
+          show: true                  # Exibe a seção de controles deslizantes
+
+          # Controle de brilho da tela
+          brightness:
+            show_slider: true
+            icon: "\uE706"
+            show_source_selector: true
+            source_selector_icon: "\uE972"
+
+          # Controle do volume do sistema
+          volume:
+            show_slider: true
+            icon: "\uE767"
+            show_source_selector: true
+            source_selector_icon: "\uE972"
+
+          # Controle do volume do microfone
+          microphone:
+            show_slider: true
+            icon: "\uE720"
+            show_source_selector: true
+            source_selector_icon: "\uE972"
+
+        # --- CONTROLES DE MÍDIA ---
+        media:
+          show: true
+          thumbnail_size: 36         # Tamanho da miniatura da mídia (px)
+          thumbnail_radius: 4        # Arredondamento da miniatura (px)
+          icons:
+            prev_track: "\ue892"  # Faixa anterior
+            next_track: "\ue893"  # Próxima faixa
+            play: "\ue768"  # Reproduzir
+            pause: "\ue769"  # Pausar
+
+        # --- CONTROLES DE ENERGIA ---
+        power:
+          show: true
+          power_plan_title: "Plano de energia"
+          power_mode_title: "Modo de energia"
+          button_menu_icon: "\ue76c"  # Ícone do menu de opções de energia
+
+      # --- AÇÕES DO WIDGET ---
+      callbacks:
+        on_left: "toggle_menu"        # Clique esquerdo: abre/fecha a central de controle
+        on_middle: "do_nothing"  # Clique do meio
+        on_right: "do_nothing"  # Clique direito
+      label_alt: "<span>\ue90a</span>"  # Texto alternativo ao alternar o rótulo
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- COPILOT WIDGET ---
   # Monitor de uso do GitHub Copilot
@@ -449,11 +796,11 @@ widgets:
         offset_top: 6                          # Deslocamento vertical em pixels
         offset_left: 0                         # Deslocamento horizontal em pixels
         chart: true                            # Exibe gráfico de uso no popup
-      animation:                               # Animações do widget
-        enabled: true                          # Ativa/desativa animações
-        type: "fadeInOut"                      # Tipo de animação: "fadeInOut", "slide", etc
-        duration: 200                          # Duração da animação em milissegundos
-
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
+      callbacks:  # Ações ao clicar com os botões do mouse
+        on_left: "toggle_popup"  # Clique esquerdo
+        on_middle: "do_nothing"  # Clique do meio
+        on_right: "toggle_label"  # Clique direito
 
   # --- CPU WIDGET ---
   # Indicador de uso da CPU
@@ -482,16 +829,34 @@ widgets:
         on_left: "toggle_menu" # Exibe menu com detalhes da CPU
         on_right: "toggle_label" # Alterna entre label principal e alternativo
         on_middle: "exec cmd /c Taskmgr" # Abre o Gerenciador de Tarefas do Windows
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
       menu:
         enabled: true # Habilita menu popup com gráfico de uso detalhado
+        alignment: "center"
         show_graph: true # Exibe gráfico de uso da CPU
         show_graph_grid: true # Exibe grade no gráfico
         graph_history_size: 60 # Número de pontos no gráfico (ex: 60 para 2 minutos com update_interval de 2000ms)
+        blur: true  # Ativa o efeito de desfoque
+        round_corners: true  # Arredonda os cantos da janela
+        round_corners_type: "normal"  # Tipo de arredondamento: normal ou small
+        border_color: "System"  # Cor da borda: System, None ou uma cor hexadecimal
+        direction: "down"  # Direção de abertura: up ou down
+        offset_top: 6  # Deslocamento vertical em pixels
+        offset_left: 0  # Deslocamento horizontal em pixels
+        pin_icon: "\ue718"  # Ícone para fixar a janela
+        unpin_icon: "\ue77a"  # Ícone para desafixar a janela
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      hide_decimal: false  # Oculta as casas decimais
+      progress_bar:  # Aparência e comportamento do indicador de progresso
+        enabled: false  # Ativa ou desativa este recurso
+        progress_type: "circular"  # Tipo: circular, linear_horizontal ou linear_vertical
+        size: 18  # Tamanho em pixels
+        thickness: 3  # Espessura em pixels
+        radius: 0  # Raio dos cantos em pixels
+        color: "#00C800"  # Cor principal; aceita hexadecimal
+        background_color: "#3C3C3C"  # Cor de fundo
+        position: "left"  # Posição do elemento
+        animation: true  # Animação das mudanças do indicador
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- DISK WIDGET ---
   # Monitor de espaço em disco
@@ -512,19 +877,29 @@ widgets:
         border_color: "System"
         alignment: "right"
         direction: "down"
+        offset_top: 6  # Deslocamento vertical em pixels
+        offset_left: 0  # Deslocamento horizontal em pixels
       callbacks:
         on_left: "toggle_group" # Exibe o menu de discos
         on_middle: "toggle_label" # Alterna rótulo
         on_right: "exec explorer C:\\"  # Abre o Explorer na unidade C:
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
       disk_thresholds:
         low: 25
         medium: 50
         high: 90
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      decimal_display: 1  # Quantidade de casas decimais
+      progress_bar:  # Aparência e comportamento do indicador de progresso
+        enabled: false  # Ativa ou desativa este recurso
+        progress_type: "circular"  # Tipo: circular, linear_horizontal ou linear_vertical
+        size: 18  # Tamanho em pixels
+        thickness: 3  # Espessura em pixels
+        radius: 0  # Raio dos cantos em pixels
+        color: "#00C800"  # Cor principal; aceita hexadecimal
+        background_color: "#3C3C3C"  # Cor de fundo
+        position: "left"  # Posição do elemento
+        animation: true  # Animação das mudanças do indicador
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- DISK GROUP WIDGET ---
   # Versão agrupada do disk widget
@@ -542,23 +917,49 @@ widgets:
         border_color: "System"
         alignment: "right"
         direction: "down"
-        distance: 6
+        offset_top: 6  # Deslocamento vertical em pixels
+        offset_left: 0  # Deslocamento horizontal em pixels
       callbacks:
         on_left: "toggle_group"
+        on_middle: "do_nothing"  # Clique do meio
+        on_right: "do_nothing"  # Clique direito
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      volume_label: "C"  # Rótulo da unidade de disco
+      update_interval: 60  # Intervalo entre atualizações; consulte a unidade na documentação do widget
+      decimal_display: 1  # Quantidade de casas decimais
+      disk_thresholds:  # Limites de ocupação do disco
+        low: 25  # Limite ou ícone do estado baixo
+        medium: 50  # Limite ou ícone do estado médio
+        high: 90  # Limite ou ícone do estado alto
+      progress_bar:  # Aparência e comportamento do indicador de progresso
+        enabled: false  # Ativa ou desativa este recurso
+        progress_type: "circular"  # Tipo: circular, linear_horizontal ou linear_vertical
+        size: 18  # Tamanho em pixels
+        thickness: 3  # Espessura em pixels
+        radius: 0  # Raio dos cantos em pixels
+        color: "#00C800"  # Cor principal; aceita hexadecimal
+        background_color: "#3C3C3C"  # Cor de fundo
+        position: "left"  # Posição do elemento
+        animation: true  # Animação das mudanças do indicador
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
-  # --- GROUPER WIDGET ---
-  # Agrupa múltiplos widgets com opção de colapsar
-  grouper:
-    type: "yasb.grouper.GrouperWidget"
+# --- Do Not Disturb WIDGET ---
+  dnd:
+    type: "yasb.dnd.DndWidget"
     options:
-      class_name: "systeminfo-grouper"
-      widgets: ["memory", "disk_group", "battery"]
-      collapse_options:
-        enabled: true
-        exclude_widgets: ["battery"]  # Widgets que não serão colapsados
-        expanded_label: "\uF054"      # Ícone expandido
-        collapsed_label: "\uF053"     # Ícone colapsado
-        label_position: "right"       # Posição: "left", "right"
+      label: "{icon}"
+      label_alt: "{icon} {status}"
+      default_active_mode: "priority"
+      callbacks:
+        on_left: "toggle_status"
+        on_right: "cycle_status"
+        on_middle: "do_nothing"  # Clique do meio
+      icons:
+        disabled: "\uf0f3" # If you are looking for Segoe Fluent Icons, Windows 11 uses \uf285 for all states
+        priority: "\uf186" 
+        alarms: "\uf1f6" 
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      tooltip: true  # Informação exibida ao passar o mouse
 
   # --- GITHUB WIDGET ---
   # Notificações do GitHub
@@ -589,11 +990,48 @@ widgets:
         direction: "down"
         show_categories: false  # Agrupa por tipo
         categories_order: ["PullRequest", "Issue", "CheckSuite", "Release", "Discussion"]
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
+        offset_top: 6  # Deslocamento vertical em pixels
+        offset_left: 0  # Deslocamento horizontal em pixels
+      tooltip: true  # Informação exibida ao passar o mouse
+      hide_empty: false  # Oculta o widget quando não há conteúdo
+      icons:  # Ícones usados pelos estados e controles
+        issue: "\uf41b"  # Ajuste de problema
+        issue_closed: "\uf41d"  # Ajuste de problema fechado
+        pull_request: "\uea64"  # Ajuste de integração solicitação
+        pull_request_closed: "\uebda"  # Ajuste de integração solicitação fechado
+        pull_request_merged: "\uf17f"  # Ajuste de integração solicitação integrado
+        pull_request_draft: "\uebdb"  # Ajuste de integração solicitação rascunho
+        release: "\uea84"  # Ajuste de versão
+        discussion: "\uf442"  # Ajuste de discussão
+        discussion_answered: "\uf4c0"  # Ajuste de discussão respondida
+        checksuite: "\uf418"  # Ícone de verificações automatizadas
+        default: "\uea84"  # Ajuste de padrão
+        github_logo: "\uea84"  # Ícone do GitHub
+        comment: "\uf41f"  # Ajuste de comentário
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
+
+  # --- GLAZEWM GROUPER ---
+  # Agrupa widgets relacionados ao GlazeWM
+  # Útil para organizar workspace + modo + janela ativa
+  glazewm-grouper:
+    type: "yasb.grouper.GrouperWidget"
+    options:
+      class_name: "glazewm-grouper"  # Nome da classe CSS
+      widgets: ["glazewm_workspaces", "glazewm_binding_mode", "active_window" # Título da janela ativa
+]
+      collapse_options:
+        enabled: false  # true = permite colapsar o grupo
+        exclude_widgets: []  # Widgets que continuam visíveis quando o grupo está recolhido
+        expanded_label: "\uf054"  # Ícone do grupo expandido
+        collapsed_label: "\uf053"  # Ícone do grupo recolhido
+        label_position: "right"  # Posição do botão: left ou right
+      hide_empty: false  # Oculta o widget quando não há conteúdo
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
+        # Se enabled: true, configure:
+        # exclude_widgets: ["glazewm_workspaces"]  # Widgets que não colapsam
+        # expanded_label: "\uf054"    # Ícone expandido
+        # collapsed_label: "\uf053"   # Ícone colapsado
+        # label_position: "right"     # Posição: "left", "right"
 
   # --- GLAZEWM WIDGETS ---
   # Widgets para o gerenciador de janelas GlazeWM
@@ -624,23 +1062,10 @@ widgets:
         on_left: "next_binding_mode"      # Cicla para próximo modo
         on_middle: "toggle_label"         # Alterna exibição
         on_right: "disable_binding_mode"  # Desativa modo atual (volta ao normal)
-
-  # --- GLAZEWM GROUPER ---
-  # Agrupa widgets relacionados ao GlazeWM
-  # Útil para organizar workspace + modo + janela ativa
-  glazewm-grouper:
-    type: "yasb.grouper.GrouperWidget"
-    options:
-      class_name: "glazewm-grouper"  # Nome da classe CSS
-      widgets: ["glazewm_workspaces", "glazewm_binding_mode", "active_window" # Título da janela ativa
-]
-      collapse_options:
-        enabled: false  # true = permite colapsar o grupo
-        # Se enabled: true, configure:
-        # exclude_widgets: ["glazewm_workspaces"]  # Widgets que não colapsam
-        # expanded_label: "\uf054"    # Ícone expandido
-        # collapsed_label: "\uf053"   # Ícone colapsado
-        # label_position: "right"     # Posição: "left", "right"
+      label: "<span>{icon}</span> {binding_mode}"  # Texto principal; aceita as variáveis do widget
+      label_alt: "<span>{icon}</span> Current mode: {binding_mode}"  # Texto alternativo ao alternar o rótulo
+      glazewm_server_uri: "ws://localhost:6123"  # Endereço do servidor WebSocket do GlazeWM
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- GLAZEWM TILING DIRECTION WIDGET ---
   # Mostra e altera a direção do tiling (horizontal/vertical)
@@ -650,15 +1075,11 @@ widgets:
     options:
       horizontal_label: "\uDB81\uDCE1"  # Ícone para tiling horizontal
       vertical_label: "\uDB81\uDCE2"    # Ícone para tiling vertical
+      glazewm_server_uri: "ws://localhost:6123"  # Endereço do servidor WebSocket do GlazeWM
       # Callback padrão ao clicar: alterna entre horizontal/vertical
       # callbacks:
       #   on_left: "toggle_direction"
       #   on_right: "do_nothing"
-      btn_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
 
   # --- GLAZEWM WORKSPACES WIDGET ---
   # Lista de workspaces (espaços de trabalho) do GlazeWM
@@ -667,14 +1088,8 @@ widgets:
     type: "glazewm.workspaces.GlazewmWorkspacesWidget"
     options:
       offline_label: "GlazeWM Offline"  # Texto quando GlazeWM não está rodando
-      hide_empty_workspaces: true       # Oculta workspaces sem janelas
       hide_if_offline: false            # Oculta widget se GlazeWM offline
       enable_scroll_switching: true     # Alterna workspace com scroll do mouse
-      btn_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
       # Ícones de aplicativos nas workspaces
       app_icons:
         enabled_populated: false  # Mostra ícones em workspaces com janelas
@@ -684,14 +1099,54 @@ widgets:
         hide_label: false        # Oculta label do workspace
         hide_duplicates: false   # Oculta ícones duplicados
         hide_floating: false     # Oculta ícones de janelas flutuantes
-      animation: false  # Animações ao trocar workspace
+        enabled_focused: null  # Exibe os ícones no espaço em foco
+      populated_label: null  # Rótulo do espaço de trabalho ocupado
+      empty_label: null  # Rótulo do espaço de trabalho vazio
+      active_populated_label: null  # Rótulo do espaço ativo e ocupado
+      active_empty_label: null  # Rótulo do espaço ativo e vazio
+      focused_populated_label: null  # Rótulo do espaço em foco e ocupado
+      focused_empty_label: null  # Rótulo do espaço em foco e vazio
+      monitor_exclusive: true  # Exibe somente os dados do monitor atual
+      glazewm_server_uri: "ws://localhost:6123"  # Endereço do servidor WebSocket do GlazeWM
+      reverse_scroll_direction: false  # Inverte a navegação pela roda do mouse
+
+  # --- GLUCOSE MONITOR WIDGET ---
+  # Mostra dados de um servidor Nightscout. Configure host e a variável YASB_CGM_SECRET antes de ativar.
+  # Para exibir, adicione "glucose_monitor" a uma lista left, center ou right da barra.
+  glucose_monitor:
+    type: "yasb.glucose_monitor.GlucoseMonitor"
+    options:
+      label: "<span>\ud83e\ude78</span><span class='sgv'>{sgv}</span><span>{direction}</span>"  # Texto principal; aceita as variáveis do widget
+      error_label: "<span>\ud83e\ude78</span>{error_message}"  # Texto exibido quando ocorre um erro
+      tooltip: "({sgv_delta}) {delta_time_in_minutes} min"  # Informação exibida ao passar o mouse
+      host: ""  # Endereço do seu servidor Nightscout; configure antes de ativar
+      secret: "env"  # Use env para ler a chave do Nightscout de uma variável de ambiente
+      secret_env_name: "YASB_CGM_SECRET"  # Nome da variável de ambiente que contém a chave do Nightscout
+      direction_icons:  # Ícones de tendência da glicose
+        double_up: "\u2b06\ufe0f\u2b06\ufe0f"  # Ícone de subida rápida
+        single_up: "\u2b06\ufe0f"  # Ícone de subida
+        forty_five_up: "\u2197\ufe0f"  # Ícone de subida gradual
+        flat: "\u27a1\ufe0f"  # Ícone de tendência estável
+        forty_five_down: "\u2198\ufe0f"  # Ícone de descida gradual
+        single_down: "\u2b07\ufe0f"  # Ícone de descida
+        double_down: "\u2b07\ufe0f\u2b07\ufe0f"  # Ícone de descida rápida
+      sgv_measurement_units: "mmol/l"  # Unidade de glicose: mg/dl ou mmol/l
+      callbacks:  # Ações ao clicar com os botões do mouse
+        on_left: "open_cgm"  # Clique esquerdo
+        on_middle: "do_nothing"  # Clique do meio
+        on_right: "do_nothing"  # Clique direito
+      notify_on_error: false  # Envia uma notificação quando ocorre um erro
+      sgv_range:  # Faixa visual de referência; ajuste conforme sua configuração pessoal
+        min: 4.0  # Valor mínimo
+        max: 9.0  # Valor máximo
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- GPU WIDGET ---
   # Monitor de uso da GPU (NVIDIA/AMD)
   gpu:
     type: "yasb.gpu.GpuWidget"
     options:
-      label: "<span>\uF4BC</span> {info[utilization]}%"
+      label: "<span>\uF4BC</span> {info[temp]}\xB0C | <span>\uF4BC</span> {info[utilization]}%"
       label_alt: "<span>\uF4BC</span> {info[temp]}\xB0C | {info[mem_used]} / {info[mem_total]}"
       update_interval: 2000
       gpu_thresholds:
@@ -712,11 +1167,53 @@ widgets:
       callbacks:
         on_left: "toggle_menu" # Exibe menu com detalhes da GPU
         on_right: "toggle_label" # Alterna entre label principal e alternativo
+        on_middle: "do_nothing"  # Clique do meio
       menu:
         enabled: true
+        alignment: "center"
         show_graph: true
         show_graph_grid: true
         graph_history_size: 60
+        blur: true  # Ativa o efeito de desfoque
+        round_corners: true  # Arredonda os cantos da janela
+        round_corners_type: "normal"  # Tipo de arredondamento: normal ou small
+        border_color: "System"  # Cor da borda: System, None ou uma cor hexadecimal
+        direction: "down"  # Direção de abertura: up ou down
+        offset_top: 6  # Deslocamento vertical em pixels
+        offset_left: 0  # Deslocamento horizontal em pixels
+        pin_icon: "\ue718"  # Ícone para fixar a janela
+        unpin_icon: "\ue77a"  # Ícone para desafixar a janela
+      gpu_index: 0  # Índice da GPU monitorada, começando em 0
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      hide_decimal: false  # Oculta as casas decimais
+      units: "metric"  # Sistema de unidades exibidas
+      progress_bar:  # Aparência e comportamento do indicador de progresso
+        enabled: false  # Ativa ou desativa este recurso
+        progress_type: "circular"  # Tipo: circular, linear_horizontal ou linear_vertical
+        size: 18  # Tamanho em pixels
+        thickness: 3  # Espessura em pixels
+        radius: 0  # Raio dos cantos em pixels
+        color: "#00C800"  # Cor principal; aceita hexadecimal
+        background_color: "#3C3C3C"  # Cor de fundo
+        position: "left"  # Posição do elemento
+        animation: true  # Animação das mudanças do indicador
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
+
+  # --- GROUPER WIDGET ---
+  # Agrupa múltiplos widgets com opção de colapsar
+  grouper:
+    type: "yasb.grouper.GrouperWidget"
+    options:
+      class_name: "systeminfo-grouper"
+      widgets: ["cpu", "memory", "gpu"]
+      collapse_options:
+        enabled: true
+        exclude_widgets: ["cpu"]      # Widgets que não serão colapsados
+        expanded_label: "\uF054"      # Ícone expandido
+        collapsed_label: "\uF053"     # Ícone colapsado
+        label_position: "right"       # Posição: "left", "right"
+      hide_empty: false  # Oculta o widget quando não há conteúdo
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- HOME WIDGET ---
   # Menu de início com atalhos para pastas e opções do sistema
@@ -724,7 +1221,7 @@ widgets:
     type: "yasb.home.HomeWidget"
     options:
       # --- LABEL DO WIDGET ---
-      label: "<span>\uDB81\uDF17</span>"  # Ícone exibido na barra
+      label: "<span>\ue700</span>"  # Ícone de menu hambúrguer (Segoe Fluent Icons / Segoe MDL2 Assets)
       # Outros ícones sugeridos:
       # "\uf015" - Casa (FontAwesome)
       # "\uf07c" - Pasta
@@ -785,11 +1282,12 @@ widgets:
         system: "Configura\xE7\xF5es"  # Texto das configurações
         about: "Sobre o PC"                 # Texto do sobre
         task_manager: "Gerenciador"    # Texto do gerenciador de tarefas
-      label_shadow:
-        enabled: true    # Ativa sombra no ícone da barra
-        color: "black"   # Cor da sombra
-        radius: 3        # Raio do desfoque
-        offset: [1, 1]   # Deslocamento [x, y] em pixels
+        lock: "Lock"  # Botão de bloqueio da sessão
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
+      callbacks:  # Ações ao clicar com os botões do mouse
+        on_left: "toggle_menu"  # Clique esquerdo
+        on_middle: "do_nothing"  # Clique do meio
+        on_right: "do_nothing"  # Clique direito
 
   # --- IP INFO WIDGET ---
   # Mostra informações de IP e localização via API
@@ -807,19 +1305,20 @@ widgets:
         run_interval: 120000  # Atualização a cada 2 minutos
         return_format: "json"  # Formato: "json", "string"
         hide_empty: false
+        run_once: false  # Executa o comando uma única vez
+        use_shell: true  # Executa o comando por meio do interpretador do sistema
+        encoding: null  # Codificação usada para ler a saída do comando
       callbacks:
         on_left: "toggle_label"
         on_middle: "exec cmd /c ncpa.cpl"  # Abre configurações de rede
         on_right: "exec cmd /c start https://ipinfo.io/{data[ip]}"  # Abre no navegador
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
+      label_placeholder: "Loading..."  # Texto exibido enquanto os dados são carregados
+      label_max_length: null  # Limite de caracteres do rótulo
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
+  
 
   # --- KOMOREBI ACTIVE LAYOUT ---
   # Exibe e controla o layout ativo do Komorebi
-
   komorebi_active_layout:
     type: "komorebi.active_layout.ActiveLayoutWidget"
     options:
@@ -851,16 +1350,12 @@ widgets:
         round_corners: true
         round_corners_type: "normal"
         border_color: "System"
-        alignment: "left"
+        alignment: "center"
         direction: "down"
         offset_top: 6
         offset_left: 0
         show_layout_icons: true
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- KOMOREBI CONTROL ---
   # Controles para iniciar, reiniciar ou parar o Komorebi
@@ -881,15 +1376,16 @@ widgets:
         round_corners: true
         round_corners_type: 'normal'
         border_color: 'System'
-        alignment: 'left'
+        alignment: "center"
         direction: 'down'
         offset_top: 6
         offset_left: 0
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
+      config_path: null  # Caminho da configuração do Komorebi; vazio usa o padrão
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
+      callbacks:  # Ações ao clicar com os botões do mouse
+        on_left: "toggle_menu"  # Clique esquerdo
+        on_middle: "do_nothing"  # Clique do meio
+        on_right: "do_nothing"  # Clique direito
 
   # --- KOMOREBI STACK ---
   # Transfere o controle e visualização de janelas empilhadas (abas) do Komorebi para a barra
@@ -912,23 +1408,9 @@ widgets:
         - pattern: "^(.+?)\\.exe$"
           replacement: "\\1"
           case: "lower"  # "lower", "upper", "title"
-      animation: true
       enable_scroll_switching: true
-      container_shadow:
-        enabled: true
-        color: "#000000"
-        offset: [0, 1]
-        radius: 2
-      btn_shadow:
-        enabled: true
-        color: "#000000"
-        offset: [0, 1]
-        radius: 2
-      label_shadow:
-        enabled: true
-        color: "#000000"
-        offset: [0, 1]
-        radius: 2
+      max_length_overall: null  # Limite total de caracteres do grupo
+      reverse_scroll_direction: false  # Inverte a navegação pela roda do mouse
 
   # --- KOMOREBI WORKSPACES ---
   # Exibe e controla as workspaces do Komorebi
@@ -942,7 +1424,6 @@ widgets:
       label_zero_index: false  # true = começa do 0, false = começa do 1
       hide_empty_workspaces: false # Oculta workspaces sem janelas
       hide_if_offline: false
-      animation: true
       toggle_workspace_layer:
         enabled: false
         tiling_label: "Tiling"
@@ -955,11 +1436,10 @@ widgets:
         hide_label: false
         hide_duplicates: false
         hide_floating: false
-      btn_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
+      label_default_name: ""  # Nome padrão do espaço de trabalho
+      label_float_override: "Override Active"  # Rótulo para o modo flutuante
+      enable_scroll_switching: false  # Alterna os espaços de trabalho com a roda do mouse
+      reverse_scroll_direction: false  # Inverte a navegação pela roda do mouse
 
   # --- LANGUAGE WIDGET ---
   # Indicador de idioma/layout do teclado
@@ -985,11 +1465,8 @@ widgets:
         offset_left: 0
         show_layout_icon: true
         layout_icon: "\uF11C"
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- LAUNCHPAD WIDGET ---
   # Launcher de aplicativos estilo macOS
@@ -1015,16 +1492,14 @@ widgets:
       group_apps: false  # Agrupa aplicativos por categoria
       callbacks:
         on_left: "toggle_launchpad"
-      app_title_shadow:
-        enabled: true
-        color: "#00000090"
-        offset: [1, 1]
-        radius: 2
-      app_icon_shadow:
-        enabled: true
-        color: "#00000090"
-        offset: [0, 2]
-        radius: 8
+        on_middle: "do_nothing"  # Clique do meio
+        on_right: "do_nothing"  # Clique direito
+      shortcuts:  # Atalhos adicionais do lançador
+        add_app: "Ctrl+N"  # Ajuste de adicionar aplicativo
+        edit_app: "F2"  # Ajuste de editar aplicativo
+        show_context_menu: "Shift+F10"  # Exibe o menu de contexto
+        delete_app: "Delete"  # Ajuste de excluir aplicativo
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- LIBRE HARDWARE MONITOR WIDGETS ---
   # Monitores avançados de hardware via LibreHardwareMonitor
@@ -1062,11 +1537,6 @@ widgets:
         on_left: "toggle_label"
         on_middle: "do_nothing"
         on_right: "toggle_menu"
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
       libre_menu:  # Menu com múltiplos sensores
         blur: true
         round_corners: true
@@ -1094,6 +1564,14 @@ widgets:
             name: "CPU Fan"
           - id: "/lpc/it8689e/0/fan/1"
             name: "System Fan"
+      histogram_fixed_min: null  # Limite inferior fixo do histórico; null usa escala automática
+      histogram_fixed_max: null  # Limite superior fixo do histórico; null usa escala automática
+      sensor_id_error_label: "N/A"  # Texto exibido quando o sensor não é encontrado
+      connection_error_label: "Connection error..."  # Texto exibido quando a conexão falha
+      auth_error_label: "Auth Failed..."  # Texto exibido quando a autenticação falha
+      server_username: ""  # Usuário do servidor; vazio quando não há autenticação
+      server_password: ""  # Senha do servidor; vazio quando não há autenticação
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   libre_monitor_widget:
     type: "yasb.libre_monitor.LibreHardwareMonitorWidget"
@@ -1114,11 +1592,6 @@ widgets:
         on_left: "toggle_menu"
         on_middle: "do_nothing"
         on_right: "toggle_label"
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
       libre_menu:
         blur: true
         round_corners: true
@@ -1144,6 +1617,17 @@ widgets:
             name: "Nvidia Temp"
           - id: "/ram/data/1"
             name: "Ram"
+      history_size: 60  # Quantidade de amostras mantidas no histórico
+      histogram_fixed_min: null  # Limite inferior fixo do histórico; null usa escala automática
+      histogram_fixed_max: null  # Limite superior fixo do histórico; null usa escala automática
+      sensor_id_error_label: "N/A"  # Texto exibido quando o sensor não é encontrado
+      connection_error_label: "Connection error..."  # Texto exibido quando a conexão falha
+      auth_error_label: "Auth Failed..."  # Texto exibido quando a autenticação falha
+      server_host: "localhost"  # Endereço do servidor de sensores
+      server_port: 8085  # Porta do servidor de sensores
+      server_username: ""  # Usuário do servidor; vazio quando não há autenticação
+      server_password: ""  # Senha do servidor; vazio quando não há autenticação
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- MEDIA WIDGET ---
   # Controle de reprodução de mídia (Spotify, YouTube, etc)
@@ -1162,6 +1646,7 @@ widgets:
       max_field_size:  # Tamanho máximo dos campos
         label: 20
         label_alt: 30
+        truncate_whole_label: true  # Abrevia o rótulo completo em vez de cada campo
       show_thumbnail: true      # Mostra capa do álbum
       controls_only: false      # Mostra apenas controles
       controls_left: true       # Controles à esquerda
@@ -1189,6 +1674,7 @@ widgets:
         max_artist_size: 20
         show_source: true         # Mostra origem (Spotify, YouTube)
         show_volume_slider: false # Controle de volume por app
+        max_source_size: 16  # Limite de caracteres do nome da origem da mídia
       media_menu_icons:
         play: "\uE768"
         pause: "\uE769"
@@ -1205,26 +1691,72 @@ widgets:
         ease_slope: 20   # Parâmetros da curva de suavização
         ease_pos: 0.8    # https://www.desmos.com/calculator/j7eamemxzi
         ease_min: 0.5
+        always_scroll: false  # Mantém a rolagem do texto mesmo quando ele cabe no widget
       progress_bar:
         enabled: true       # Mostra barra de progresso da música
         alignment: "bottom"  # Alinhamento da barra: "top", "bottom" ou "center"
-      container_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
-      label_shadow:
-        enabled: false
-        color: "black"
-        radius: 3
-        offset: [1, 1]
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      symmetric_corner_radius: false  # Aplica o mesmo arredondamento aos cantos da miniatura
+      thumbnail_edge_fade: false  # Suaviza as bordas da miniatura
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
+
+# --- MEDIA LITE WIDGET ---
+# Controle de reprodução de mídia com miniatura da capa e menu de mídia
+  media_lite:
+    type: "yasb.media_lite.MediaWidget"
+    options:
+      show_thumbnail: true             # Mostra a miniatura/capa da mídia
+      show_title: true                 # Mostra o título da mídia
+      show_artist: true                # Mostra o nome do artista
+      scrolling_label: false           # Desativa rolagem automática do texto
+      image_size: 28                   # Tamanho da miniatura na barra (px)
+      thumbnail_corner_radius: 6       # Arredondamento da miniatura na barra (px)
+      max_label_size: 20               # Número máximo de caracteres exibidos no texto
+      tooltip: true                    # Exibe informações adicionais ao passar o mouse
+
+      # --- AÇÕES DO WIDGET ---
+      callbacks:
+        on_left: "toggle_media_menu"   # Clique esquerdo: abre/fecha o menu de mídia
+        on_middle: "do_nothing"         # Clique do meio: nenhuma ação
+        on_right: "do_nothing"          # Clique direito: nenhuma ação
+
+      # --- MENU DE MÍDIA ---
+      # Personalização da janela com controles e informações da mídia
+      media_menu:
+        blur: true                      # Aplica desfoque ao fundo do menu
+        artwork_background: true        # Usa a capa da mídia como fundo
+        artwork_blur_radius: 24         # Intensidade do desfoque da capa de fundo
+        artwork_dim: 0.55               # Escurecimento da imagem de fundo
+        round_corners: true             # Arredonda os cantos do menu
+        round_corners_type: "normal"     # Tipo de arredondamento: "normal", "small"
+        border_color: "System"           # Cor da borda: "System", "None" ou cor HEX
+        alignment: "center"             # Alinhamento horizontal: "left", "center", "right"
+        direction: "down"               # Direção do menu: "down" ou "up"
+        offset_top: 6                   # Distância vertical entre o widget e o menu (px)
+        offset_left: 0                  # Deslocamento horizontal do menu (px)
+        image_size: 160                 # Tamanho da capa dentro do menu (px)
+        thumbnail_corner_radius: 12     # Arredondamento da capa dentro do menu (px)
+
+        # --- ÍCONES DOS CONTROLES ---
+        icons:
+          play: "\ue768"                # Reproduzir
+          pause: "\ue769"               # Pausar
+          prev_track: "\ue892"          # Faixa anterior
+          next_track: "\ue893"          # Próxima faixa
+          shuffle: "\ue8b1"              # Reprodução aleatória
+          repeat: "\ue8ee"               # Repetir
+          repeat_one: "\ue8ed"           # Repetir faixa atual
+          volume: "\ue767"               # Volume
+          mute: "\ue994"                 # Silenciar
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- MEMORY WIDGET ---
   # Monitor de uso de memória RAM
   memory:
     type: "yasb.memory.MemoryWidget"
     options:
-      label: "<span>\uF4BC</span> {virtual_mem_free}/{virtual_mem_total}"
+      label: "<span>\uF4BC</span> {virtual_mem_used}/{virtual_mem_total}"
       label_alt: "<span>\uF4BC</span> VIRT: {virtual_mem_percent}% SWAP: {swap_mem_percent}%"
       update_interval: 5000
       callbacks:
@@ -1245,16 +1777,34 @@ widgets:
         - "\u2586" # 60%
         - "\u2587" # 70%
         - "\u2588" # 80%+
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
       menu:
         enabled: true
+        alignment: "center"
         show_graph: true
         show_graph_grid: true
         graph_history_size: 60
+        blur: true  # Ativa o efeito de desfoque
+        round_corners: true  # Arredonda os cantos da janela
+        round_corners_type: "normal"  # Tipo de arredondamento: normal ou small
+        border_color: "System"  # Cor da borda: System, None ou uma cor hexadecimal
+        direction: "down"  # Direção de abertura: up ou down
+        offset_top: 6  # Deslocamento vertical em pixels
+        offset_left: 0  # Deslocamento horizontal em pixels
+        pin_icon: "\ue718"  # Ícone para fixar a janela
+        unpin_icon: "\ue77a"  # Ícone para desafixar a janela
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      hide_decimal: false  # Oculta as casas decimais
+      progress_bar:  # Aparência e comportamento do indicador de progresso
+        enabled: false  # Ativa ou desativa este recurso
+        progress_type: "circular"  # Tipo: circular, linear_horizontal ou linear_vertical
+        size: 18  # Tamanho em pixels
+        thickness: 3  # Espessura em pixels
+        radius: 0  # Raio dos cantos em pixels
+        color: "#00C800"  # Cor principal; aceita hexadecimal
+        background_color: "#3C3C3C"  # Cor de fundo
+        position: "left"  # Posição do elemento
+        animation: true  # Animação das mudanças do indicador
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- MICROPHONE WIDGET ---
   # Status e controle do microfone
@@ -1273,36 +1823,29 @@ widgets:
         round_corners: true
         round_corners_type: "normal"
         border_color: "system"
-        alignment: "right"
+        alignment: "center"
         direction: "down"
+        offset_top: 6  # Deslocamento vertical em pixels
+        offset_left: 0  # Deslocamento horizontal em pixels
       callbacks:
         on_left: "toggle_mic_menu"
         on_middle: "toggle_label"
         on_right: "toggle_mute"
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
-
-  # --- NOTIFICATIONS WIDGET ---
-  # Central de notificações do Windows
-  notifications:
-    type: "yasb.notifications.NotificationsWidget"
-    options:
-      label: "<span>\uF476</span> {count}"
-      label_alt: "{count} notifications"
-      hide_empty: true  # Oculta quando não há notificações
-      tooltip: false
-      callbacks:
-        on_left: "toggle_notification"  # Abre central de notificações
-        on_right: "do_nothing"
-        on_middle: "toggle_label"
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      tooltip: true  # Informação exibida ao passar o mouse
+      scroll_step: 2  # Quantidade alterada a cada passo da roda do mouse
+      invert_wheel: false  # Inverte o sentido da roda do mouse
+      progress_bar:  # Aparência e comportamento do indicador de progresso
+        enabled: false  # Ativa ou desativa este recurso
+        progress_type: "circular"  # Tipo: circular, linear_horizontal ou linear_vertical
+        size: 18  # Tamanho em pixels
+        thickness: 3  # Espessura em pixels
+        radius: 0  # Raio dos cantos em pixels
+        color: "#00C800"  # Cor principal; aceita hexadecimal
+        background_color: "#3C3C3C"  # Cor de fundo
+        position: "left"  # Posição do elemento
+        animation: true  # Animação das mudanças do indicador
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- NOTES WIDGET ---
   # Notas rápidas persistentes
@@ -1321,21 +1864,44 @@ widgets:
         direction: "down"
         offset_top: 6
         offset_left: 0
-        max_title_size: 150
+        # Opção antiga removida do menu atual: max_title_size: 150
         show_date_time: true
       icons:
         note: "\uDB82\uDD0C"
         delete: "\uEAB8"
         copy: "\uEBCC"
+        float_on: "\ue922"  # Ícone para ativar a janela flutuante
+        float_off: "\ue923"  # Ícone para desativar a janela flutuante
+        close: "\ue8bb"  # Ícone para fechar a janela
       callbacks:
         on_left: "toggle_menu"
         on_middle: "do_nothing"
         on_right: "toggle_label"
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      data_path: ""  # Caminho dos dados; vazio usa o local padrão do YASB
+      start_floating: false  # Abre as notas em uma janela flutuante
+      paste_plain_text: false  # Cola as notas como texto simples
+      enter_to_add_note: true  # Permite adicionar notas com Enter
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
+
+  # --- NOTIFICATIONS WIDGET ---
+  # Central de notificações do Windows
+  notifications:
+    type: "yasb.notifications.NotificationsWidget"
+    options:
+      label: "<span>\uF476</span> {count}"
+      label_alt: "{count} notifications"
+      hide_empty: true  # Oculta quando não há notificações
+      tooltip: false
+      callbacks:
+        on_left: "toggle_notification"  # Abre central de notificações
+        on_right: "do_nothing"
+        on_middle: "toggle_label"
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      icons:  # Ícones usados pelos estados e controles
+        new: "\udb80\udc9e"  # Ajuste de novo
+        default: "\udb80\udc9a"  # Ajuste de padrão
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- OBS WIDGET ---
   # Status de gravação do OBS Studio
@@ -1346,7 +1912,7 @@ widgets:
       connection:  # Configuração de conexão com o OBS WebSocket
         host: "localhost"  # Endereço do OBS
         port: 4455  # Porta do WebSocket (padrão OBS v28+)
-        password: "$env:YASB_OBS_PASSWORD"  # Senha definida no OBS WebSocket
+        password: "xlbLQQekiEVQLq1X"  # Senha definida no OBS WebSocket
 
       icons:  # Ícones utilizados para cada estado do OBS
         recording: "\uEBA7"  # Ícone quando está gravando
@@ -1369,6 +1935,7 @@ widgets:
       show_scene_name: false # Exibe o nome da cena ativa
       show_stream_stats: true # Exibe estatísticas da transmissão (FPS, bitrate)
       tooltip: true  # Exibe tooltip ao passar o mouse
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
 # --- OPEN METEO WIDGET ---
   # Previsão do tempo usando a API Open-Meteo (sem necessidade de chave de API)
@@ -1407,7 +1974,7 @@ widgets:
         round_corners: true             # Cantos arredondados
         round_corners_type: "normal"    # Tipos: "normal", "small"
         border_color: "system"          # "system", "none", ou cor HEX
-        alignment: "right"              # Alinhamento: "left", "center", "right"
+        alignment: "center"              # Alinhamento: "left", "center", "right"
         direction: "down"               # Direção do popup: "up", "down"
         icon_size: 48                   # Tamanho do ícone principal em pixels
         show_hourly_forecast: true      # Exibe previsão hora a hora
@@ -1420,7 +1987,7 @@ widgets:
         current_line_width: 1           # Espessura da linha do horário atual
         current_line_style: "dot"       # Estilo da linha: "dot", "dash", "solid"
         hourly_gradient:
-          enabled: false                # Ativa gradiente sob a linha de temperatura
+          enabled: true                # Ativa gradiente sob a linha de temperatura
           top_color: "#8EAEE8"          # Cor superior do gradiente
           bottom_color: "#2A3E68"       # Cor inferior do gradiente
         hourly_forecast_buttons:
@@ -1430,17 +1997,17 @@ widgets:
           rain_icon: "\uDB81\uDD96"             # Ícone do botão de chuva
           snow_icon: "\uDB81\uDD98"             # Ícone do botão de neve
         weather_animation:
-          enabled: false              # Ativa animações climáticas no card
+          enabled: true              # Ativa animações climáticas no card
           snow_overrides_rain: true   # Neve sobrepõe chuva
           temp_line_animation_style: both  # "rain", "snow", "both", "none"
           rain_effect_intensity: 1.0  # Intensidade da animação de chuva (0.01 - 10.0)
           snow_effect_intensity: 1.0  # Intensidade da animação de neve (0.01 - 10.0)
           scale_with_chance: true     # Escala a intensidade com a % de precipitação
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
+        offset_top: 6  # Deslocamento vertical em pixels
+        offset_left: 0  # Deslocamento horizontal em pixels
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      forecast_days: 7  # Quantidade de dias da previsão
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- POMODORO WIDGET ---
   # Timer de produtividade com técnica Pomodoro
@@ -1482,11 +2049,18 @@ widgets:
         on_left: "toggle_menu"
         on_middle: "reset_timer"
         on_right: "toggle_label"
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      progress_bar:  # Aparência e comportamento do indicador de progresso
+        enabled: false  # Ativa ou desativa este recurso
+        progress_type: "circular"  # Tipo: circular, linear_horizontal ou linear_vertical
+        size: 18  # Tamanho em pixels
+        thickness: 3  # Espessura em pixels
+        radius: 0  # Raio dos cantos em pixels
+        color: "#00C800"  # Cor principal; aceita hexadecimal
+        background_color: "#3C3C3C"  # Cor de fundo
+        position: "left"  # Posição do elemento
+        animation: true  # Animação das mudanças do indicador
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- POWER MENU WIDGET ---
   # Menu de opções de energia (desligar, reiniciar, etc) em tela cheia
@@ -1508,12 +2082,25 @@ widgets:
         hibernate: ["\uF28E", "Hibernate"]  # Botão Hibernar
         lock: ["\uEA75", "Lock"]  # Botão Bloquear sessão
         cancel: ["\uDB81\uDF3A", "Cancel"]  # Botão Cancelar/fechar o menu
-
-      label_shadow:  # Configuração da sombra aplicada ao ícone principal do widget
-        enabled: false  # Ativa ou desativa a sombra do ícone
-        color: "black"  # Cor da sombra
-        radius: 3  # Intensidade/espalhamento da sombra
-        offset: [1, 1]    # Deslocamento da sombra no eixo X e Y
+        sleep: null  # Botão de suspensão do computador
+        force_shutdown: null  # Botão para forçar o desligamento
+        force_restart: null  # Botão para forçar a reinicialização
+      menu_style: "fullscreen"  # Estilo do menu de energia
+      popup:  # Aparência e posicionamento da janela
+        blur: true  # Ativa o efeito de desfoque
+        round_corners: true  # Arredonda os cantos da janela
+        round_corners_type: "normal"  # Tipo de arredondamento: normal ou small
+        border_color: "System"  # Cor da borda: System, None ou uma cor hexadecimal
+        alignment: "right"  # Alinhamento horizontal: left, center ou right
+        direction: "down"  # Direção de abertura: up ou down
+        offset_top: 6  # Deslocamento vertical em pixels
+        offset_left: 0  # Deslocamento horizontal em pixels
+      profile_image_size: 64  # Tamanho da imagem do perfil em pixels
+      callbacks:  # Ações ao clicar com os botões do mouse
+        on_left: "toggle_power_menu"  # Clique esquerdo
+        on_middle: "do_nothing"  # Clique do meio
+        on_right: "do_nothing"  # Clique direito
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- POWER PLAN WIDGET ---
   # Mostra e altera o plano de energia do Windows
@@ -1523,7 +2110,7 @@ widgets:
       # Variáveis: {active_plan}
       label: "<span>\uF0E7</span> {active_plan}"
       label_alt: "<span>\uF0E7</span> Power Plan {active_plan}"
-      update_interval: 5000
+      # A atualização do plano de energia é automática; update_interval foi removido.
       menu:
         blur: true
         round_corners: true
@@ -1537,16 +2124,9 @@ widgets:
         on_left: "toggle_menu"
         on_middle: "do_nothing"
         on_right: "toggle_label"
-      label_shadow:
-        enabled: true
-        color: "black"
-        offset: [1, 1]
-        radius: 3
-      container_shadow:
-        enabled: true
-        color: "#000000"
-        offset: [0, 1]
-        radius: 2
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      class_map: {}  # Classes CSS associadas aos planos de energia
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
 # --- QUICK LAUNCH WIDGET ---
   # Launcher de busca rápida com múltiplos provedores (apps, calculadora, clipboard, etc.)
@@ -1577,6 +2157,7 @@ widgets:
           prefix: "cb"        # Ex: "cb texto copiado"
           priority: 2
           max_items: 30       # Número máximo de itens no histórico
+          show_preview: true  # Exibe uma prévia do resultado selecionado
         currency:
           enabled: true       # Conversor de moedas
           prefix: "$"         # Ex: "$ 100 USD BRL"
@@ -1592,6 +2173,8 @@ widgets:
           prefix: "?"         # Ex: "? como instalar python"
           priority: 5
           engine: "google"    # Motor de busca: "google", "bing", "duckduckgo"
+          custom_engines: []  # Mecanismos de busca personalizados
+          remove_engines: []  # Mecanismos de busca padrão que serão removidos
         system_commands:
           enabled: true       # Comandos do sistema (desligar, reiniciar, etc.)
           prefix: ">"         # Ex: "> restart"
@@ -1616,6 +2199,7 @@ widgets:
           priority: 10
           backend: "everything" # Motor de busca: "auto", "everything", "windows"
           show_path: true     # Exibe o caminho completo do arquivo
+          show_preview: false  # Exibe uma prévia do resultado selecionado
         unit_converter:
           enabled: true       # Conversor de unidades
           prefix: "~"         # Ex: "~ 100 km miles"
@@ -1655,6 +2239,38 @@ widgets:
           enabled: true       # Projetos recentes do VS Code
           prefix: "vsc"       # Ex: "vsc meu-projeto"
           priority: 19
+          state_storage_path: ""  # Caminho dos dados do editor; vazio usa o VSCode padrão
+        binance:  # Provedor opcional de cotações da Binance
+          enabled: false  # Ativa ou desativa este recurso
+          prefix: "crypto"  # Prefixo usado nas buscas
+          priority: 0  # Prioridade do provedor na lista de resultados
+          pairs: ["BTC/USDT"]  # Ajuste de pares
+          round: 2  # Quantidade de casas para arredondamento
+          open_url: false  # Ícone para abrir o endereço
+          domain: "api-gcp.binance.com"  # Ajuste de domínio
+        github_notifications:  # Provedor de notificações do GitHub
+          enabled: false  # Ativa ou desativa este recurso
+          prefix: "gh"  # Prefixo usado nas buscas
+          priority: 0  # Prioridade do provedor na lista de resultados
+          token: "env"  # Token de acesso; configure antes de ativar o provedor
+        ssh:  # Provedor de conexões SSH
+          enabled: false  # Ativa ou desativa este recurso
+          prefix: "ssh"  # Prefixo usado nas buscas
+          priority: 0  # Prioridade do provedor na lista de resultados
+          ssh_config_path: ""  # Caminho da configuração de conexões SSH
+        window_switcher:  # Provedor de alternância entre janelas
+          enabled: false  # Ativa ou desativa este recurso
+          prefix: "win"  # Prefixo usado nas buscas
+          priority: 0  # Prioridade do provedor na lista de resultados
+        windows_terminal:  # Provedor de perfis do Windows Terminal
+          enabled: false  # Ativa ou desativa este recurso
+          prefix: "wt"  # Prefixo usado nas buscas
+          priority: 0  # Prioridade do provedor na lista de resultados
+        wsl:  # Provedor de distribuições do WSL
+          enabled: false  # Ativa ou desativa este recurso
+          prefix: "wsl"  # Prefixo usado nas buscas
+          priority: 0  # Prioridade do provedor na lista de resultados
+          show_online: true  # Exibe os dispositivos conectados
       popup:  # Configurações visuais do popup de busca
         width: 720                      # Largura do popup em pixels
         height: 600                     # Altura do popup em pixels
@@ -1665,9 +2281,13 @@ widgets:
         dark_mode: true                 # Força tema escuro no popup
       callbacks:
         on_left: "toggle_quick_launch"  # Abre/fecha o launcher ao clicar
+        on_middle: "do_nothing"  # Clique do meio
+        on_right: "do_nothing"  # Clique direito
       keybindings:
         - keys: "alt+space"             # Atalho global para abrir o launcher
           action: "toggle_quick_launch"
+      remember_last_query: false  # Mantém a última busca ao reabrir o lançador
+      compact_text: false  # Usa uma apresentação compacta dos resultados
 
   # --- RECYCLE BIN WIDGET ---
   # Monitor da lixeira do Windows
@@ -1684,11 +2304,10 @@ widgets:
         on_left: "toggle_label"
         on_right: "empty_bin"    # Esvazia a lixeira
         on_middle: "open_bin"    # Abre a lixeira
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      tooltip: true  # Informação exibida ao passar o mouse
+      show_confirmation: false  # Solicita confirmação antes de esvaziar a lixeira
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- SERVER MONITOR WIDGET ---
   # Monitor de status de servidores/sites
@@ -1706,7 +2325,10 @@ widgets:
       desktop_notifications:    # Notificações do Windows
         ssl: true             # Notifica sobre SSL
         offline: true         # Notifica quando offline
-      servers: ['netflix.com', 'google.com', 'subdomain.yahoo.com']
+      servers:  # Cada servidor agora exige nome e URL
+        - {name: "netflix.com", url: "https://netflix.com"}
+        - {name: "google.com", url: "https://google.com"}
+        - {name: "subdomain.yahoo.com", url: "https://subdomain.yahoo.com"}
       menu:
         blur: true
         round_corners: true
@@ -1714,14 +2336,19 @@ widgets:
         border_color: "System"
         alignment: "right"
         direction: "down"
+        offset_top: 6  # Deslocamento vertical em pixels
+        offset_left: 0  # Deslocamento horizontal em pixels
       callbacks:
         on_left: "toggle_menu"
         on_right: "toggle_label"
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
+        on_middle: "do_nothing"  # Clique do meio
+      tooltip: true  # Informação exibida ao passar o mouse
+      icons:  # Ícones usados pelos estados e controles
+        online: "\uf444"  # Ajuste de conectado
+        offline: "\uf4c3"  # Ajuste de desconectado
+        warning: "\uf4c3"  # Ajuste de aviso
+        reload: "\udb81\udc50"  # Ajuste de recarregar
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- SYSTRAY WIDGET ---
   # Bandeja do sistema (system tray) com ícones de aplicativos
@@ -1745,7 +2372,14 @@ widgets:
         direction: "down"
         offset_top: 6
         offset_left: 0
-
+      show_unpinned: true  # Exibe os ícones não fixados
+      show_unpinned_button: true  # Exibe o botão de ícones não fixados
+      show_battery: false  # Exibe o ícone de bateria do Windows
+      show_volume: false  # Exibe o ícone de volume do Windows
+      show_network: false  # Exibe o ícone de rede do Windows
+      hide_icons: []  # Ícones que devem ser ocultados
+      tooltip: true  # Informação exibida ao passar o mouse
+      use_hook: false  # Usa o mecanismo de captura de ícones da bandeja
 
   # --- TASKBAR WIDGET ---
   # Barra de tarefas com janelas abertas
@@ -1759,12 +2393,15 @@ widgets:
       monitor_exclusive: false
       animation:
         enabled: true
+        duration: 200  # Duração da animação em milissegundos
       preview:  # Preview da janela ao passar o mouse
         enabled: true
         width: 240          # Largura do preview
         delay: 400          # Delay antes de mostrar (ms)
         padding: 8
         margin: 8
+        blur: false  # Ativa o efeito de desfoque
+        peek: false  # Destaca a janela apontada ao passar o mouse sobre a prévia
       title_label:  # Label com título da janela
         enabled: false
         show: "always"      # Opções: "always", "hover", "never"
@@ -1773,10 +2410,16 @@ widgets:
       callbacks:
         on_middle: close_app
         on_right: context_menu
+        on_left: "toggle_window"  # Clique esquerdo
       ignore_apps:  # Aplicativos a ignorar
         processes: []       # Ex: ["explorer.exe"]
         titles: ["keyviz"]          # Ex: ["Discord"]
         classes: []         # Ex: ["ConsoleWindowClass"]
+      hide_empty: false  # Oculta o widget quando não há conteúdo
+      grouping:  # Agrupamento de janelas do mesmo aplicativo
+        enabled: false  # Ativa ou desativa este recurso
+        show_count: true  # Exibe a quantidade de janelas no grupo
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- TODO WIDGET ---
   # Lista de tarefas (To-Do List)
@@ -1821,19 +2464,9 @@ widgets:
         on_left: "toggle_menu"
         on_middle: "do_nothing"
         on_right: "toggle_label"
+      data_path: ""  # Caminho dos dados; vazio usa o local padrão do YASB
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
-  # --- TOGGLE THEME ---
-  # Permite alternar entre tema claro e escuro atraves de um script (necessario baixar o script no repositorio e inserir o endereço dele no código)
-  # Endereço de download do script: https://github.com/winchestercanal/Yasb/blob/main/toggle-theme-wallpaper.ps1
-  toggle_theme:
-    type: "yasb.custom.CustomWidget"
-    options:
-      label: "<span>\uEAC6</span>"
-      label_alt: "<span>\uEAC6</span>"
-      class_name: "toggle-theme"
-      callbacks:
-        on_left: "exec powershell -WindowStyle Hidden -File $env:USERPROFILE/.config/yasb/toggle-theme-wallpaper.ps1"
-        # Substitua esse endereço pelo caminho correto do script armazenado em seu sistema! Recomenda-se deixa-lo na mesma pasta do .config do Yasb.
 
   # --- TRAFFIC WIDGET ---
   # Monitor de tráfego de rede (download/upload)
@@ -1853,14 +2486,23 @@ widgets:
         direction: "down"
         offset_top: 6
         offset_left: 0
+        show_interface_name: true  # Exibe o nome da interface no menu
+        show_internet_info: true  # Exibe as informações da conexão com a internet
       callbacks:
         on_left: "toggle_menu"
         on_right: "toggle_label"
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
+        on_middle: "do_nothing"  # Clique do meio
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      interface: "auto"  # Interface de rede; vazio usa a seleção automática
+      hide_if_offline: false  # Oculta o widget quando estiver desconectado
+      max_label_length: 0  # Largura máxima reservada ao rótulo
+      max_label_length_align: "left"  # Alinhamento do rótulo dentro da largura reservada
+      speed_unit: "bits"  # Unidade de velocidade: bytes ou bits
+      hide_decimal: false  # Oculta as casas decimais
+      speed_threshold:  # Limites usados para classificar a velocidade
+        min_upload: 1000  # Limite mínimo de upload
+        min_download: 1000  # Limite mínimo de download
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- UPDATE CHECK WIDGET ---
   # Verificador de atualizações (Windows Update e Winget)
@@ -1872,16 +2514,19 @@ widgets:
         label: "<span>\uF0AB</span> {count}"
         interval: 240    # Verificação a cada X minutos
         exclude: []      # Lista de updates para excluir da notificação (por nome ou KB ID, ex: "KB5006670" ou "Intel Corporation Driver Update (24.10.0.4)")
+        tooltip: true  # Informação exibida ao passar o mouse
       winget_update:   # Atualizações de apps via Winget
         enabled: true
         label: "<span>\uF0AB</span> {count}"
         interval: 60     # Verificação a cada X minutos
-        exclude: []      # Lista de pacotes para excluir da notificação (por ID, ex: "Google.Chrome" ou "Mozilla.Firefox")
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
+        exclude: [Bonjour]      # Lista de pacotes para excluir da notificação (por ID, ex: "Google.Chrome" ou "Mozilla.Firefox")
+        tooltip: true  # Informação exibida ao passar o mouse
+      scoop_update:  # Verificação opcional de atualizações pelo Scoop
+        enabled: false  # Ativa ou desativa este recurso
+        label: "{count}"  # Texto principal; aceita as variáveis do widget
+        tooltip: true  # Informação exibida ao passar o mouse
+        exclude: []  # Ajuste de excluir
+        interval: 240  # Intervalo de atualização do recurso
 
   # --- VOLUME WIDGET ---
   # Controle de volume do sistema e por aplicativo
@@ -1891,7 +2536,7 @@ widgets:
       # Variáveis: {icon}, {level}, {volume}
       label: "<span>{icon}</span> {level}"
       label_alt: "{volume}"
-      volume_icons:  # Ícones para cada nível de volume
+      icons:  # Ícones para cada nível de volume
         - "\uEEE8"  # Mudo
         - "\uF026"  # 0-10%
         - "\uF027"  # 11-30%
@@ -1902,7 +2547,7 @@ widgets:
         round_corners: true
         round_corners_type: "normal"
         border_color: "system"
-        alignment: "right"
+        alignment: "center"
         direction: "down"
         offset_top: 6
         offset_left: 0
@@ -1917,56 +2562,100 @@ widgets:
         on_left: "toggle_volume_menu"
         on_middle: "toggle_mute"
         on_right: "exec start ms-settings:sound"   # Abre as configurações de som do Windows
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      mute_text: "mute"  # Texto exibido quando o som está mudo
+      tooltip: true  # Informação exibida ao passar o mouse
+      scroll_step: 2  # Quantidade alterada a cada passo da roda do mouse
+      invert_wheel: false  # Inverte o sentido da roda do mouse
+      slider_beep: true  # Reproduz som ao ajustar o volume
+      progress_bar:  # Aparência e comportamento do indicador de progresso
+        enabled: false  # Ativa ou desativa este recurso
+        progress_type: "circular"  # Tipo: circular, linear_horizontal ou linear_vertical
+        size: 18  # Tamanho em pixels
+        thickness: 3  # Espessura em pixels
+        radius: 0  # Raio dos cantos em pixels
+        color: "#00C800"  # Cor principal; aceita hexadecimal
+        background_color: "#3C3C3C"  # Cor de fundo
+        position: "left"  # Posição do elemento
+        animation: true  # Animação das mudanças do indicador
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
+  # --- VSCODE WIDGET ---
+  # Abre pastas e arquivos recentes do Visual Studio Code; requer o editor e seu comando no PATH.
+  # Para exibir, adicione "vscode" a uma lista left, center ou right da barra.
+  vscode:
+    type: "yasb.vscode.VSCodeWidget"
+    options:
+      label: "<span>\udb82\ude1e</span>"  # Texto principal; aceita as variáveis do widget
+      label_alt: "<span>\ue943</span> Recentes"  # Texto alternativo ao alternar o rótulo
+      menu_title: "Projetos recentes do VSCode"  # Título exibido no menu
+      icons:  # Ícones usados pelos estados e controles
+        folder: "\uf114"  # Ícone de pasta
+        file: "\uf016"  # Ícone de arquivo
+        remote: ""  # Ícone para sessões remotas; vazio oculta o ícone
+      truncate_to_root_dir: false  # Exibe somente o nome da pasta raiz do projeto
+      max_number_of_folders: 30  # Limite de pastas recentes no menu
+      max_number_of_files: 30  # Limite de arquivos recentes no menu; 0 oculta arquivos
+      state_storage_path: ""  # Caminho dos dados do editor; vazio usa o VSCode padrão
+      modified_date_format: "Modificado: %d/%m/%Y %H:%M"  # Formato da data de modificação exibida no menu
+      cli_command: "code"  # Comando usado para abrir os projetos no editor
+      menu:  # Aparência e posicionamento do menu
+        blur: true  # Ativa o efeito de desfoque
+        round_corners: true  # Arredonda os cantos da janela
+        round_corners_type: "normal"  # Tipo de arredondamento: normal ou small
+        border_color: "System"  # Cor da borda: System, None ou uma cor hexadecimal
+        alignment: "right"  # Alinhamento horizontal: left, center ou right
+        direction: "down"  # Direção de abertura: up ou down
+        offset_top: 6  # Deslocamento vertical em pixels
+        offset_left: 0  # Deslocamento horizontal em pixels
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
+      callbacks:  # Ações ao clicar com os botões do mouse
+        on_left: "toggle_menu"  # Clique esquerdo
+        on_middle: "do_nothing"  # Clique do meio
+        on_right: "toggle_label"  # Clique direito
 
   # --- WALLPAPERS WIDGET ---
   # Gerenciador de papéis de parede com galeria
   wallpapers:
     type: "yasb.wallpapers.WallpapersWidget"
     options:
-      label: "<span>\uDB83\uDE09</span>"
+      label: "<span>\ue7aa</span>"  # Ícone de imagem compatível com a fonte Segoe usada no CSS
       # Caminhos para pastas com imagens
       # Pode ser string única ou lista de strings
-      image_path: "$env:YASB_WALLPAPER_PATHS"  # Exemplo: variável de ambiente com múltiplos caminhos separados por ponto e vírgula
-      # image_path: "C:\\Users\\{Username}\\Images"  # Exemplo alternativo! Repare que é necessario ter barras duplas, então certifique-se de ajustar isso ao inserir seu caminho personalizado!
+      image_path: "C:\\Users\\{Username}\\Images"  # Repare que é necessario ter barras duplas, então certifique-se de ajustar isso ao inserir seu caminho personalizado!
       change_automatically: false  # Altera automaticamente
       update_interval: 60          # Intervalo de mudança (segundos)
-      engine: 
+      engine:
         enabled: true  # Habilita animações para a troca de wallpaper
         animation: "circle" # Estilo da animação (circle/slide_top/diamond/split)
       gallery:  # Configurações da galeria de imagens
-        enabled: true
-        blur: true
+        # Opção antiga removida da galeria atual: enabled: true
+        # Opção antiga removida da galeria atual: blur: true
         image_width: 220
-        image_per_page: 6
-        gallery_columns: 0    # 0 = automático (corresponde a image_per_page)
-        horizontal_position: "center"    # "left", "center", "right"
-        vertical_position: "center"      # "top", "center", "bottom"
-        position_offset: 0    # Espaço mínimo das bordas (px)
-        respect_work_area: true    # Respeita área de trabalho (evita barra)
-        show_buttons: false        # Mostra botões de navegação
+        # Opção antiga removida da galeria atual: image_per_page: 6
+        # Opção antiga removida da galeria atual: gallery_columns: 0    # 0 = automático (corresponde a image_per_page)
+        # Opção antiga removida da galeria atual: horizontal_position: "center"    # "left", "center", "right"
+        # Opção antiga removida da galeria atual: vertical_position: "center"      # "top", "center", "bottom"
+        # Opção antiga removida da galeria atual: position_offset: 0    # Espaço mínimo das bordas (px)
+        # Opção antiga removida da galeria atual: respect_work_area: true    # Respeita área de trabalho (evita barra)
+        # Opção antiga removida da galeria atual: show_buttons: false        # Mostra botões de navegação
         orientation: "portrait"    # "portrait", "landscape", "both"
-        image_spacing: 8
-        lazy_load: true            # Carrega imagens sob demanda
-        lazy_load_fadein: 400      # Animação de fade-in (ms)
+        # Opção antiga removida da galeria atual: image_spacing: 8
+        # Opção antiga removida da galeria atual: lazy_load: true            # Carrega imagens sob demanda
+        # Opção antiga removida da galeria atual: lazy_load_fadein: 400      # Animação de fade-in (ms)
         image_corner_radius: 12
-      run_after:  # Comandos a executar após trocar wallpaper
-        - "wal -s -t -e -q -n -i {image}"  # Exemplo: Pywal
-        - "cmd.exe /c start /min pwsh ./yasb.ps1"
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
+        type: "default"  # Tipo de galeria: default, magnified, strip ou slide
+        accent_color: "auto"  # Cor de destaque da galeria; auto usa a cor do Windows
+      #run_after:  # Comandos a executar após trocar wallpaper
+      #  - "wal -s -t -e -q -n -i {image}"  # Exemplo: Pywal
+      #  - "cmd.exe /c start /min pwsh ./yasb.ps1"
       callbacks:
         on_left: "toggle_gallery"
         on_middle: "do_nothing"
         on_right: "change_wallpaper"
+      tooltip: true  # Informação exibida ao passar o mouse
+      run_after: []  # Comandos executados após trocar o papel de parede
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- WEATHER WIDGET ---
   # Previsão do tempo com card detalhado
@@ -2037,47 +2726,12 @@ widgets:
           snow_effect_intensity: 1.0  # 0.01 - 10.0
           scale_with_chance: true     # Escala com % de precipitação
           enable_debug: false
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
-
-  # --- WIFI WIDGET ---
-  # Status e controle de conexão WiFi
-  wifi:
-    type: "yasb.wifi.WifiWidget"
-    options:
-      # Variáveis: {wifi_icon}, {wifi_name}, {wifi_strength}, {ip_addr}
-      label: "<span>{wifi_icon}</span>"
-      label_alt: "{wifi_name} {wifi_strength}%"
-      update_interval: 5000
-      callbacks:
-        on_left: "toggle_menu"
-        on_middle: "exec cmd.exe /c start ms-settings:network"
-        on_right: "toggle_label"
-      ethernet_label: "<span>{wifi_icon}</span>"
-      ethernet_label_alt: "<span>{wifi_icon}</span>{ip_addr}"
-      ethernet_icon: "\uEBA9"
-      get_exact_wifi_strength: false  # Requer permissão de localização
-      wifi_icons: ["\uDB82\uDD2E", "\uDB82\uDD1F", "\uDB82\uDD22", "\uDB82\uDD25", "\uDB82\uDD28" # Ícone para 75-100% de intensidade
-]
-      label_shadow:
-        enabled: false
-        color: "black"
-        radius: 3
-        offset: [1, 1]
-      menu_config:
-        blur: true
-        round_corners: true
-        round_corners_type: "normal"
-        border_color: "System"
-        alignment: "right"
-        direction: "down"
-        offset_top: 6
-        offset_left: 0
-        wifi_icons_secured: ["\uE670", "\uE671", "\uE672", "\uE673"]
-        wifi_icons_unsecured: ["\uEC3C", "\uEC3D", "\uEC3E", "\uEC3F"]
+        offset_top: 6  # Deslocamento vertical em pixels
+        offset_left: 0  # Deslocamento horizontal em pixels
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      show_alerts: false  # Exibe alertas meteorológicos
+      tooltip: true  # Informação exibida ao passar o mouse
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- WHKD WIDGET ---
   # Widget para mostrar atalhos de teclado do Komorebi (WHKD)
@@ -2102,15 +2756,71 @@ widgets:
           key_replace: "\u2191"
         - key: "down"
           key_replace: "\u2193"
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
+        
+
+  # --- WIFI WIDGET ---
+  # Status e controle de conexão WiFi
+  wifi:
+    type: "yasb.wifi.WifiWidget"
+    options:
+      # Variáveis: {wifi_icon}, {wifi_name}, {wifi_strength}, {ip_addr}
+      label: "<span>{wifi_icon}</span>"
+      label_alt: "{wifi_name} {wifi_strength}%"
+      update_interval: 5000
+      callbacks:
+        on_left: "toggle_menu"
+        on_middle: "exec cmd.exe /c start ms-settings:network"
+        on_right: "toggle_label"
+      ethernet_label: "<span>{wifi_icon}</span>"
+      ethernet_label_alt: "<span>{wifi_icon}</span>{ip_addr}"
+      ethernet_icon: "\uEBA9"
+      get_exact_wifi_strength: false  # Requer permissão de localização
+      wifi_icons: ["\uDB82\uDD2E", "\uDB82\uDD1F", "\uDB82\uDD22", "\uDB82\uDD25", "\uDB82\uDD28" # Ícone para 75-100% de intensidade
+]
+      menu_config:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        wifi_icons_secured: ["\uE670", "\uE671", "\uE672", "\uE673"]
+        wifi_icons_unsecured: ["\uEC3C", "\uEC3D", "\uEC3E", "\uEC3F"]
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      hide_if_ethernet: false  # Oculta o Wi-Fi quando há conexão Ethernet
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
+
+  # --- WIN BUTTON WIDGET ---
+  # Botão do menu iniciar do Windows
+  win_button:
+    type: "yasb.custom.CustomWidget"
+    options:
+      label: "\uE62A"
+      label_alt: "\uE62A"
+      class_name: "system-widget"
+      callbacks:
+        on_left: "exec start_menu"  # Abre o menu iniciar
+        on_middle: "do_nothing"  # Clique do meio
+        on_right: "do_nothing"  # Clique direito
+      label_placeholder: "Loading..."  # Texto exibido enquanto os dados são carregados
+      label_max_length: null  # Limite de caracteres do rótulo
+      tooltip: false  # Informação exibida ao passar o mouse
+      tooltip_label: null  # Texto da dica exibida ao passar o mouse
+      exec_options:  # Opções de execução do comando personalizado
+        run_cmd: null  # Comando que será executado
+        run_once: false  # Executa o comando uma única vez
+        run_interval: 120000  # Intervalo entre execuções do comando
+        return_format: "json"  # Formato dos dados retornados: string ou json
+        hide_empty: false  # Oculta o widget quando não há conteúdo
+        use_shell: true  # Executa o comando por meio do interpretador do sistema
+        encoding: null  # Codificação usada para ler a saída do comando
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
   # --- Window Control ---
   # Controle de janelas ativas (Minimizar / Maximizar / Fechar)
-
 
   window_controls:
     type: "yasb.window_controls.WindowControlsWidget"  # Tipo do widget de controles da janela ativa
@@ -2125,7 +2835,33 @@ widgets:
         close: "\uEA71"            # Ícone do botão fechar
       monitor_exclusive: true       # Exibe apenas se a janela ativa estiver neste monitor
       animation_duration: 120       # Duração da animação ao trocar de janela (ms)
+      class_name: ""  # Classe CSS adicional para personalizar este widget
+      app_name_position: "right"  # Posição do nome do aplicativo
 
+# --- WINDOW SWITCHER WIDGET ---
+# Widget para alternar entre janelas abertas
+  window_switcher:
+    type: "yasb.window_switcher.WindowSwitcherWidget"
+    options:
+      label: "<span>\uf2d2</span>"
+      icon_size: 48 # Tamanho do ícone das janelas no switcher
+      max_visible_apps: 15 # Número máximo de aplicativos visíveis no switcher
+      show_title: true
+      keybindings:
+        - keys: "alt+w"
+          action: "toggle_window_switcher"
+          screen: "cursor"
+      label_alt: ""  # Texto alternativo ao alternar o rótulo
+      popup:  # Aparência e posicionamento da janela
+        blur: true  # Ativa o efeito de desfoque
+        round_corners: true  # Arredonda os cantos da janela
+        round_corners_type: "normal"  # Tipo de arredondamento: normal ou small
+        border_color: "System"  # Cor da borda: System, None ou uma cor hexadecimal
+        dark_mode: true  # Usa o modo escuro no provedor
+      callbacks:  # Ações ao clicar com os botões do mouse
+        on_left: "toggle_window_switcher"  # Clique esquerdo
+        on_middle: "do_nothing"  # Clique do meio
+        on_right: "do_nothing"  # Clique direito
 
   # --- WINDOWS WORKSPACES WIDGET ---
   # Desktops virtuais nativos do Windows
@@ -2134,22 +2870,11 @@ widgets:
     options:
       label_workspace_btn: "\uDB81\uDC3D"        # Ícone workspace inativo
       label_workspace_active_btn: "\uDB81\uDC3E" # Ícone workspace ativo
-      btn_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [1, 1]
-
-  # --- WIN BUTTON WIDGET ---
-  # Botão do menu iniciar do Windows
-  win_button:
-    type: "yasb.custom.CustomWidget"
-    options:
-      label: "\uE62A"
-      label_alt: "\uE62A"
-      class_name: "system-widget"
-      callbacks:
-        on_left: "exec start_menu"  # Abre o menu iniciar
+      callbacks:  # Ações ao clicar com os botões do mouse
+        on_left: "activate_workspace"  # Clique esquerdo
+        on_middle: "do_nothing"  # Clique do meio
+        on_right: "toggle_context_menu"  # Clique direito
+      keybindings: []  # Atalhos globais opcionais; formato: [{keys: "ctrl+alt+x", action: "toggle_label"}]
 
 # ============================================================
 # GUIA DE PERSONALIZAÇÃO RÁPIDA
