@@ -2622,7 +2622,8 @@ widgets:
       label: "<span>\ue7aa</span>"  # Ícone de imagem compatível com a fonte Segoe usada no CSS
       # Caminhos para pastas com imagens
       # Pode ser string única ou lista de strings
-      image_path: "C:\\Users\\{Username}\\Images"  # Repare que é necessario ter barras duplas, então certifique-se de ajustar isso ao inserir seu caminho personalizado!
+      image_path: "$env:wallpapers_path"  # Caminho para as imagens do catalogo de wallpapers. Altere o caminho real no arquivo .env
+      #image_path: "C:\\Users\\{Username}\\Images"  # Versão alternativa, sem necessidade do arquivo .env. Repare que é necessario ter barras duplas, então certifique-se de ajustar isso ao inserir seu caminho personalizado!
       change_automatically: false  # Altera automaticamente
       update_interval: 60          # Intervalo de mudança (segundos)
       engine:
